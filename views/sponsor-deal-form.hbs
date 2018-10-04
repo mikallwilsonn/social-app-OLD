@@ -1,0 +1,78 @@
+<div class="sponsor__header header" style="background:url({{cover}}) no-repeat; background-size:cover; background-position:center; border-radius:3px;">
+</div>
+
+<!-- CONTENT -->
+<div class="sponsor__content row space-around">
+    <div class="col-12 col-xl-10">
+
+        <div class="card">
+            <div class="card-body">
+
+                <div class="sponsor__titles-wrapper row space-around align-center">
+                    <div class="column space-around align-center">
+                        <img src="{{logo}}" height="250" width="250" alt="{{brand_name}} is a proud sponsor of {{h.siteInfo.name}}"><br />
+                        <!-- Pretitle -->
+                        <h5 class="header-pretitle">{{pretitle}}</h5>
+                        <!-- Title -->
+                        <h1 class="header-title">Add A New Deal for {{title}}</h1>
+                    </div>
+                </div>
+
+                <form class="account-form" method="POST" action="/sponsors/{{slug}}/new-deal" enctype="multipart/form-data">
+                    <div class="row">
+                        
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="title">Deal Title</label>
+                                <input type="text" name="title" id="title" class="form-control" value="">
+                            </div>
+                        
+
+                            <div class="form-group">
+                                <label for="deal_url">URL To Deal</label>
+                                <input type="text" name="deal_url" id="deal_url" class="form-control" value="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="deal_code">Promo Code Associated With This Deal?</label>
+                                <input type="text" name="deal_code" id="deal_code" class="form-control" value="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description, Conditions and any other relevant details</label>
+                                <textarea class="form-control" name="description" id="description"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Deal Image</label><br />
+                                <div class="row col-12">
+                                    <img src="" class="account__profile_cover--preview">                   
+                                    <div id="uploadPreview__container">
+                                        <p class="row space-between">
+                                            <small class="text-muted">Preview:</small>
+                                        </p>
+                                        <img src="" id="uploadPreview" class="account__profile_cover--preview">
+                                    </div>
+                                </div>
+                                
+                                <input type="file" name="image" id="upload" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                            </div>
+
+                        </div>
+
+                    </div> <!-- / .row -->
+
+
+                    <br />
+                    <hr class="mt-4 mb-5">
+                    <br />
+
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">Add Deal To {{title}}'s Page</button>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+</div> <!-- / .row -->

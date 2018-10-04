@@ -1,0 +1,83 @@
+<div class="header" style="margin-bottom: 0.5rem">
+
+
+    <div style="background:url({{cover}}) no-repeat; background-position:center center; background-size:cover;" class="header-img-top">
+        <div class="bg-overlay column space-around align-center">
+            <div>
+                <h6 class="header-pretitle">{{pretitle}}</h6>
+                <h1 class="header-title">{{title}}</h1>
+            </div>
+
+        </div>
+
+    </div>
+
+  <div class="container-fluid container-profile-header">
+
+    <div class="header-body ">
+
+      <div class="row align-items-center" style="padding:10px 15px;">
+        <div class="col">
+
+            <div class="row space-between align-center">
+              <p class="text-muted">{{moment startDate}}</p>
+              <p class="text-muted">{{moment endDate}}</p>
+            </div>
+
+            <div class="progress" style="height: 25px;">
+                {{#each updatesProgress}}
+                  {{> deadsea/_progressBarBlock progress=this.percent activity=this.activity color=this.color prevColor=this.prevColor id=this.id prevDate=this.prevDate currentDate=this.currentDate}}
+                {{/each}}
+
+            </div>
+
+            <br />
+            <div class="row space-between align-center">
+              <p class="text-muted">Dead Sea</p>
+              <p class="text-muted">Mount Everest</p>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <a href="#" class="btn btn-outline-secondary" style="margin: 0 auto;display: block;" data-toggle="modal" data-target="#modalSubscribe">
+          <i class="fe fe-bell"></i> &nbsp; Get Notified by Email for Charlie Engle's Next Update
+        </a>
+        {{#if isAdmin}}
+          <a href="/new_deadsea_update" class="btn btn-secondary">Post A New Update</a>
+        {{/if}}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- CONTENT -->
+
+  <div class="row" style="padding-left: 7px;">
+    {{#if deadseaUpdates}}
+      {{#each deadseaUpdates}}
+          <div class="col-12 row space-around icon-separator" style="margin-top:5px;">
+              <hr>
+          </div>
+
+          {{> deadsea/_updateCard 
+                author=this.author 
+                date=this.date_posted 
+                content=this.text
+                update_image=this.image 
+                lat=this.latitude 
+                lng=this.longitude 
+                update_id=this._id 
+                state=this.state_of_mind 
+                distance=this.distance 
+                duration=this.duration 
+                user=../user 
+                comments=this.comments
+          }}
+      {{/each}}
+    {{/if}}
+  </div> <!-- / .row -->

@@ -1,0 +1,25 @@
+{{> layout/_header}}
+
+{{> modals/_loading}}
+
+{{#if user}}
+    {{> modals/_subscribe}}
+    {{> modals/_lightbox}}
+    {{> modals/_notifications}}
+    {{> modals/_search}}
+
+    {{> layout/_navbar}}
+
+    <div class="main-content">
+        {{> flashes/_flashHandler}}
+        {{{body}}}
+    </div>
+
+{{else}}
+
+    {{> flashes/_flashHandler}}
+    {{{body}}}
+
+{{/if}}
+
+{{> layout/_footer}}

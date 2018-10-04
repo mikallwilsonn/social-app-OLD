@@ -1,0 +1,89 @@
+<div class="container-fluid settings-container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <div class="header">
+            <div class="header-body">
+
+                <div class="row align-items-end">
+                    <div class="col">
+                        <h6 class="header-pretitle">Settings</h6>
+                        <h1 class="header-title">Upload a new Avatar</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="nav nav-tabs header-tabs">
+                            <li class="nav-item">
+                                <a href="/settings/profile" class="nav-link text-center">
+                                Profile
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/settings/avatar" class="nav-link text-center active">
+                                Avatar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/settings/profile-cover" class="nav-link text-center">
+                                Profile Cover
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/settings/billing" class="nav-link text-center">
+                                Billing
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/settings/manage-password" class="nav-link text-center">
+                                Change Password
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form class="mb-4" method="POST" action="/settings/avatar" enctype="multipart/form-data">
+            <div class="row">
+
+                <div class="col-12">
+                    
+                    <!-- First name -->
+                    <div class="form-group">
+                        <label for="avatar">Current Account Avatar</label><br />
+                        <div class="col-md-6">
+                            <img src="{{user.avatar}}" height="250" width="250" class="account__avatar--preview">
+                            <div id="uploadPreview__container">
+                                <p class="row space-between">
+                                    <small class="text-muted">Upload Preview:</small>
+                                </p>
+                                <img src="" id="uploadPreview" height="250" width="250" class="account__avatar--preview">
+                            </div>
+                        </div>
+                        <br />
+                        
+                        <div class="col-md-6" style="margin-top:25px;">
+                            <label for="avatar">Upload A New Avatar</label><br />
+                            <input type="file" name="avatar" id="upload" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                            <p class="card-text small text-muted">
+                                Minimum recommended dimensions: 500x500 (larger images will be scaled down)
+                            </p>
+                            <input type="text" name="previousID" id="previousID" disabled="disabled" value="{{user.avatar_id}}" >
+                        </div>
+
+                    </div>
+
+                </div>
+                
+
+            <button type="submit" id="submitUpload" class="btn btn-primary" disabled="disabled" data-toggle="modal" data-target="#modalLoading">Upload Your New Avatar</button>
+        </form>
+
+        </div>
+    </div> <!-- / .row -->
+</div>

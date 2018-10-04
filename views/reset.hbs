@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row align-items-center justify-content-center">
+
+        <div class="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6">
+            <h1 class="display-4 text-center mb-3">Password Recovery</h1>
+            <p class="text-muted text-center mb-5">Enter the email associated with your account</p>
+        
+            <form class="account-form" method="POST">
+
+                <div class="form-group">
+                    <label for="password">New Password</label>
+
+                    <div class="input-group input-group-merge">
+                        <input type="password" id="password" name="password" class="form-control form-control-appended" placeholder="Enter your password">
+
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div id="passwordStrengthMeter" class="progress" style="height: 10px;">
+                        <div    class="progress-bar" 
+                                role="progressbar" 
+                                style=" width: 12.5%; background-color:red; opacity:0;">
+                        </div>
+                    </div> 
+                    <div id="password-checklist" class="bg-light border">
+                        <p class="mb-2"><strong>Password Suggestions</strong></p>
+                        <p class="small text-muted mb-2">To ensure the best security for your account we recommend trying to meet some or all of the following:</p>
+                        <ul>
+                            <li id="password-eight-chars" class="password-uncheck">8 or more characters</li>
+                            <li id="password-twelve-chars" class="password-uncheck">12 or more characters</li>
+                            <li id="password-one-num" class="password-uncheck">At least 1 number</li>
+                            <li id="password-more-num" class="password-uncheck">2 or more numbers</li>
+                            <li id="password-one-cap" class="password-uncheck">At least 1 capital letter</li>
+                            <li id="password-more-cap" class="password-uncheck">2 or more capital letters</li>
+                            <li id="password-one-spec" class="password-uncheck">At least 1 special character</li>
+                            <li id="password-more-spec" class="password-uncheck">2 or more special characters</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password-confirm">Confirm New Password</label>
+
+                    <div class="input-group input-group-merge">
+                        <input type="password" id="password-confirm" name="password-confirm" class="form-control form-control-appended" placeholder="Enter your password again to confirm">
+
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-lg btn-block btn-primary mb-3" disabled="true" data-toggle="modal" data-target="#modalLoading">Save New Password</button>
+
+            </form>
+
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+            <div class="bg-cover vh-100 mt--1 mr--3" style="background-image: url(/images/climbing.jpeg); background-size:cover; background-position:center;"></div>
+        </div>
+    </div> <!-- / .row -->
+</div>

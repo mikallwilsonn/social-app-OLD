@@ -1,0 +1,124 @@
+<!-- HEADER -->
+<div class="header">
+
+  <!-- Image -->
+  <div style="background:url({{profile_cover}}) no-repeat; background-position:center; background-size:cover; padding:200px 0;position: relative;" class="header-img-top">
+
+    {{> profile/_userSurvivalCard title='Survival Challenge' content=goal}}
+
+  </div>
+
+  <div class="container-fluid container-profile-header">
+
+    <!-- Body -->
+    <div class="header-body mt--5 mt-md--6">
+      <div class="row align-items-end">
+        <div class="col-auto">
+
+          <!-- Avatar -->
+          <div class="avatar avatar-xxl header-avatar-top">
+            <img src="{{avatar}}" alt="..." class="avatar-img rounded-circle border border-body">
+          </div>
+
+        </div>
+
+        <div class="col mb-3 ml--3 ml-md--2">
+          <!-- Pretitle -->
+          <h6 class="header-pretitle">
+            @{{username}}
+            {{role_badge role}}  
+          </h6>
+          <!-- Title -->
+          <h1 class="header-title">{{title}}</h1>
+        </div>
+
+        <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
+          <!-- Button -->
+          {{#if isCurrentUser}}
+            <a href="/settings/profile" class="btn btn-secondary d-block d-md-inline-block">Edit Your Profile</a>
+          {{else}}
+            {{follow_unfollow user._id profile_id followers}}
+          {{/if}}
+        </div>
+  
+      </div> <!-- / .row -->
+
+      <div class="row">
+        <div class="col-12">
+
+          <ul class="nav nav-tabs header-tabs">
+            <li class="nav-item">
+              <a href="/users/@{{username}}" class="nav-link text-center active">
+                Profile &amp; Feed
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/users/@{{username}}/following" class="nav-link text-center">
+                Following
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/users/@{{username}}/followers" class="nav-link text-center">
+                Followers
+              </a>
+            </li>
+          </ul>
+        
+        </div>
+      </div>
+
+    </div> <!-- / .header-body -->
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="">
+  <div class="row">
+      <div class="col-12 col-xl-8">
+        {{#if isCurrentUser}}
+          {{> feed/_postForm}}
+        {{/if}}
+
+        {{#if posts}}
+          {{#each posts}} 
+            {{> feed/_postCard 
+                  author=this.author
+                  post_content=this.post_content 
+                  post_image=this.post_image 
+                  date_posted=this.date_posted
+                  post_id=this._id
+                  reports=this.reports
+                  comments=this.comments
+                  likes=this.likes 
+                  user=../user
+                  postControls=../postControls
+            }}
+          {{/each}}
+        {{else}}
+          {{> feed/_noPosts avatar=avatar name=title}}
+        {{/if}}
+
+      </div>
+    <div class="col-12 col-xl-4">
+
+      <!-- Card -->
+      {{> profile/_contentCard title='About ' name=title content=profile}}
+      {{> profile/_profileMeta 
+            birthday=birthday 
+            joined_at=joined_at
+            location=location
+            website=website 
+            facebook=social_facebook 
+            twitter=social_twitter 
+            instagram=social_instagram 
+            linkedin=social_linkedin
+      }}
+      {{> profile/_contentCard title='Why I Got Started' content=why_started}}
+      {{> profile/_contentCard title='What Motivates Me' content=motivation}}
+
+    </div>
+  </div> <!-- / .row -->
+
+</div> <!-- / .container-fluid -->
+
+

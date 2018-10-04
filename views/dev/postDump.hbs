@@ -1,0 +1,41 @@
+{{#if files}}
+
+    <p>Files:</p>
+    <pre>
+        {{dump files}}
+    </pre>
+
+{{else}}
+    <p>Nothing was passed through as <code>req.files</code> </p>
+
+{{/if}}
+
+<br />
+
+{{#if file}}
+
+    <p>File:</p>
+    <pre>
+        {{dump file}}
+    </pre>
+    
+{{else}}
+
+    <p>Nothing was passed through as <code>req.file</code></p>
+
+{{/if}}
+
+<br />
+
+{{#if body}}
+
+    <p>Body:</p>
+    <pre>
+        {{dump body}}
+    </pre>
+
+{{else}}
+
+    <p>Nothing was passed through as <code>req.body</code></p>
+
+{{/if}}

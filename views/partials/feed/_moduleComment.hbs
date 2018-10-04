@@ -1,0 +1,50 @@
+<div class="comment mb-3">
+    <div class="row">
+
+        <div class="col-auto">
+            <a class="avatar" href="{{url_privacy_filter author.public author.username}}">
+                <img src="{{author.avatar}}" alt="{{author.name}}" class="avatar-img rounded-circle">
+            </a>
+        </div>
+
+        <div class="col ml--2">
+            
+            <div class="comment-body">
+
+                <div class="row">
+                    <div class="col">
+                        <h5 class="comment-title">
+                            <a href="{{url_privacy_filter author.public author.username}}"></a><strong>{{author.name}}</strong></a>
+                        </h5>
+                    </div>
+
+                    <div class="col-auto">
+                        <time class="comment-time">{{moment_ago date_posted}}</time>
+                    </div>
+                </div>
+
+                <p class="comment-text">{{content}}</p>
+
+                <button class="text-muted reply_trigger" data-reply="{{comment_id}}"><small>Reply</small></button>
+            </div>
+
+            <div class="comment__replies">
+                <div class="col-12">
+                    <!-- Input -->
+                    <form id="comment_form_{{comment_id}}" class="comment_form reply" method="POST" action="/postreplytomodulecomment={{comment_id}}">
+                        <label class="sr-only">Leave a reply to {{author.name}}'s comment...</label>
+                        <textarea class="form-control" name="reply" id="reply" placeholder="Leave a reply to {{author.name}}'s comment..." rows="2"></textarea>
+                        <button class="btn btn-primary btn-sm" type="submit" data-toggle="modal" data-target="#modalLoading">Post Reply to {{author.name}}'s Comment</button>
+                    </form>
+                </div>
+                <br />
+                <div class="col-12">
+                    {{#each replies}} 
+                          {{> feed/_reply author=this.author date_posted=this.date_posted content=this.content}}
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
+    </div> 
+</div>

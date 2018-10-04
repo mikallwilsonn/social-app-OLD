@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <!-- Header -->
+        <div class="header mt-md-5">
+            <div class="header-body">
+                <h6 class="header-pretitle">{{pretitle}}</h6>
+                <h1 class="header-title">{{title}}</h1>
+            </div>
+        </div>
+
+        {{> feed/_postForm}}
+        {{#if posts}}
+            {{#each posts}} 
+                {{> feed/_postCard 
+                    author=this.author
+                    post_content=this.post_content 
+                    post_image=this.post_image 
+                    date_posted=this.date_posted
+                    post_id=this._id
+                    reports=this.reports
+                    comments=this.comments
+                    likes=this.likes 
+                    user=../user
+                    postControls=../postControls
+                }}
+                
+            {{/each}}
+        {{else}}
+            {{> feed/_noPosts avatar='/images/mountains.svg' name='Nobody that you follow ' extra='Why not visit the community, browse our other members, and follow some like-minded users?'}}
+        {{/if}}
+    </div> <!-- / .row -->
+</div>

@@ -1,0 +1,33 @@
+<div class="comment mb-3">
+    <div class="row">
+
+        <div class="col-auto">
+            <a class="avatar" href="{{url_privacy_filter author.public author.username}}">
+                <img src="{{author.avatar}}" alt="{{author.name}}" class="avatar-img rounded-circle">
+            </a>
+        </div>
+
+        <div class="col ml--2">
+            
+            <div class="comment-body">
+
+                <div class="row">
+                    <div class="col">
+                        <h5 class="comment-title">
+                            <a href="{{url_privacy_filter author.public author.username}}"></a><strong>{{author.name}}</strong></a>
+                        </h5>
+                    </div>
+
+                    <div class="col-auto">
+                        <time class="comment-time">{{moment_ago date_posted}}</time>
+                    </div>
+                </div>
+
+                <p class="comment-text">{{content}}</p>
+
+            </div>
+
+        
+        </div>
+    </div> 
+</div>

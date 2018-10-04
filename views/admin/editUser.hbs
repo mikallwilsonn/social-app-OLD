@@ -1,0 +1,243 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 ">
+        
+            <!-- Header -->
+            <div class="header">
+                <div class="header-body">
+
+                    <div class="row align-items-end">
+                        <div class="col">
+                            <h6 class="header-pretitle">Admin</h6>
+                            <h1 class="header-title">{{title}}: {{account.name}}</h1>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs header-tabs">
+                                <li class="nav-item">
+                                    <a href="https://app.forestadmin.com/" class="nav-link text-center" target="_blank">
+                                    Forest Admin
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#!" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Manage Users
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a href="/admin/manage-users" class="dropdown-item ">Active Users</a>
+                                        <a href="/admin/manage-suspended-users" class="dropdown-item">Suspended Users</a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/admin/reported-posts" class="nav-link text-center">
+                                    Reported Posts
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form class="mb-4" method="POST" action="/admin/edit_user={{account._id}}" data-alert="true" data-alert-text="You are about to UPDATE the account information for {{account.name}}..." data-alert-icon="warning">
+                <div class="row">
+                    
+                    <div class="col-12 col-md-6">
+                        
+                        <!-- First name -->
+                        <div class="form-group">
+                            <label for="name">
+                                Edit <strong>{{account.name}}'s</strong> Name
+                            </label>
+                            <input type="text" name="name" id="name" class="form-control" value="{{account.name}}">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <!-- Email address -->
+                        <div class="form-group">
+                            <label class="" for="email"> 
+                                Edit <strong>{{account.name}}'s</strong> Email address
+                            </label>
+                            <input type="email" id="email" name="email" class="form-control" value="{{account.email}}">
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <!-- Email address -->
+                        <div class="form-group">
+                            <label for="username">
+                                Edit <strong>{{account.name}}'s</strong> Username
+                            </label>
+                            <input type="username" id="username" name="username" class="form-control" value="{{account.username}}">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        
+                        <!-- Location -->
+                        <div class="form-group">
+                            <label>
+                                Edit <strong>{{account.name}}'s</strong> Location
+                            </label>
+                            <select name="location" id="location" class="form-control form-control-lg">
+                                {{country_check account.location}}
+                                {{#each countries.countries}}
+                                    <option value="{{emoji}} {{name}}">{{emoji}} {{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <!-- Birthday -->
+                        <div class="form-group">
+                            <label>
+                                Edit <strong>{{account.name}}'s</strong> Birthday
+                            </label>
+                            <input type="text" name="birthday" class="form-control" id="formControlFlatpickr" value="{{birthday_format account.birthday}}">
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <br />
+                        <hr>
+                        <br />
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="profile">
+                                Edit <strong>{{account.name}}'s</strong> About Me
+                            </label>
+                            <textarea class="form-control" name="profile" id="profile">{{account.profile}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="goal">
+                                Edit <strong>{{account.name}}'s</strong> My Current Goal
+                            </label>
+                            <textarea class="form-control" name="goal" id="goal">{{account.goal}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="why_started">
+                                Edit <strong>{{account.name}}'s</strong> Why I Started My Journey
+                            </label>
+                            <textarea class="form-control" name="why_started" id="why_started">{{account.why_started}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="motivation">
+                                Edit <strong>{{account.name}}'s</strong> My Motivation(s)
+                            </label>
+                            <textarea class="form-control" name="motivation" id="motivation">{{account.motivation}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <br />
+                        <hr>
+                        <br />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        
+                        <div class="form-group">
+                            <label>
+                                Edit <strong>{{account.name}}'s</strong> Website
+                            </label>
+                            <input type="text" name="website" id="website" class="form-control" value="{{account.website}}">
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <div class="form-group">
+                            <label for="social_facebook">
+                                Edit <strong>{{account.name}}'s</strong> Facebook URL
+                            </label>
+                            <input type="text" name="social_facebook" id="social_facebook" class="form-control" value="{{account.social_facebook}}">
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <div class="form-group">
+                            <label for="social_twitter">
+                                Edit <strong>{{account.name}}'s</strong> Twitter URL
+                            </label>
+                            <input type="text" name="social_twitter" id="social_twitter" class="form-control" value="{{account.social_twitter}}">
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <div class="form-group">
+                            <label for="social_instagram">
+                                Edit <strong>{{account.name}}'s</strong> Instagram URL
+                            </label>
+                            <input type="text" name="social_instagram" id="social_instagram" class="form-control" value="{{account.social_instagram}}">
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <div class="form-group">
+                            <label for="social_linkedin">
+                                Edit <strong>{{account.name}}'s</strong> LinkedIn URL
+                            </label>
+                            <input type="text" name="social_linkedin" id="social_linkedin" class="form-control" value="{{account.social_linkedin}}">
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <br />
+                        <hr>
+                        <br />
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <div class="form-group">
+                            <label for="role">
+                                Edit <strong>{{account.name}}'s</strong> Role
+                            </label>
+                            <select name="role" id="role" class="form-control form-control-lg">
+                                {{role_check account.role}}
+                                <option value="admin">admin</option>
+                                <option value="member">member</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div> <!-- / .row -->
+
+
+                <br />
+                <hr class="mt-4 mb-5">
+                <br />
+
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">Update {{account.name}}'s Account</button>
+            </form>
+
+    </div> <!-- / .row -->
+</div>

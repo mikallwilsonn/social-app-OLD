@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row align-items-center">
+
+            <div class="col-auto">
+                <a href="/courses/{{course_slug}}/{{module_slug}}" class="avatar avatar-lg">
+                    <span class="avatar-title rounded-circle">{{step}}</span>
+                </a>
+            </div>
+
+            <div class="col ml--2">
+                <p class="card-text small text-muted">Module {{step}}</p>
+                <h3 class="card-title mb-1">
+                    <a href="/courses/{{course_slug}}/{{module_slug}}">{{title}}</a>
+                </h3>
+
+                <p class="card-text small text-muted mb-1">
+                    {{trimString description 0 150}}...
+                </p>
+
+
+            </div>
+
+            <div class="col-auto">
+                <a href="/courses/{{course_slug}}/{{module_slug}}" class="btn btn-sm btn-primary d-none d-md-inline-block">
+                View This Module Now
+                </a>
+            </div>
+
+            <div class="col-auto">
+                {{#if isAdmin}}
+                    <div class="dropdown">
+                        <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#!" class="dropdown-item">Action</a>
+                            <a href="#!" class="dropdown-item">Another action</a>
+                            <a href="#!" class="dropdown-item">Something else here</a>
+                        </div>
+                    </div>
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+</div>

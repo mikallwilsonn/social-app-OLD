@@ -1,0 +1,247 @@
+<script>
+    $('#formControlFlatpickr').flatpickr({
+        enableTime: false,
+        dateFormat: "Y-m-d",
+    });
+</script>
+
+<div class="container-fluid settings-container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <div class="header">
+            <div class="header-body">
+                <div class="row align-items-end">
+                <div class="col">
+
+                    <h6 class="header-pretitle">
+                    Settings
+                    </h6>
+
+                    <h1 class="header-title">
+                    Update Your Profile Information
+                    </h1>
+                    
+                </div>
+
+                </div>
+                <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs header-tabs">
+                        <li class="nav-item">
+                            <a href="/settings/profile" class="nav-link text-center active">
+                            Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/avatar" class="nav-link text-center">
+                            Avatar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/profile-cover" class="nav-link text-center">
+                            Profile Cover
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/billing" class="nav-link text-center">
+                            Billing
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/manage-password" class="nav-link text-center">
+                            Change Password
+                            </a>
+                        </li>
+                    </ul>
+                
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form class="mb-4" method="POST" action="/settings/profile">
+            <div class="row">
+                
+                <div class="col-12 col-md-6">
+                    
+                    <!-- First name -->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" value="{{user.name}}">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <!-- Email address -->
+                    <div class="form-group">
+                        <label class="" for="email">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control" value="{{user.email}}">
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <!-- Email address -->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="username" id="username" name="username" class="form-control" value="{{user.username}}">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select name="location" id="location" class="form-control form-control-lg">
+                            {{country_check user.location}}
+                            {{#each countries.countries}}
+                                <option value="{{emoji}} {{name}}">{{emoji}} {{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+
+                    <!-- Birthday -->
+                    <div class="form-group">
+                        <label>Birthday</label>
+                        <input type="text" name="birthday" class="form-control" id="formControlFlatpickr" value="{{birthday_format user.birthday}}">
+
+                    </div>
+
+                </div>
+
+                <div class="col-12">
+                    <br />
+                    <hr>
+                    <br />
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="profile">About Me</label>
+                        <textarea class="form-control" name="profile" id="profile">{{user.profile}}</textarea>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="goal">My Current Goal</label>
+                        <textarea class="form-control" name="goal" id="goal">{{user.goal}}</textarea>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="why_started">Why I Started My Journey</label>
+                        <textarea class="form-control" name="why_started" id="why_started">{{user.why_started}}</textarea>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="motivation">My Motivation(s)</label>
+                        <textarea class="form-control" name="motivation" id="motivation">{{user.motivation}}</textarea>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <br />
+                    <hr>
+                    <br />
+                </div>
+                <div class="col-12 col-md-6">
+                    
+                    <div class="form-group">
+                        <label>Website</label>
+                        <input type="text" name="website" id="website" class="form-control" value="{{user.website}}">
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+
+                    <div class="form-group">
+                        <label for="social_facebook">Facebook URL</label>
+                        <input type="text" name="social_facebook" id="social_facebook" class="form-control" value="{{user.social_facebook}}">
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+
+                    <div class="form-group">
+                        <label for="social_twitter">Twitter URL</label>
+                        <input type="text" name="social_twitter" id="social_twitter" class="form-control" value="{{user.social_twitter}}">
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+
+                    <div class="form-group">
+                        <label for="social_instagram">Instagram URL</label>
+                        <input type="text" name="social_instagram" id="social_instagram" class="form-control" value="{{user.social_instagram}}">
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6">
+
+                    <div class="form-group">
+                        <label for="social_linkedin">LinkedIn URL</label>
+                        <input type="text" name="social_linkedin" id="social_linkedin" class="form-control" value="{{user.social_linkedin}}">
+                    </div>
+
+                </div>
+
+                <div class="col-12">
+                    <br />
+                    <hr>
+                    <br />
+                </div>
+
+                <div class="col-12">
+
+                    <div class="form-group">
+                        <!-- Label -->
+                        <label class="mb-1">
+                            Public Profile
+                        </label>
+
+                        <!-- Form text -->
+                        <small class="form-text text-muted">
+                            Making your profile public means that anyone on the Dashkit network will be able to find you.
+                        </small>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <!-- Toggle -->
+                                {{privacy_control user.public}}
+                            </div>
+
+                            <div class="col ml--2">
+                                <!-- Help text -->
+                                <small class="text-muted">
+                                    {{privacy_text user.public}}
+                                </small>
+                            </div>
+
+                        </div> <!-- / .row -->
+                    </div>
+
+                </div>
+            </div> <!-- / .row -->
+
+
+            <br />
+            <hr class="mt-4 mb-5">
+            <br />
+
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">
+                Update Profile &amp; Account Settings
+            </button>
+        </form>
+
+        </div>
+    </div> <!-- / .row -->
+</div>

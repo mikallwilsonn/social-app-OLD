@@ -1,0 +1,75 @@
+<div class="card">
+    <div class="card-body">
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Birthday</h5>
+            </div>
+
+            <div class="col-auto">
+                <time class="small text-muted" datetime="{{birthday}}">
+                {{moment birthday}}
+                </time>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col"> 
+                <h5 class="mb-0">Joined</h5>
+            </div>
+
+            <div class="col-auto">
+                <time class="small text-muted" datetime="{{joined_at}}">
+                {{moment_ago joined_at}}
+                </time>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Location</h5>
+            </div>
+
+            <div class="col-auto">
+                <small class="text-muted">{{location}}</small>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Website</h5>
+            </div>
+
+            <div class="col-auto">
+                <a href="{{website}}" class="small" target="_blank">
+                {{trimString website 0 30}}
+                </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Connect on Social</h5>
+            </div>
+
+            <nav class="profile__social-nav col-auto">
+                <a href="{{facebook}}" target="_blank"><i class="fe fe-facebook"></i></a>
+                <a href="{{twitter}}" target="_blank"><i class="fe fe-twitter"></i></a>
+                <a href="{{instagram}}" target="_blank"><i class="fe fe-instagram"></i></a>
+                <a href="{{linkedin}}" target="_blank"><i class="fe fe-linkedin"></i></a>
+            </nav>
+        </div>
+
+    </div>
+</div>

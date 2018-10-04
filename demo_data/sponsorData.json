@@ -1,0 +1,43 @@
+[{
+    "id": 1,
+    "brand_name": "Under Armour",
+    "username": "under-armour",
+    "cover": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532724111/sponsors/ua.jpg",
+    "logo": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532715589/sponsors/sponsor-avatar-1.jpg",
+    "about": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+  }, {
+    "id": 2,
+    "brand_name": "Optimum Nutrition",
+    "username": "optimum-nutrition",
+    "cover": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532724120/sponsors/on.jpg",
+    "logo": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532715589/sponsors/sponsor-avatar-5.jpg",
+    "about": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
+  }, {
+    "id": 3,
+    "brand_name": "Addidas",
+    "username": "addidas",
+    "cover": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532724118/sponsors/ad.jpg",
+    "logo": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532715589/sponsors/sponsor-avatar-3.jpg",
+    "about": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
+  }, {
+    "id": 4,
+    "brand_name": "Nike",
+    "username": "nike",
+    "cover": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532724115/sponsors/nike.jpg",
+    "logo": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532715589/sponsors/sponsor-avatar-4.jpg",
+    "about": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+  }, {
+    "id": 5,
+    "brand_name": "Onnit",
+    "username": "onnit",
+    "cover": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532724113/sponsors/onnit.jpg",
+    "logo": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532715588/sponsors/sponsor-avatar-2.jpg",
+    "about": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
+  }, {
+    "id": 6,
+    "brand_name": "Volcom",
+    "username": "volcom",
+    "cover": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532724118/sponsors/vol.jpg",
+    "logo": "https://res.cloudinary.com/dxxnoqykq/image/upload/v1532715589/sponsors/sponsor-avatar-6.jpg",
+    "about": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi."
+  }]

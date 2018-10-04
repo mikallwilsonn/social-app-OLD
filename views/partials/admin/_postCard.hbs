@@ -1,0 +1,72 @@
+<div id="post_{{post_id}}" class="card">
+
+  <div class="card-body">
+    <div class="mb-3">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <a href="/users/@{{author.username}}" class="avatar">
+            <img src="{{author.avatar}}" alt="..." class="avatar-img rounded-circle">
+          </a>
+
+        </div>
+        <div class="col ml--2">
+
+          <h4 class="card-title mb-1"><a href="/users/@{{author.username}}">{{author.name}}</a></h4>
+
+          <p class="card-text small text-muted">
+            <span class="fe fe-clock"></span> <time datetime="{{date_posted}}">{{moment_ago date_posted}}</time>
+          </p>
+
+        </div>
+
+        <div class="col-auto"></div>
+
+      </div> 
+    </div>
+
+    <p class="mb-3">{{post_content}}</p>
+
+    <hr>
+
+    <!-- Buttons -->
+    <div class="mb-3">
+      
+      <div class="row">
+        <div class="col">
+
+            <a href="/users/@{{author.username}}/post={{post_id}}#comments" class="btn btn-sm btn-white" target="_blank">
+                <i class="fe fe-message-square" style="margin-right:5px;"></i>  
+                Read Comments
+            </a>
+
+            {{#if post_image}}
+                <a href="{{post_image}}" class="btn btn-sm btn-white" target="_blank">
+                    <i class="fe fe-image" style="margin-right:5px;"></i>
+                    View Post Image
+                </a>
+            {{/if}}
+
+            <a href="/users/@{{author.username}}/post={{post_id}}" class="btn btn-sm btn-white" target="_blank">
+                <i class="fe fe-eye" style="margin-right:5px;"></i>
+                View Full Post
+            </a>
+
+            <form method="POST" action="/delete_post={{post_id}}" style="display:inline-block;">
+                <button type="submit" class="btn btn-sm btn-white text-danger">
+                    <i class="fe fe-trash-2"></i> Delete Post
+                </button>
+            </form>
+
+            <form method="POST" action="/mark_post_as_safe={{post_id}}" style="display:inline-block;">
+                <button type="submit" class="btn btn-sm btn-white text-success">
+                    <i class="fe fe-check"></i> Mark As Safe
+                </button>
+            </form>
+
+        </div>
+      </div> 
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="container-fluid settings-container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <div class="header">
+            <div class="header-body">
+                <div class="row align-items-end">
+                <div class="col">
+
+                    <h6 class="header-pretitle">
+                    Settings
+                    </h6>
+
+                    <h1 class="header-title">
+                    Update Your Billing Information
+                    </h1>
+                    
+                </div>
+
+                </div>
+                <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs header-tabs">
+                        <li class="nav-item">
+                            <a href="/settings/profile" class="nav-link text-center">
+                            Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/avatar" class="nav-link text-center">
+                            Avatar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/profile-cover" class="nav-link text-center">
+                            Profile Cover
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/billing" class="nav-link text-center active">
+                            Billing
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/manage-password" class="nav-link text-center">
+                            Change Password
+                            </a>
+                        </li>
+                    </ul>
+                
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form class="mb-4" method="POST" action="/settings/billing">
+        <h1>**TODO:** Find out all possible information and a secure way to store info</h1>
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <!-- Card # -->
+                    <div class="form-group">
+                        <label>Credit Card #</label>
+                        <input type="text" class="form-control flatpickr-input">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <!-- Name on Card -->
+                    <div class="form-group">
+                        <label>Name on Credit Card</label>
+                        <input type="text" class="form-control flatpickr-input">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <!-- Billing Address -->
+                    <div class="form-group">
+                        <label>Billing Address</label>
+                        <input type="address" class="form-control flatpickr-input">
+                    </div>
+                </div>
+                
+                
+            </div> <!-- / .row -->
+
+            <br />
+            <hr class="mt-4 mb-5">
+            <br />
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">Update Billing Information</button>
+        </form>
+
+            <!-- Divider -->
+            <hr class="mt-4 mb-5">
+
+        </div>
+    </div> <!-- / .row -->
+    </div>

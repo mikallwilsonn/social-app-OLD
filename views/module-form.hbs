@@ -1,0 +1,58 @@
+<div class="header">
+  <div class="header-body">
+
+    <h6 class="header-pretitle">Modules</h6>
+    
+    <h1 class="header-title">{{title}}</h1>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <!-- Form -->
+        <form class="account-form course-form" method="POST" {{module_form_action course_slug module._id module.slug}}>
+            <div class="row">
+                
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="title">Module Title</label>
+                        <input type="text" name="title" id="title" class="form-control" value="{{module.title}}">
+                    </div>
+                </div>
+
+                <div class="col-12">
+
+                    <div class="form-group">
+                        <label for="description">Module Text Content</label>
+                        <textarea class="form-control" name="description" id="description">
+                            {{module.description}}
+                        </textarea>
+                    </div>
+
+                </div>
+
+                <div class="col-12">
+
+                    <div class="form-group">
+                        <label for="video">Module Video</label><br />
+                        <input type="file" name="video" id="upload" class="form-control" accept="video/mp4, video/ogg, video/webm">
+                    </div>
+
+                </div>
+
+            </div> <!-- / .row -->
+
+
+            <br />
+            <hr class="mt-4 mb-5">
+            <br />
+
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">{{button_text}}</button>
+        </form>
+
+        </div>
+    </div> <!-- / .row -->
+</div>

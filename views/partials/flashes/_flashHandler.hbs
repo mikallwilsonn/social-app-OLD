@@ -1,0 +1,17 @@
+
+{{#if flashes}}
+    <div id="flash-container" class="column around align-center">
+        {{#if flashes.success}}
+            {{> flashes/_success message=flashes.success}} 
+        {{/if}}
+        {{#if flashes.error}}
+            {{> flashes/_error message=flashes.error}} 
+        {{/if}}
+        {{#if flashes.notice}}
+            {{> flashes/_notice message=flashes.notice}} 
+        {{/if}}
+        {{#if flashes.caution}}
+            {{> flashes/_caution message=flashes.caution}} 
+        {{/if}}
+    </div>
+{{/if}}

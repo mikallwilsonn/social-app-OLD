@@ -1,0 +1,90 @@
+<div class="module__header header" style="background:url({{course.image}}) no-repeat; background-size:cover; background-position:center; border-radius:3px;">
+</div>
+
+<!-- CONTENT -->
+<div class="module__content row space-around">
+    <div class="col-12 col-xl-10">
+
+        <div class="card">
+            <div class="card-body">
+
+                <div class="module__titles-wrapper row space-around align-center">
+                    <div class="column space-around align-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/courses">Courses</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="/courses/{{course.slug}}">{{course.title}}</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Module {{step}}</li>
+                            </ol>
+                        </nav>
+                        <!-- Title -->
+                        <h1 class="header-title">{{title}}</h1>
+
+                        {{#if isAdmin}}
+                            <br />
+                            <a href="/courses/{{course.slug}}/{{module_slug}}/edit" class="btn btn-sm btn-secondary d-none d-md-inline-block"><i class="fe fe-edit"></i> Edit Module</a>
+                        {{/if}}
+
+                    </div>
+                </div>
+
+                <div class="row space-around align-center">
+                    <video  src="{{video}}" 
+                            width="900px" 
+                            height="500px"
+                                class="mejs__player"
+                                data-mejsoptions='{
+                                "alwaysShowControls": "true",
+                                "poster": "{{course.image}}"
+                            }'>
+                    </video>
+                </div>
+
+                <div class="module__meta-wrapper row space-around">
+                    {{> course/_moduleMetaCard}}
+                </div>
+
+                <!-- Text -->
+                <div class="module__content-wrapper row space-around">
+                    <p>{{breaklines content}}</p>
+                </div>
+
+                <hr>
+
+                <div class="col-12 module__comment-wrapper column align-center space-between">
+                    <h2>Join The Discussion</h2><br />
+                    <div class="row align-items-start">
+                        <div class="col-auto">
+                            <!-- Avatar -->
+                            <div class="avatar">
+                                <img src="{{user.avatar}}" alt="{{user.name}}" class="avatar-img rounded-circle">
+                            </div>
+
+                        </div>
+
+                        <div class="col-auto">
+                            <!-- Input -->
+                            <form id="comment_form_{{module_id}}" class="comment_form" method="POST" action="/postcommenttomodule={{module_id}}">
+                                <label class="sr-only">Leave a comment...</label>
+                                <textarea class="form-control" name="comment" id="comment" placeholder="Leave a comment" rows="2"></textarea>
+                                <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalLoading">Post Comment</button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <!-- Loop through comments here -->
+                    {{#each comments}}
+                        {{> feed/_moduleComment author=this.author date_posted=this.date_posted content=this.content comment_id=this._id replies=this.replies}}
+                    {{/each}}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div> <!-- / .row -->

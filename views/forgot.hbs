@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row align-items-center justify-content-center">
+
+        <div class="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6">
+            <h1 class="display-4 text-center mb-3">Password Recovery</h1>
+            <p class="text-muted text-center mb-5">Enter the email associated with your account</p>
+        
+            <form method="POST" action="/forgot">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" class="form-control" placeholder="email@address.com">
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-lg btn-block btn-primary mb-3" data-toggle="modal" data-target="#modalLoading">Recover My Password</button>
+
+                <!-- Link -->
+                <p class="text-center">
+                    <small class="text-muted text-center">
+                    Don't have an account yet? <a href="/register">Sign up</a>.
+                    </small>
+                </p>
+            </form>
+
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+            <div class="bg-cover vh-100 mt--1 mr--3 row space-around align-center" style="background-image: url(/images/climbing.jpeg); background-size:cover; background-position:center;">
+                <h1 class="brushed-text">Survive<br/>Anything</h1>
+            </div>
+        </div>
+    </div> <!-- / .row -->
+</div>

@@ -1,0 +1,96 @@
+<div class="container-fluid settings-container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <div class="header">
+            <div class="header-body">
+                <div class="row align-items-end">
+                <div class="col">
+
+                    <h6 class="header-pretitle">
+                    Settings
+                    </h6>
+
+                    <h1 class="header-title">
+                    Update Your Profile Information
+                    </h1>
+                    
+                </div>
+
+                </div>
+                <div class="row">
+                <div class="col-12">
+
+                    <ul class="nav nav-tabs header-tabs">
+                        <li class="nav-item">
+                            <a href="/settings/profile" class="nav-link text-center">
+                            Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/avatar" class="nav-link text-center">
+                            Avatar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/profile-cover" class="nav-link text-center active">
+                            Profile Cover
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/billing" class="nav-link text-center">
+                            Billing
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/settings/manage-password" class="nav-link text-center">
+                            Change Password
+                            </a>
+                        </li>
+                    </ul>
+                
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form class="mb-4" method="POST" action="/settings/profile-cover" enctype="multipart/form-data">
+            <div class="row">
+
+                <div class="col-12">
+                    
+                    <!-- First name -->
+                    <div class="form-group">
+                        <label for="profile_cover">Current Profile Cover</label><br />
+                        <div class="col-md-6">
+                            <img src="{{user.profile_cover}}" class="account__profile_cover--preview">
+                            <i id="change-to-icon" class="fe fe-arrow-right" style="opacity:0;"></i>
+                            
+                            <div id="uploadPreview__container">
+                                <p class="row space-between">
+                                    <small class="text-muted">Upload Preview:</small>
+                                </p>
+                                <img src="" id="uploadPreview" class="account__profile_cover--preview">
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="col-md-6" style="margin-top:25px;">
+                            <label for="profile_cover">Upload A New Avatar</label><br />
+                            <input type="file" name="profile_cover" id="upload" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                            <p class="card-text small text-muted">
+                                Minimum recommended dimensions: 1600x900 (larger images will be scaled down)
+                            </p>
+                            <input type="text" name="previousID" id="previousID" disabled="disabled" value="{{user.profile_cover_id}}" >
+                        </div>
+                    </div>
+
+                </div>
+
+            <button type="submit" id="submitUpload" class="btn btn-primary" disabled="disabled" data-toggle="modal" data-target="#modalLoading">Upload Your New Profile Cover</button>
+        </form>
+
+        </div>
+    </div> <!-- / .row -->
+</div>

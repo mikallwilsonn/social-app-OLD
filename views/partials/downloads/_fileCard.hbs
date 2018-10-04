@@ -1,0 +1,40 @@
+<li class="list-group-item px-0">
+    <div class="row align-items-center">
+
+        <div class="col-auto">
+            <a href="{{downloadpath}}" download="{{filename}}" class="avatar avatar-lg">
+                <span class="avatar-title rounded bg-white text-secondary">
+                    <span class="fe fe-image"></span>
+                </span>
+            </a>
+        </div>
+
+        <div class="col ml--2">
+            <h4 class="card-title mb-1 name">
+                <a href="{{downloadpath}}" download="{{filename}}">{{filename}}</a>
+            </h4>
+            <p class="card-text small text-muted mb-1">{{filesize}}</p>
+        </div>
+
+        <div class="col-auto">
+            <a href="{{downloadpath}}" download="{{filename}}" class="btn btn-sm btn-white d-none d-md-inline-block">Download</a>
+        </div>
+
+        <div class="dropdown">
+            <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fe fe-more-vertical"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <form method="POST" action="/delete_file={{filename}}" class="dropdown-item" data-alert="true" data-alert-text="You are about to DELETE this file..." data-alert-icon="warning">
+                    <button class="dropdown-item text-danger">
+                        <i class="fe fe-trash"></i> Delete File
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</li>

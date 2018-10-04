@@ -1,0 +1,81 @@
+<!-- HEADER -->
+<div class="header">
+
+  <!-- Image -->
+  <div style="background:url({{profile_cover}}) no-repeat; background-position:center; background-size:cover; padding:200px 0;position: relative;" class="header-img-top">
+
+    {{> profile/_userSurvivalCard title='Survival Challenge' content=goal}}
+
+  </div>
+
+  <div class="container-fluid container-profile-header">
+
+    <!-- Body -->
+    <div class="header-body mt--5 mt-md--6">
+      <div class="row align-items-end">
+        <div class="col-auto">
+
+          <!-- Avatar -->
+          <div class="avatar avatar-xxl header-avatar-top">
+            <img src="{{avatar}}" alt="..." class="avatar-img rounded-circle border border-body">
+          </div>
+
+        </div>
+
+        <div class="col mb-3 ml--3 ml-md--2">
+          <!-- Pretitle -->
+          <h6 class="header-pretitle">@{{username}}</h6>
+          <!-- Title -->
+          <h1 class="header-title">{{title}}</h1>
+        </div>
+
+        <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
+          <!-- Button -->
+          {{#if isCurrentUser}}
+            <a href="/settings/profile" class="btn btn-secondary d-block d-md-inline-block">Edit Your Profile</a>
+          {{else}}
+            {{follow_unfollow user._id profile_id followers}}
+          {{/if}}
+        </div>
+  
+      </div> <!-- / .row -->
+
+      <div class="row">
+        <div class="col-12">
+
+          <ul class="nav nav-tabs header-tabs">
+            <li class="nav-item">
+              <a href="/users/@{{username}}" class="nav-link text-center">
+                Profile &amp; Feed
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/users/@{{username}}/following" class="nav-link text-center">
+                Following
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/users/@{{username}}/followers" class="nav-link text-center active">
+                Followers
+              </a>
+            </li>
+          </ul>
+        
+        </div>
+      </div>
+
+    </div> <!-- / .header-body -->
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="">
+
+    <div class="row wrap space-between">
+        {{#each users}}
+            {{> users/_userCard id=this.id username=this.username avatar=this.avatar profile_cover=this.profile_cover name=this.name about=this.profile}}
+        {{/each}}
+    </div>
+
+
+</div> <!-- / .container-fluid -->

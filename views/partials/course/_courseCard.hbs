@@ -1,0 +1,34 @@
+<div class="col-12 col-md-6 col-xl-4">
+    <!-- Card -->
+    <div class="card">
+        <a href="/courses/{{slug}}">
+            <img src="{{cover}}" alt="{{title}}" class="card-img-top">
+        </a>
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col">
+                    <!-- Subtitle -->
+                    <p class="card-text small text-muted">Course</p>
+                    <!-- Title -->
+                    <h2 class="card-title mb-2 name">
+                        <a href="courses/{{slug}}">{{title}}</a>
+                    </h2>
+
+                </div>
+                <div class="col-auto"></div>
+            </div> <!-- / .row -->
+
+            <!-- Divider -->
+            <hr>
+
+            <div class="row align-items-center">
+                <div class="col">
+                    <p class="card-text text-muted">{{trimString description 0 150}} ...</p>
+                </div>
+            </div><br />
+            <div class="row space-around align-center">
+                <a class="btn btn-primary" href="/courses/{{slug}}">View Now</a>
+            </div>
+        </div> <!-- / .card-body -->
+    </div> 
+</div>

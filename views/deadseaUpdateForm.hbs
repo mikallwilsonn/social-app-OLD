@@ -1,0 +1,112 @@
+<div class="header">
+  <div class="header-body">
+
+    <h6 class="header-pretitle">The Journey</h6>
+    
+    <h1 class="header-title">{{title}}</h1>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <!-- Form  action="/new_deadsea_update" enctype="multipart/form-data"-->
+        <form class="account-form deadsea-form" method="POST" action="/new_deadsea_update">
+            <div class="row">
+
+                <div class="col-12">
+                     <div class="form-group">
+                        <label for="author">Posting in place of:</label>
+                        <select name="author" id="author" class="form-control form-control-md">
+                                <option value="{{user._id}}" selected>Myself</option>
+                                <option id="country_default-divider" disabled="disabled">-------------------</option>
+                                {{#each users}}
+                                    <option value="{{this._id}}">{{this.name}} ({{this.role}})</option>
+                                {{/each}}
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="update_text">Update Text:</label>
+                        <textarea class="form-control" name="update_text" id="update_text">
+                            
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="update_image">Update Image</label><br />
+                        <input type="file" name="update_image" id="upload" class="deadseaUpdateImage form-control" accept="image/gif, image/png, image/jpg, image/jpeg">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="lng">Location Longitude</label>
+                        <input type="text" name="lng" id="lng" class="form-control" value="">
+
+                        <label for="lng">Location Latitude</label>
+                        <input type="text" name="lat" id="lat" class="form-control" value="">
+                        <br />
+                        <button id="get_location" class="btn btn-secondary" data-toggle="modal" data-target="#modalLoading">
+                            <i class="fe fe-map-pin"></i> Get Location
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="duration">Travel Duration</label>
+                        <input type="text" name="duration" id="duration" class="form-control" placeholder="Ex: 8 hours..." value="">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="distance">Travel Distance</label>
+                        <input type="text" name="distance" id="distance" class="form-control" placeholder="Ex: 10 kilometres..." value="">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                     <div class="form-group">
+                        <label for="state-face">Current State of Mind</label>
+                        <select name="stateface" id="stateface" class="form-control form-control-md">
+                                <option value="😃" selected>😃</option>
+                                <option value="🙂">🙂</option>
+                                <option value="😲">😲</option>
+                                <option value="😐">😐</option>
+                                <option value="😶">😶</option>
+                                <option value="😕">😕</option>
+                                <option value="🙁">🙁</option>
+                                <option value="😡">😡</option>
+                                <option value="😥">😥</option>
+                                <option value="😣">😣</option>
+                                <option value="🤕">🤕</option>
+                                <option value="🤒">🤒</option>
+                                <option value="🤢">🤢</option>
+                        </select><br />
+                        <input type="text" name="statedescription" id="statedescription" class="form-control" placeholder="Ex: I am feeling excited!" value="">
+                    </div>
+                </div>
+
+
+
+            </div> <!-- / .row -->
+
+
+            <br />
+            <hr class="mt-4 mb-5">
+            <br />
+
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">Post A New Update</button>
+        </form>
+
+        </div>
+    </div> <!-- / .row -->
+</div>
