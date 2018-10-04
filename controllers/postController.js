@@ -43,6 +43,12 @@ exports.resizePostImage = async ( req, res, next ) => {
     const photoMIME = photo.getMIME();
 
     photo.getBuffer( photoMIME, function( error, result ){
+
+        if ( error ) {
+            req.flash( 'error', error );
+            res.redirect( 'back' );
+        }
+
         req.body.postImageResized = result;
         next();
     });
@@ -204,6 +210,12 @@ exports.postReplyToComment = async ( req, res ) => {
     // --- Creating and saving notification for the reply
     let comment_author;
     await Post.findOne({ '_id': postWithComment._id }, function( error, post ) {
+
+        if ( error ) {
+            req.flash( 'error', error );
+            res.redirect( 'back' );
+        }
+
         comment_author = post.comments.id( comment_id ).author;
     });
 
@@ -269,7 +281,14 @@ exports.deletePostById = async ( req, res ) => {
         await Post.findOneAndDelete({ _id: the_post });
 
         await cloudinary.v2.api.delete_resources(image_id,
-            function(error, result){console.log(result);}
+            function( error, result ) {
+                if ( error) {
+                    req.flash( 'error', error );
+                    res.redirect( 'back' );
+                }
+
+                console.log(result);
+            }
         );
 
         req.flash( 'success', 'Your post was successfully deleted.' );
@@ -292,6 +311,11 @@ exports.deletePostById = async ( req, res ) => {
 // -> and if set to FALSE then set it to TRUE
 exports.reportPostById = async ( req, res ) => {
     const post = await Post.findById( req.params.post_id );
+
+    if ( !post ) {
+        req.flash( 'error', 'Uh oh. Something happened when attempting to report this post. Please try again.' );
+        res.redirect( 'back' );
+    }
 
     const post_reports = post.reports;
 
@@ -316,6 +340,12 @@ exports.reportPostById = async ( req, res ) => {
 // -> is_reported to FALSE
 exports.markPostAsSafe = async ( req, res ) => {
     const post = await Post.findById( req.params.post_id );
+
+    if ( !post ) {
+        req.flash( 'error', 'Uh oh. Something happened when attempting to mark this post as safe. Please try again.' );
+        res.redirect( 'back' );
+    }
+
     const post_reports = post.reports;
 
     post_reports.is_reported = false;

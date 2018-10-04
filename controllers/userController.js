@@ -262,6 +262,11 @@ exports.getProfileFollowing = async ( req, res ) => {
 exports.getProfileFollowers = async ( req, res ) => {
     const profile = await User.findOne({ username: req.params.username });
 
+    if ( !profile ) {
+        req.flash( 'error', 'Uh oh. This accounts followers could not be loaded at this time.' );
+        res.redirect( 'back' );
+    }
+
     const users = await User.find({ 
         '_id': {
             $in: profile.followers
@@ -487,6 +492,10 @@ exports.resizeAvatarFile = async ( req, res, next ) => {
     const photoMIME = photo.getMIME();
 
     photo.getBuffer( photoMIME, function( error, result ){
+        if ( error ) {
+            req.flash( 'error', error );
+            res.redirect( 'back' );
+        }
         req.body.avatarResized = result;
         next();
     });
@@ -560,6 +569,10 @@ exports.resizeProfileCoverFile = async ( req, res, next ) => {
     const photoMIME = photo.getMIME();
 
     photo.getBuffer( photoMIME, function( error, result ){
+        if ( error ) {
+            req.flash( 'error', error );
+            res.redirect( 'back' );
+        }
         req.body.profileCoverResized = result;
         next();
     });
@@ -666,7 +679,12 @@ exports.markNotificationsAsSeen = async ( req, res ) => {
 exports.followUser = async ( req, res ) => {
     const user = await User.findOne({ _id: req.params.user_id });
 
-    if ( user.followers.indexOf(req.user._id) === -1 ) {
+    if ( !user ) {
+        req.flash( 'error', 'Uh oh. Following this user was unsuccessful. Please try again.' );
+        res.redirect( 'back' );
+    }
+
+    if ( user.followers.indexOf( req.user._id ) === -1 ) {
 
         const follower = await User.findByIdAndUpdate( 
             req.user._id, 
@@ -714,7 +732,12 @@ exports.followUser = async ( req, res ) => {
 exports.unfollowUser = async ( req, res ) => {
     const profile = await User.findOne({ _id: req.params.user_id });
 
-    if ( req.user.following.indexOf(profile._id) === -1 ) {
+    if ( !profile ) {
+        req.flash( 'error', 'Uh oh. Unfollowing this user was unsuccessful. Please try again.' );
+        res.redirect( 'back' );
+    }
+
+    if ( req.user.following.indexOf( profile._id ) === -1 ) {
 
         req.flash( 'error', 'Uh oh. An error occured. If this continues please contact us and we\'ll look into it.' );
         res.redirect( 'back' );
