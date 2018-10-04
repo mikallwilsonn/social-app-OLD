@@ -101,16 +101,6 @@ app.use( function( req, res, next ) {
   next();
 });
 
-
-// ----
-// Forest Admin middleware
-app.use( require( 'forest-express-mongoose' ).init({
-  modelsDir: __dirname + '/models',
-  envSecret: process.env.FOREST_ENV_SECRET,
-  authSecret: process.env.FOREST_AUTH_SECRET,
-  mongoose: require( 'mongoose' )
-}));
-
 // ----
 // Cloundiary config
 cloudinary.config({ 
