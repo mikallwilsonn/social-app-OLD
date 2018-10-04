@@ -7,6 +7,7 @@ a {
 }
 
 body, .main-content { background-color:var(--light) !important; }
+.main-content { margin: auto !important; }
 
 /* -- Layout Contstruct -- */
 .row, .column { display: flex; }
@@ -251,29 +252,15 @@ button.dropdown-item:hover { opacity:1 !important; }
 /* ------------------- */
 /* -- Navbar Styles -- */
 
+.navbar { padding:0 !important; }
+
 .navbar-user {
   padding: 1.15rem !important;
   border-bottom: 1px solid #e3ebf6 !important;
   margin-bottom: 20px;
 }
 
-a .notifier { opacity:0; }
 
-.has_notifications .notifier {
-  color:#FFF;
-  background-color:var(--red);
-  padding:5px;
-  border-radius:250px;
-  display:inline-block;
-  height:3px;
-  width:3px;
-  position:relative;
-  bottom:0px;
-  left:-3px;
-  top:20px;
-  right:0;
-  opacity:1;
-}
 
 
 /* ------------------ */

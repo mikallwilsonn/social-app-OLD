@@ -66,18 +66,6 @@ const userSchema = new Schema({
         type: String,
         trim: true
     },
-    why_started: {
-        type: String,
-        trim: true,
-    },
-    motivation: {
-        type: String,
-        trim: true
-    },
-    goal: {
-        type: String,
-        trim: true
-    },
     public: {
         type: Boolean
     },

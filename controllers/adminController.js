@@ -3,14 +3,7 @@ const mongoose = require( 'mongoose' );
 const moment = require( 'moment' );
 
 // Models
-const Comment = mongoose.model( 'Comment' );
-const Course = mongoose.model( 'Course' );
-const DeadseaUpdate = mongoose.model( 'DeadseaUpdate' );
-const Module = mongoose.model( 'Module' );
-const Notification = mongoose.model( 'Notification' );
 const Post = mongoose.model( 'Post' );
-const Reply = mongoose.model( 'Reply' );
-const Sponsor = mongoose.model( 'Sponsor' );
 const User = mongoose.model( 'User' ); 
 
 

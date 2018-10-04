@@ -1,0 +1,181 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container col-10">
+
+        <!-- Toggler -->
+        <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Brand -->
+        <a class="navbar-brand mr-auto" href="/">
+          <img src="/images/leaf.svg" alt="{{siteName}} Logo" class="navbar-brand-img">
+        </a>
+
+        <!-- Form -->
+        <form class="form-inline mr-4 d-none d-lg-flex">
+          <div class="input-group input-group-rounded input-group-merge" data-toggle="lists" data-lists-values="[&quot;name&quot;]">
+
+            <!-- Input -->
+            <input type="search" class="form-control form-control-prepended  dropdown-toggle search" data-toggle="dropdown" placeholder="Search" aria-label="Search">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fe fe-search"></i>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+        <!-- User -->
+        <div class="navbar-user">
+      
+          <!-- Dropdown -->
+          <div class="dropdown mr-4 d-none d-lg-flex">
+        
+            <!-- Toggle -->
+            <a href="#" class="text-muted" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="icon 
+                {{#if user.seen_notifications}}
+                {{else}}
+                    active
+                {{/if}}
+                ">
+                <i class="fe fe-bell"></i>
+              </span>
+            </a>
+
+            <!-- Menu -->
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col">
+                
+                    <!-- Title -->
+                    <h5 class="card-header-title">
+                      Notifications
+                    </h5>
+
+                  </div>
+                  <div class="col-auto">
+                
+                    <!-- Link -->
+                    <a href="#!" class="small">
+                      View all
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div> <!-- / .card-header -->
+              <div class="card-body">
+
+                <!-- List group -->
+                <div class="list-group list-group-flush my--3">
+
+                    {{#if notifications}}
+                        {{#each notifications}}
+                            <a class="list-group-item px-0" href="/users/@{{medium_owner.username}}#{{medium}}_{{medium_ref}}">
+
+                                <div class="row">
+                                    <div class="col-auto">
+                            
+                                    <!-- Avatar -->
+                                        <div class="avatar avatar-sm">
+                                            <img src="{{actor.avatar}}" alt="Avatar for {{actor.name}}" class="avatar-img rounded-circle">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col ml--2">
+                                        <!-- Content -->
+                                        <div class="small text-muted">
+                                            <strong class="text-body">{{actor.name}}</strong>
+                                            has {{action}} your {{medium}}.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <small class="text-muted">{{moment_ago date_posted}}</small>
+                                    </div>
+
+                                </div> <!-- / .row -->
+                            </a>
+                        {{/each}}
+
+                        <br />
+                        <div class="col-12">
+                            <form method="POST" action="/clear_notifications">
+                                <button class="btn btn-sm btn-white">Clear Notifications</button>
+                            </form>
+                        </div>
+
+                    {{else}}
+
+                        <p class="text-muted">You have no notifications to show right now.</p>
+
+                    {{/if}}
+
+                </div>
+              </div>
+            </div> <!-- / .dropdown-menu -->
+
+          </div>
+
+          <!-- Dropdown -->
+          <div class="dropdown">
+        
+            <!-- Toggle -->
+            <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="{{user.avatar}}" alt="Your avatar" class="avatar-img rounded-circle">
+            </a>
+
+            <!-- Menu -->
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="/my-profile" class="dropdown-item">Profile</a>
+              <a href="/settings" class="dropdown-item">Settings</a>
+              {{#if isAdmin}}
+                <hr class="dropdown-divider">
+                <a href="/admin" class="dropdown-item text-danger">Admin</a>
+              {{/if}}
+              <hr class="dropdown-divider">
+              <a href="/logout" class="dropdown-item">Logout</a>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse mr-auto order-lg-first" id="navbar">
+
+          <!-- Form -->
+          <form class="mt-4 mb-3 d-md-none">
+            <input type="search" class="form-control form-control-rounded" placeholder="Search" aria-label="Search">
+          </form>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                Recent Activity
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/my-profile">
+                My Profile
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="/users" class="nav-link">
+                Community
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div> <!-- / .container -->
+    </nav>

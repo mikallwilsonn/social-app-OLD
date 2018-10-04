@@ -9,10 +9,6 @@ const homeController = require( '../controllers/homeController' );
 const authController = require( '../controllers/authController' );
 const userController = require( '../controllers/userController' );
 const postController = require( '../controllers/postController' );
-const courseController = require( '../controllers/courseController' );
-const downloadController = require( '../controllers/downloadController' );
-const deadseaController = require( '../controllers/deadseaController' );
-const sponsorController = require( '../controllers/sponsorController' );
 const adminController = require( '../controllers/adminController' );
 
 // Use devController.postDump on any POST request to test what data is being passed to the database before actually doing so
@@ -54,45 +50,6 @@ router.get( '/my-profile',
     authController.isLoggedIn,
     homeController.myProfile
 );
-
-
-// ----
-// Dead Sea 2 Everest
-//
-// Get DeadSea to Everest Updates
-router.get( '/deadsea-to-everest', 
-    authController.isLoggedIn, 
-    deadseaController.getDeadSeaUpdates 
-);
-
-// View Individual Updates
-router.get( '/deadsea-to-everest/:id', 
-    authController.isLoggedIn, 
-    deadseaController.getUpdateById 
-);
-
-// Get form to create a new DeadSea Update
-router.get( '/new_deadsea_update', 
-    authController.isLoggedIn,
-    deadseaController.newUpdateForm
-);
-
-// Create and save new DeadSea Update WITHOUT an image
-router.post( '/new_deadsea_update', catchErrors( deadseaController.addUpdateWithoutImage ));
-
-// Create and save new DeadSea Update WITH an image
-router.post( '/new_deadsea_update_with_image', 
-    deadseaController.getUpdateImageFile,
-    deadseaController.resizeUpdateImage,
-    deadseaController.uploadUpdateImage,
-    catchErrors( deadseaController.addUpdateWithImage ) 
-);
-
-// Post a comment to a specific update
-router.post( '/postcommenttoupdate=:update_id', deadseaController.postCommentToUpdate );
-
-// Post a reply to a comment made on a specific update
-router.post( '/postreplytoupdatecomment=:comment_id', deadseaController.postReplyToUpdateComment );
 
 
 // ----
@@ -198,14 +155,6 @@ router.post( '/settings/profile-cover',
     catchErrors( userController.saveNewProfileCover )
 );
 
-// GET form for user billing settings
-router.get( '/settings/billing', 
-    authController.isLoggedIn,
-    userController.settingsBilling 
-);
-
-// SAVE updated information for user billing settings
-router.post( '/settings/billing', catchErrors( userController.updateBillingInfo ));
 
 // GET Manage Password form
 router.get( '/settings/manage-password', 
@@ -289,145 +238,6 @@ router.post( '/like_post=:post_id', postController.likePost );
 router.post( '/unlike_post=:post_id', postController.unlikePost );
 
 
-// ----
-// Downloads
-//
-// Get all available downloads
-router.get( '/downloads', 
-    authController.isLoggedIn, 
-    downloadController.getResources 
-);
-
-// DELETE a file from downloads folder
-router.post( '/delete_file=:filename', downloadController.deleteFile );
-
-// UPLOAD a file to the downloads folder
-router.post( '/upload_new_file',
-    downloadController.uploadNewFile,
-    downloadController.checkForFileThenRedirect
-);
-
-
-// ----
-// Sponsors
-//
-// GET all sponsors
-router.get( '/sponsors', 
-    authController.isLoggedIn,
-    sponsorController.getSponsors 
-);
-
-// GET page for a sepcific sponsor
-router.get( '/sponsors/:slug', 
-    authController.isLoggedIn,
-    sponsorController.getSponserBySlug 
-);
-
-// GET form to create a new deal for a sponsor
-router.get( '/sponsors/:slug/new-deal',
-    authController.isLoggedIn,
-    sponsorController.newDealForm
-);
-
-// CREATE and SAVE deal for a sponsor
-router.post( '/sponsors/:slug/new-deal', 
-    sponsorController.getNewDealImage,
-    sponsorController.resizNewDealImage,
-    sponsorController.uploadNewDealImage,
-    sponsorController.createNewDeal 
-);
-
-// GET form to CREATE a new sponsor
-router.get( '/new_sponsor', sponsorController.getNewSponsorForm );
-
-// CREATE and SAVE new sponsor
-router.post( '/new_sponsor', 
-    sponsorController.getSponsorImages,
-    sponsorController.resizeBrandLogo,
-    sponsorController.uploadBrandLogo,
-    sponsorController.resizePageCover,
-    sponsorController.uploadPageCover,
-    sponsorController.createNewSponsorPage
-);
-
-
-// ----
-// Course
-//
-// GET all courses
-router.get( '/courses', 
-    authController.isLoggedIn,
-    courseController.getCourses 
-);
-
-// GET form to CREATE a new course
-router.get( '/courses/new', 
-    authController.isLoggedIn,
-    courseController.newCourseForm
-);
-
-// SAVE new course
-router.post( '/courses/new', 
-    courseController.getCourseImage,
-    courseController.resizeCourseImage,
-    courseController.uploadCourseImage,
-    courseController.createNewCourse 
-);
-
-// GET specific course by it's slug
-router.get( '/courses/:slug',  
-    authController.isLoggedIn,
-    courseController.getCourseBySlug
-);
-
-// Edit a course
-router.get( '/courses/:slug/edit', courseController.editCourse );
-
-// UPDATE a course
-router.post( '/courses/:slug/edit', 
-    courseController.getCourseImage,
-    courseController.resizeCourseImage,
-    courseController.uploadNewDeleteOldCourseImage, 
-    courseController.updateCourse
-);
-
-// GET form to CREATE new course module
-router.get( '/courses/:slug/new',
-    authController.isLoggedIn,
-    courseController.newModuleForm 
-);
-
-// SAVE new course module
-router.post( '/courses/:slug/new',
-    courseController.getModuleVideo,
-    courseController.uploadModuleVideo,
-    courseController.createNewModule
-);
-
-// GET course module by slug
-router.get( '/courses/:course/:module',
-    authController.isLoggedIn,
-    courseController.getModuleBySlug
-);
-
-// EDIT a course module
-router.get( '/courses/:course/:module/edit', courseController.editModule );
-
-// UPDATE a course module
-router.post( '/courses/:course/:module/edit', 
-    courseController.getModuleVideo,
-    courseController.uploadModuleVideo,
-    courseController.deleteOldModuleVideo, 
-    courseController.updateCourse
-);
-
-// Post comment to a course module
-router.post( '/postcommenttomodule=:module_id', courseController.postCommentToModule );
-
-// Post reply to a comment on a course module
-router.post( '/postreplytomodulecomment=:comment_id', courseController.postReplyToModuleComment );
-
-
 //
 // ----------------
 // Admin Routes
@@ -445,6 +255,7 @@ router.get( '/admin/reported-posts', adminController.getReportedPosts );
 // Manage Users
 //
 // Get users
+router.get( '/admin', adminController.getUsers );
 router.get( '/admin/manage-users', adminController.getUsers );
 router.get( '/admin/manage-suspended-users', adminController.getSuspendedUsers );
 

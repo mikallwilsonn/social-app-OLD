@@ -1,11 +1,11 @@
 // ----
 // Global Variables
 exports.siteInfo = {
-    name: 'SurviveAnything',
-    description: 'SITE DESCRIPTION HERE',
-    keywords: 'keyword 1, keyword 2, keyword 3, ect...',
-    author: 'SITE AUTHOR NAME',
-    copyrightOwner: 'NAME OF COPYRIGHT OWNER'
+    name: 'SocialApp',
+    description: 'A basic social media app.',
+    keywords: 'social, media, app',
+    author: 'Michael R. Wilson',
+    copyrightOwner: 'Michael R. Wilson'
 };
 
 // ----

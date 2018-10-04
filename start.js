@@ -15,12 +15,8 @@ mongoose.connection.on( 'error', ( err ) => {
 // Import Models below
 require( './models/User' );
 require( './models/Post' );
-require( './models/Course' );
-require( './models/Module' );
 require( './models/Comment' );
 require( './models/Reply' );
-require( './models/DeadseaUpdate' );
-require( './models/Sponsor' );
 require( './models/Notification' );
 
 
