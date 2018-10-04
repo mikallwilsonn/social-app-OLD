@@ -5,12 +5,9 @@
 {{#if user}}
     {{> modals/_subscribe}}
     {{> modals/_lightbox}}
-    {{> modals/_notifications}}
-    {{> modals/_search}}
+    {{> layout/_topNavbar}}
 
-    {{> layout/_navbar}}
-
-    <div class="main-content">
+    <div class="main-content col-10">
         {{> flashes/_flashHandler}}
         {{{body}}}
     </div>

@@ -154,7 +154,7 @@ exports.getUsers = async ( req, res ) => {
     }
 
     res.render( 'users', { 
-        title: 'Survive Anything Community',
+        title: 'Community',
         users: users,
         page: page,
         pages: pages,
@@ -182,7 +182,7 @@ exports.searchUsers = async ( req, res ) => {
     }).limit( 10 );
 
     res.render( 'users', { 
-        title: 'Survive Anything Community',
+        title: 'Community',
         users: users,
         query: req.body.search
     });   
@@ -222,9 +222,6 @@ exports.getProfileByUsername = async ( req, res ) => {
             joined_at: profile.joined_at,
             profile: profile.profile,
             location: profile.location,
-            why_started: profile.why_started,
-            motivation: profile.motivation,
-            goal: profile.goal,
             social_facebook: profile.social_facebook,
             social_twitter: profile.social_twitter,
             social_instagram: profile.social_instagram,
@@ -324,9 +321,6 @@ exports.viewFullPost = async ( req, res ) => {
         joined_at: profile.joined_at,
         profile: profile.profile,
         location: profile.location,
-        why_started: profile.why_started,
-        motivation: profile.motivation,
-        goal: profile.goal,
         social_facebook: profile.social_facebook,
         social_twitter: profile.social_twitter,
         social_instagram: profile.social_instagram,
@@ -394,9 +388,6 @@ exports.updateProfileInfo = async ( req, res ) => {
         name: req.body.name,
         profile: req.body.profile,
         username: req.body.username,
-        goal: req.body.goal,
-        why_started: req.body.why_started,
-        motivation: req.body.motivation,
         website: req.body.website,
         location: req.body.location,
         birthday: birthday,
@@ -632,30 +623,6 @@ exports.saveNewProfileCover = async ( req, res ) => {
     req.flash( 'success', 'Your Profile Cover has been updated.' );
     res.redirect( 'back' );
 } 
-
-
-// ----
-// Settings : Billing
-exports.settingsBilling = ( req, res ) => {
-    res.render( 'settings-billing' );
-}
-
-exports.updateBillingInfo = async ( req, res ) => {
-    const updates = {
-    }
-
-    const user = await User.findOneAndUpdate(
-        { _id: req.user._id },
-        { $set: updates },
-        {
-            new: true,
-            runValidators: true,
-            context: 'query'
-        }
-    );
-    req.flash( 'success', 'Your Profile and/or Account Settings have been updated.' );
-    res.redirect( 'back' );
-}
 
 
 // ----
