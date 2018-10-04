@@ -74,6 +74,14 @@ exports.updateUser = async ( req, res ) => {
     let birthday = moment( req.body.birthday ).format( 'Y-M-D');
     birthday = birthday + ' 00:00:00.000';
 
+    let public;
+
+    if ( req.body.privacy ) {
+        public = true;
+    } else {
+        public = false;
+    }
+
     const updates = {
         name: req.body.name,
         email: req.body.email,
@@ -85,11 +93,8 @@ exports.updateUser = async ( req, res ) => {
         website: req.body.website,
         location: req.body.location,
         birthday: birthday,
-        social_facebook: req.body.social_facebook,
-        social_twitter: req.body.social_twitter,
-        social_instagram: req.body.social_instagram,
-        social_linkedin: req.body.social_linkedin,
-        role: req.body.role
+        role: req.body.role,
+        public: public
     }
 
     const user = await User.findOneAndUpdate(
