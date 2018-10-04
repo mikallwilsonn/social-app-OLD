@@ -69,22 +69,6 @@ const userSchema = new Schema({
     public: {
         type: Boolean
     },
-    social_facebook: {
-        type: String,
-        trim: true
-    },
-    social_twitter: {
-        type: String,
-        trim: true
-    },
-    social_instagram: {
-        type: String,
-        trim: true
-    },
-    social_linkedin: {
-        type: String,
-        trim: true
-    },
     posts: { 
         type: Schema.Types.ObjectId, 
         ref: 'Post'

@@ -103,53 +103,6 @@
 
                     </div>
 
-                    <div class="col-12">
-                        <br />
-                        <hr>
-                        <br />
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="profile">
-                                Edit <strong>{{account.name}}'s</strong> About Me
-                            </label>
-                            <textarea class="form-control" name="profile" id="profile">{{account.profile}}</textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="goal">
-                                Edit <strong>{{account.name}}'s</strong> My Current Goal
-                            </label>
-                            <textarea class="form-control" name="goal" id="goal">{{account.goal}}</textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="why_started">
-                                Edit <strong>{{account.name}}'s</strong> Why I Started My Journey
-                            </label>
-                            <textarea class="form-control" name="why_started" id="why_started">{{account.why_started}}</textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="motivation">
-                                Edit <strong>{{account.name}}'s</strong> My Motivation(s)
-                            </label>
-                            <textarea class="form-control" name="motivation" id="motivation">{{account.motivation}}</textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <br />
-                        <hr>
-                        <br />
-                    </div>
                     <div class="col-12 col-md-6">
                         
                         <div class="form-group">
@@ -160,54 +113,28 @@
                         </div>
 
                     </div>
-                    <div class="col-12 col-md-6">
-
-                        <div class="form-group">
-                            <label for="social_facebook">
-                                Edit <strong>{{account.name}}'s</strong> Facebook URL
-                            </label>
-                            <input type="text" name="social_facebook" id="social_facebook" class="form-control" value="{{account.social_facebook}}">
-                        </div>
-
-                    </div>
-                    <div class="col-12 col-md-6">
-
-                        <div class="form-group">
-                            <label for="social_twitter">
-                                Edit <strong>{{account.name}}'s</strong> Twitter URL
-                            </label>
-                            <input type="text" name="social_twitter" id="social_twitter" class="form-control" value="{{account.social_twitter}}">
-                        </div>
-
-                    </div>
-                    <div class="col-12 col-md-6">
-
-                        <div class="form-group">
-                            <label for="social_instagram">
-                                Edit <strong>{{account.name}}'s</strong> Instagram URL
-                            </label>
-                            <input type="text" name="social_instagram" id="social_instagram" class="form-control" value="{{account.social_instagram}}">
-                        </div>
-
-                    </div>
-                    <div class="col-12 col-md-6">
-
-                        <div class="form-group">
-                            <label for="social_linkedin">
-                                Edit <strong>{{account.name}}'s</strong> LinkedIn URL
-                            </label>
-                            <input type="text" name="social_linkedin" id="social_linkedin" class="form-control" value="{{account.social_linkedin}}">
-                        </div>
-
-                    </div>
 
                     <div class="col-12">
-
                         <br />
                         <hr>
                         <br />
-
                     </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="profile">
+                                Edit <strong>{{account.name}}'s</strong> About Me
+                            </label>
+                            <textarea class="form-control" name="profile" id="profile">{{account.profile}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <br />
+                        <hr>
+                        <br />
+                    </div>
+
                     <div class="col-12 col-md-6">
 
                         <div class="form-group">
@@ -221,6 +148,41 @@
                             </select>
                         </div>
 
+                    </div>
+
+                    <div class="col-12">
+                        <br />
+                        <hr>
+                        <br />
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <!-- Label -->
+                            <label class="mb-1">
+                                Public Profile
+                            </label>
+
+                            <!-- Form text -->
+                            <small class="form-text text-muted">
+                                Making {{account.name}}'s profile public means that anyone on the Dashkit network will be able to find you.
+                            </small>
+
+                            <div class="row">
+                                <div class="col-auto">
+                                    <!-- Toggle -->
+                                    {{privacy_control account.public}}
+                                </div>
+
+                                <div class="col ml--2">
+                                    <!-- Help text -->
+                                    <small class="text-muted">
+                                        {{privacy_text account.public}}
+                                    </small>
+                                </div>
+
+                            </div> <!-- / .row -->
+                        </div>
                     </div>
 
                 </div> <!-- / .row -->
