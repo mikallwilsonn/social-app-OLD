@@ -85,7 +85,6 @@ exports.validateRegister = ( req, res, next ) => {
 // -> Takes all data provided in the form and saves a new user account
 exports.registerNewUser = async ( req, res ) => {
     const user = new User({
-        is_onboarded: false,
         role: 'member',
         email: req.body.email,
         name: req.body.name,
@@ -345,7 +344,6 @@ exports.settingsProfile = ( req, res ) => {
 
 // Check if user has changed email, then sends an email to confirm
 exports.checkEmailChange = async ( req, res, next ) => {
-
     if ( req.user.email == req.body.email ) {
         req.changeEmailToken = '';
         req.changeEmailExpires = null;
@@ -361,9 +359,8 @@ exports.checkEmailChange = async ( req, res, next ) => {
             remove_extension: false,
             gmail_remove_subaddress: false
         });
+        next();
     }
-
-    next();
 }
 
 // Update user account information with data passed through form
@@ -381,7 +378,6 @@ exports.updateProfileInfo = async ( req, res ) => {
     }
 
     const updates = {
-        is_onboarded: true,
         name: req.body.name,
         profile: req.body.profile,
         username: req.body.username,
@@ -394,29 +390,18 @@ exports.updateProfileInfo = async ( req, res ) => {
         new_email: req.new_email
     }
 
-    const user = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
         { _id: req.user._id },
         { $set: updates },
         {
             new: true,
             runValidators: true,
             context: 'query'
-        }, async () => {
-            if ( req.user.email != req.body.email ) {
-                const changeURL = `http://${req.headers.host}/change-email/${req.changeEmailToken}`;
-
-                await mail.send({
-                    to: req.new_email,
-                    subject: 'Please confirm changes to your account',
-                    changeURL,
-                    filename: 'email-change'
-                });
-            }
         }
     );
 
     req.flash( 'success', 'Your Profile and/or Account Settings have been updated.' );
-    res.redirect( 'back' );
+    res.redirect( '/settings' );
 }
 
 

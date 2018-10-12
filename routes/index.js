@@ -110,9 +110,6 @@ router.post( '/follow_user=:user_id', userController.followUser );
 // UNFOLLOW a user
 router.post( '/unfollow_user=:user_id', userController.unfollowUser );
 
-// Redirect for users who log in first time to create their profile
-router.get( '/welcome', userController.settingsProfile );
-
 // GET profile settings form
 router.get( '/settings/profile', 
     authController.isLoggedIn,
@@ -124,7 +121,7 @@ router.post( '/settings/profile',
     authController.updateDoesEmailExist,
     authController.updateDoesUsernameExist,
     userController.checkEmailChange,
-    catchErrors( userController.updateProfileInfo )
+    userController.updateProfileInfo
 );
 
 // GET avatar update form

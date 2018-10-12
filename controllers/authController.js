@@ -55,12 +55,7 @@ exports.logout = ( req, res ) => {
 // -> either redirects to root, /welcome or back to /login
 exports.isLoggedIn = ( req, res, next ) => {
     if ( req.user ) {
-        if ( req.user.is_onboarded === false ) {
-            req.flash( 'notice', 'Welcome! Looks like your profile could use some info. Let\'s take a moment and update that now before we can make your profile public.');
-            res.redirect( '/welcome' );
-        } else {
-            next();
-        }
+        next();
     } else {
         res.redirect('/login');
     }

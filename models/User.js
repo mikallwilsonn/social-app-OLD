@@ -8,7 +8,6 @@ const passportLocalMongoose = require( 'passport-local-mongoose' );
 
 
 const userSchema = new Schema({
-    is_onboarded: Boolean,
     role: String,
     email: {
         type: String,
