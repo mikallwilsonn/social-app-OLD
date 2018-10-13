@@ -33,7 +33,7 @@
           <div class="dropdown mr-4 d-none d-lg-flex">
         
             <!-- Toggle -->
-            <a href="#" class="text-white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a id="notification_button" href="#" class="text-white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="icon 
                 {{#if user.seen_notifications}}
                 {{else}}
@@ -77,7 +77,7 @@
 
                                 <div class="row">
                                     <div class="col-auto">
-                            
+                                      
                                     <!-- Avatar -->
                                         <div class="avatar avatar-sm">
                                             <img src="{{actor.avatar}}" alt="Avatar for {{actor.name}}" class="avatar-img rounded-circle">
