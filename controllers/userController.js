@@ -344,7 +344,7 @@ exports.settingsProfile = ( req, res ) => {
 
 // Check if user has changed email, then sends an email to confirm
 exports.checkEmailChange = async ( req, res, next ) => {
-    if ( req.user.email == req.body.email ) {
+    if ( req.user.email === req.body.email ) {
         req.changeEmailToken = '';
         req.changeEmailExpires = null;
         req.new_email = '';
@@ -390,13 +390,18 @@ exports.updateProfileInfo = async ( req, res ) => {
         new_email: req.new_email
     }
 
-    await User.findOneAndUpdate(
+    const user = await User.findOneAndUpdate(
         { _id: req.user._id },
         { $set: updates },
         {
             new: true,
             runValidators: true,
             context: 'query'
+        }, function( error ) {
+            if ( error ) {
+                req.flash('error', `Uh oh. Something happened and your profile updates could not be saved. Please try again... ERROR: ${error}`);
+                res.redirect( 'back' );
+            }
         }
     );
 
