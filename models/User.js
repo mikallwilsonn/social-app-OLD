@@ -8,7 +8,6 @@ const passportLocalMongoose = require( 'passport-local-mongoose' );
 
 
 const userSchema = new Schema({
-    is_onboarded: Boolean,
     role: String,
     email: {
         type: String,
@@ -60,22 +59,33 @@ const userSchema = new Schema({
         default: Date.now
     },
     birthday: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     country: {
         type: String,
         trim: true
     },
     public: {
-        type: Boolean
+        type: Boolean,
+        default: true
     },
     posts: { 
         type: Schema.Types.ObjectId, 
         ref: 'Post'
     },
-    resetPasswordToken: String,
-    resetPasswordExpires: Date,
-    seen_notifications: Boolean,
+    resetPasswordToken: {
+        type: String,
+        default: ''
+    },
+    resetPasswordExpires: {
+        type: Date,
+        default: Date.now
+    },
+    seen_notifications: { 
+        type: Boolean,
+        default: true
+    },
     following: [{
         type: mongoose.Schema.ObjectId,
         ref: 'User'
@@ -88,8 +98,14 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     },
-    changeEmailToken: String,
-    changeEmailExpires: Date,
+    changeEmailToken: {
+        type: String,
+        default: ''
+    },
+    changeEmailExpires: {
+        type: Date,
+        default: Date.now
+    },
     new_email: {
         type: String,
         unique: true,
