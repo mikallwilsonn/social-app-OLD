@@ -40,10 +40,11 @@ function likePost( e ) {
 const notification_button = document.querySelector( '#notification_button' );
 
 notification_button.addEventListener( 'click', function() {
-    if ( notification_button.classList.contains( 'has_notifications' ) ) {
+    const active = document.querySelector( '#notification_button span' );
+    if ( active.classList.contains( 'active' ) ) {
         axios.post( '/mark_notifications_as_seen' )
             .then( res => {
-                notification_button.classList.remove( 'has_notifications' );
+                notification_button.classList.remove( 'active' );
             }).catch( console.error );
     }
 });
