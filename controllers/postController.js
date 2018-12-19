@@ -40,9 +40,8 @@ exports.resizePostImage = async ( req, res, next ) => {
     const photo = await jimp.read( req.file.buffer );
     await photo.resize( jimp.AUTO, 800 );
     await photo.quality( 80 );
-    const photoMIME = photo.getMIME();
 
-    photo.getBuffer( photoMIME, function( error, result ){
+    photo.getBuffer( req.file.mimetype, function( error, result ){
 
         if ( error ) {
             req.flash( 'error', error );
@@ -59,9 +58,9 @@ exports.uploadPostImage = async ( req, res, next ) => {
     if ( !req.file ) {
         next();
     } else {
-        cloudinaryOptions = { 
+        const cloudinaryOptions = { 
             resource_type: 'image', 
-            folder: 'posts',
+            folder: 'social-app/posts',
             use_filename: true,
             unique_filename: true 
         }
@@ -90,10 +89,22 @@ exports.addPostWithImage = async ( req, res ) => {
         post_image_id: req.body.post_image.public_id,
         comments: []
     };
+
     const newPost = new Post( post );
-    await newPost.save();
-    req.flash( 'success', 'Your post has been sucessfully saved.' );
-    res.redirect( 'back' );
+
+    await newPost.save(function( error, result ) {
+        if ( error ) {
+            console.log( error );
+            req.flash( 'error', 'There was an issue saving your post. Please try again...' );
+            res.redirect( '/' );
+            return;
+        } else {
+            console.log( result );
+            req.flash( 'success', 'Your post has been sucessfully saved.' );
+            res.redirect( 'back' );
+        }
+    });
+
 }
 // -> Create and save post WITHOUT image
 exports.addPostWithoutImage = async ( req, res ) => {
@@ -107,9 +118,19 @@ exports.addPostWithoutImage = async ( req, res ) => {
     };
     
     const newPost = new Post( post );
-    await newPost.save();
-    req.flash( 'success', 'Your post has been sucessfully saved.' );
-    res.redirect( 'back' );
+    await newPost.save(function( error, result ) {
+        if ( error ) {
+            console.log( error );
+            req.flash( 'error', 'There was an issue saving your post. Please try again...' );
+            res.redirect( '/' );
+            return;
+        } else {
+            console.log( result );
+            req.flash( 'success', 'Your post has been sucessfully saved.' );
+            res.redirect( 'back' );
+        }
+    });
+
 }
 
 

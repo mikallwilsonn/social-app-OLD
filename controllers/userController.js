@@ -495,7 +495,7 @@ exports.uploadAvatar = async ( req, res, next ) => {
 
     cloudinaryOptions = { 
         resource_type: 'image', 
-        folder: 'users/avatars',
+        folder: 'social-app/users/avatars',
         use_filename: true,
         unique_filename: true 
     }
@@ -571,7 +571,7 @@ exports.resizeProfileCoverFile = async ( req, res, next ) => {
 exports.uploadProfileCover = async( req, res, next ) => {
     cloudinaryOptions = { 
         resource_type: 'image', 
-        folder: 'users/profile-covers',
+        folder: 'social-app/users/profile-covers',
         use_filename: true,
         unique_filename: true 
     }

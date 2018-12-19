@@ -59,20 +59,13 @@ const postSchema = new Schema({
         type: String,
         trim: true
     },
-    post_image: {
-        type: String,
-        trim: true
-    },
-    post_image_id: {
-        type: String,
-        trim: true
-    },
+    post_image: { type: String },
+    post_image_id: { type: String },
     comments: [ postCommentSchema ],
     likes: [{
         type: mongoose.Schema.ObjectId,
         ref: 'User',
-        required: 'Likes must be associated with a user',
-        unique: true
+        required: 'Likes must be associated with a user'
     }],
     reports: {
         is_reported: {
@@ -81,8 +74,7 @@ const postSchema = new Schema({
         },
         reported_by: [{
             type: mongoose.Schema.ObjectId,
-            ref: 'User',
-            unique: true
+            ref: 'User'
         }]
     }
     
