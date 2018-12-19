@@ -85,6 +85,9 @@ exports.addPostWithImage = async ( req, res ) => {
     const post  = {
         author: req.user._id,
         post_content: req.body.post_content,
+        post_type: {
+            photo: true
+        },
         post_image: req.body.post_image.secure_url,
         post_image_id: req.body.post_image.public_id,
         comments: []
@@ -112,6 +115,9 @@ exports.addPostWithoutImage = async ( req, res ) => {
     const post  = {
         author: req.user._id,
         post_content: req.body.post_content,
+        post_type: {
+            status: true
+        },
         post_image: '',
         post_image_id: '',
         comments: []
