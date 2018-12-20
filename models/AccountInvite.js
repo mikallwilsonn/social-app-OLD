@@ -5,8 +5,7 @@ const mongodbErrorHandler = require( 'mongoose-mongodb-errors' );
 
 const accountInviteSchema = new Schema({
     key: {
-        type: String,
-        unique: true
+        type: String
     },
     email: {
         type: String,

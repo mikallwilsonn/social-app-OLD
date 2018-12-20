@@ -1,10 +1,26 @@
 // Controller Dependencies
 const mongoose = require( 'mongoose' );
 const moment = require( 'moment' );
+const uuidv5 = require( 'uuid/v5' );
 
 // Models
 const Post = mongoose.model( 'Post' );
 const User = mongoose.model( 'User' ); 
+const AccountInvite = mongoose.model( 'AccountInvite' );
+
+
+// --------
+// Admin Access Management
+// --------
+exports.isAdminCheck = async ( req, res, next ) => {
+    if ( req.user.role === 'admin' ) {
+        next();
+    } else {
+        req.flash( 'error', 'Sorry, but you do not have access to this page.' );
+        res.redirect( '/' );
+        return;
+    }
+}
 
 
 // --------
@@ -186,3 +202,53 @@ exports.deleteUser = async ( req, res ) => {
     res.redirect( 'back' ); 
 }
 
+
+
+
+// --------
+// User Invite Management
+// --------
+
+// Get form to genereate a new invite
+exports.generateInviteForm = async ( req, res ) => {}
+
+// On form submission, create a new invite
+exports.createNewInviteKey = async ( req, res ) => {
+    if ( req.user.role === 'admin' ) {
+        const user_exists_check = await User.findOne({ email: req.body.email });
+
+        if ( !user_exists_check ) {
+            const invite_check = await AccountInvite.findOne({ email: req.body.email });
+
+            if ( !invite_check ) {
+                const new_invite_key = await uuidv5( req.body.email, uuidv5.URL );
+
+                const invite = {
+                    key: new_invite_key,
+                    email: req.body.email,
+                    request: false
+                }
+
+                const newAccountInvite = new AccountInvite( invite );
+                await newAccountInvite.save();
+
+                req.flash( 'success', 'You successfully created a new invite key.' );
+                res.redirect( 'back' );
+                return;
+
+            } else {
+                req.flash( 'error', `You have already generated an invite for that email. Email: ${invite_check.email}, Key: ${invite_check.key}.` );
+                res.redirect( 'back' );
+                return;
+            }
+        } else {
+            req.flash( 'error', `There is already a user with the email of: ${req.body.email}` );
+            res.redirect( 'back' );
+            return;
+        }
+    } else {
+        req.flash( 'error', 'Sorry, but you need to be an admin user to complete this action.' );
+        res.redirect( '/' );
+        return;
+    }
+}

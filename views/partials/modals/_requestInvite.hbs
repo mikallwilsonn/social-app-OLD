@@ -1,0 +1,42 @@
+<div class="modal fade" id="modalInviteRequest" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-card card" data-toggle="lists" data-lists-values="[&quot;name&quot;]">
+
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col">
+
+              <!-- Title -->
+              <h2 class="card-header-title" id="exampleModalCenterTitle">
+                Account Invite Request
+              </h2>
+
+            </div>
+            <div class="col-auto">
+
+              <!-- Close -->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i class="fe fe-x"></i></span>
+              </button>
+          
+            </div>
+          </div> <!-- / .row -->
+        </div>
+
+        <div class="card-body">
+
+          <form action="/request-invite" method="POST" id="">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email Address">
+            </div>
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">Submit Request</button>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
