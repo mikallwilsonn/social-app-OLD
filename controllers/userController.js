@@ -15,6 +15,7 @@ const jimp = require( 'jimp' );
 const User = mongoose.model( 'User' );
 const Post = mongoose.model( 'Post' );
 const Notification = mongoose.model( 'Notification' );
+const AccountInvite = mongoose.model( 'AccountInvite' );
 
 // Multer options for uploading an image
 const multerOptions = {
@@ -51,6 +52,27 @@ exports.registerForm = ( req, res ) => {
 // Show forgot Password form
 exports.forgotPasswordForm = ( req, res ) => {
     res.render( 'forgot', { title: 'Forgot My Password' });
+}
+
+
+// ----
+// Checks to make sure the invite key and associated email exist
+exports.hasValidInviteKey = async ( req, res, next ) => {
+    const inviteCheck = await AccountInvite.findOne({
+        key: req.body.key,
+        email: req.body.email
+    });
+
+    if ( !inviteCheck ) {
+        req.flash( 'error', 'Sorry, but looks like the invite key or the email you provided is not valid. Please check and try again.' );
+        res.render( 'register', {
+            title: 'Register',
+            body: req.body,
+            flashes: req.flash()
+        });
+    } else {
+        next();
+    }
 }
 
 
@@ -102,6 +124,8 @@ exports.registerNewUser = async ( req, res ) => {
 
     const register = promisify( User.register, User );
     await register( user, req.body.password );
+
+    await AccountInvite.deleteOne({ key: req.body.key, email: req.body.key  });
     
     req.flash( 'success', 'Your account has been created! Please login with your email and password.');
     res.redirect( '/login' );

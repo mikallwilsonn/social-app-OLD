@@ -60,6 +60,7 @@ router.get( '/register', userController.registerForm );
 
 // Check the data passed through the form then create and SAVE new user
 router.post( '/register', 
+    userController.hasValidInviteKey,
     userController.validateRegister,
     authController.registerDoesEmailExist,
     authController.registerDoesUsernameExist,
