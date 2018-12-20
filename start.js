@@ -18,6 +18,7 @@ require( './models/Post' );
 require( './models/Comment' );
 require( './models/Reply' );
 require( './models/Notification' );
+require( './models/AccountInvite' );
 
 
 // ----

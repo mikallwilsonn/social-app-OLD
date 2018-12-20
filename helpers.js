@@ -370,3 +370,12 @@ hbs.registerHelper( 'url_privacy_filter', function( public, username ) {
     return new hbs.SafeString( url );
 
 });
+
+
+// ----
+// Indicate Active Link for current path
+hbs.registerHelper( 'is_active_path', function( path ) {
+    if ( currentPath = path ) {
+        return new hbs.SafeString( 'active' );
+    } 
+});

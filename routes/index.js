@@ -55,11 +55,17 @@ router.get( '/my-profile',
 // ----
 // User
 //
+
+// Request Invite
+router.post( '/request-invite', userController.createInviteRequest );
+
+
 // GET form for registerring a new user
 router.get( '/register', userController.registerForm );
 
 // Check the data passed through the form then create and SAVE new user
 router.post( '/register', 
+    userController.hasValidInviteKey,
     userController.validateRegister,
     authController.registerDoesEmailExist,
     authController.registerDoesUsernameExist,
@@ -271,6 +277,29 @@ router.post( '/admin/unsuspend_user=:user_id', adminController.unsuspendUser );
 
 // DELETE a user account
 router.post( '/admin/delete_user=:user_id', adminController.deleteUser );
+
+
+// ----
+// Manage Invites
+//
+// Get form to create an invite key
+router.get( '/admin/generate-invite', 
+    adminController.isAdminCheck,
+    adminController.generateInviteForm
+);
+
+// Create a new Account Invite 
+router.post( '/admin/generate-invite', adminController.createNewInviteKey );
+
+// Get current invite requests awaiting action
+router.get( '/admin/invite-requests', adminController.getInviteRequests );
+router.get( '/admin/manage-invites', adminController.getAccountInvites );
+
+// Accept Invite Requests
+router.post( '/admin/accept-invite-request=:request_id', adminController.acceptInviteRequest );
+
+// Reject Invite Requests
+router.post( '/admin/reject-invite-request=:request_id', adminController.rejectInviteRequest );
 
 
 module.exports = router;

@@ -7,6 +7,18 @@
             <p class="text-muted text-center mb-5">Sign up here to create your new account.</p>
 
             <form class="account-form" method="POST" action="/register">
+
+                <div class="form-group">
+                    <label for="key">Your Invite Key <i class="fe fe-help-circle" data-toggle="tooltip" data-placement="top" title="Since this app is just for demo purposes, account registration is closed except for those with an invite key."></i></label>
+                    <input name="key" id="key" type="key" class="form-control" placeholder="Enter your invite key">
+                </div>
+
+                <a href="#!" class="btn btn-lg btn-block btn-secondary mb-3 btn-sm" data-toggle="modal" data-target="#modalInviteRequest">Request Invite</a>
+
+                <br />
+                <hr>
+                <br />
+
                 <div class="form-group">
                     <label for="name">Your Full Name</label>
                     <input name="name" id="name" type="name" class="form-control" placeholder="Enter your full name">

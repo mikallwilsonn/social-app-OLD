@@ -10,11 +10,13 @@ const crypto = require( 'crypto' );
 const cloudinary = require( 'cloudinary' );
 const multer = require( 'multer' );
 const jimp = require( 'jimp' );
+const uuidv5 = require( 'uuid/v5' );
 
 // Models
 const User = mongoose.model( 'User' );
 const Post = mongoose.model( 'Post' );
 const Notification = mongoose.model( 'Notification' );
+const AccountInvite = mongoose.model( 'AccountInvite' );
 
 // Multer options for uploading an image
 const multerOptions = {
@@ -51,6 +53,63 @@ exports.registerForm = ( req, res ) => {
 // Show forgot Password form
 exports.forgotPasswordForm = ( req, res ) => {
     res.render( 'forgot', { title: 'Forgot My Password' });
+}
+
+
+// ----
+// Create an Invite Request
+exports.createInviteRequest = async ( req, res ) => {
+    const user_exists_check = await User.findOne({ email: req.body.email  });
+
+    if ( !user_exists_check ) {
+
+        const invite_check = await AccountInvite.findOne({ email: req.body.email });
+
+        if ( !invite_check ) {
+
+            const invite = {
+                key: '',
+                email: req.body.email,
+                request: true
+            }
+
+            const newAccountInvite = new AccountInvite( invite );
+            await newAccountInvite.save();
+
+            req.flash( 'success', 'You successfully submitted your request for an invite. You will be notified by email if your request has been accepted.' );
+            res.redirect( 'back' );
+            return;
+        } else {
+            req.flash( 'error', `There is already a user or a pending request for a user with that email: ${req.body.email}` );
+            res.redirect( 'back' );
+            return;
+        }
+    } else {
+        req.flash( 'error', `There is already a user or a pending request for a user with that email: ${req.body.email}` );
+        res.redirect( 'back' );
+        return;
+    }
+}
+
+
+// ----
+// Checks to make sure the invite key and associated email exist
+exports.hasValidInviteKey = async ( req, res, next ) => {
+    const inviteCheck = await AccountInvite.findOne({
+        key: req.body.key,
+        email: req.body.email
+    });
+
+    if ( !inviteCheck ) {
+        req.flash( 'error', 'Sorry, but looks like the invite key or the email you provided is not valid. Please check and try again.' );
+        res.render( 'register', {
+            title: 'Register',
+            body: req.body,
+            flashes: req.flash()
+        });
+    } else {
+        next();
+    }
 }
 
 
@@ -102,6 +161,8 @@ exports.registerNewUser = async ( req, res ) => {
 
     const register = promisify( User.register, User );
     await register( user, req.body.password );
+
+    await AccountInvite.deleteOne({ key: req.body.key, email: req.body.key  });
     
     req.flash( 'success', 'Your account has been created! Please login with your email and password.');
     res.redirect( '/login' );
