@@ -2,42 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-12 ">
         
-            <!-- Header -->
-            <div class="header">
-                <div class="header-body">
-
-                    <div class="row align-items-end">
-                        <div class="col">
-                            <h6 class="header-pretitle">Admin</h6>
-                            <h1 class="header-title">{{title}}</h1>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <ul class="nav nav-tabs header-tabs">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#!" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Manage Users
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a href="/admin/manage-users" class="dropdown-item ">Active Users</a>
-                                        <a href="/admin/manage-suspended-users" class="dropdown-item">Suspended Users</a>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="/admin/reported-posts" class="nav-link text-center">
-                                        Reported Posts
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            {{> admin/_adminHeader}}
 
             <div class="table-responsive bg-white" data-toggle="lists" data-lists-values='["tables-row", "tables-first", "tables-last", "tables-handle"]'>
                 <table class="table">
