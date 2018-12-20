@@ -162,7 +162,7 @@ exports.registerNewUser = async ( req, res ) => {
     const register = promisify( User.register, User );
     await register( user, req.body.password );
 
-    await AccountInvite.deleteOne({ key: req.body.key, email: req.body.key  });
+    await AccountInvite.deleteOne({ key: req.body.key, email: req.body.email  });
     
     req.flash( 'success', 'Your account has been created! Please login with your email and password.');
     res.redirect( '/login' );
