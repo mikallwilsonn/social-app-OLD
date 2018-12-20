@@ -108,7 +108,6 @@ const userSchema = new Schema({
     },
     new_email: {
         type: String,
-        unique: true,
         lowercase: true,
         trim: true
     }
@@ -121,6 +120,5 @@ userSchema.index({
 
 
 userSchema.plugin( passportLocalMongoose, { usernameField: 'email' } );
-userSchema.plugin( mongodbErrorHandler );
 
 module.exports = mongoose.model( 'User', userSchema );
