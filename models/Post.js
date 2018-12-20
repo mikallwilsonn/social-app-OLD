@@ -59,6 +59,28 @@ const postSchema = new Schema({
         type: String,
         trim: true
     },
+    post_type: {
+        status: { 
+            type: Boolean,
+            default: false 
+        },
+        photo: { 
+            type: Boolean,
+            default: false
+        },
+        location: { 
+            type: Boolean,
+            default: false 
+        },
+        poll: { 
+            type: Boolean,
+            default: false 
+        },
+        link: { 
+            type: Boolean,
+            default: false 
+        } 
+    },
     post_image: { type: String },
     post_image_id: { type: String },
     comments: [ postCommentSchema ],

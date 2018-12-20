@@ -1,0 +1,56 @@
+<div id="post_{{post_id}}" class="card">
+
+  <div class="card-body">
+    <div class="mb-3">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <a href="/users/@{{author.username}}" class="avatar">
+            <img src="{{author.avatar}}" alt="Avatar of {{author.name}}." class="avatar-img rounded-circle">
+          </a>
+
+        </div>
+        <div class="col ml--2">
+
+          <h4 class="card-title mb-1"><a href="/users/@{{author.username}}">{{author.name}}</a></h4>
+
+          <p class="card-text small text-muted">
+            <span class="fe fe-clock"></span> <time datetime="{{date_posted}}">{{moment_ago date_posted}}</time>
+          </p>
+
+        </div>
+        <div class="col-auto">
+          
+          <div class="dropdown card-dropdown">
+              <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fe fe-more-vertical"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                  {{delete_post author._id user._id user.role post_id}}
+                  {{report_post author._id user._id reports post_id}}
+                  {{mark_as_safe author._id user._id user.role reports post_id}}
+              </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+    <p class="mb-3">{{post_content}}</p>
+
+    <hr>
+
+    <!-- Buttons -->
+    <div class="mb-3">
+      
+      <div class="row">
+        <div class="col">
+          {{post_likes likes user._id post_id}}
+          
+          <a href="/users/@{{author.username}}/post={{post_id}}#comments" class="btn btn-sm btn-white" data-toggle="tooltip" data-placement="top" title="Read comments and/or post one yourself?">
+            <i class="fe fe-message-square" style="margin-right:5px;"></i>  {{comments_count comments}} Comments</a>
+        </div>
+      </div> 
+
+    </div>
+
+  </div>
+</div>

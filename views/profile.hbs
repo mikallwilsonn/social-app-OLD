@@ -80,18 +80,33 @@
 
         {{#if posts}}
           {{#each posts}} 
-            {{> feed/_postCard 
-                  author=this.author
-                  post_content=this.post_content 
-                  post_image=this.post_image 
-                  date_posted=this.date_posted
-                  post_id=this._id
-                  reports=this.reports
-                  comments=this.comments
-                  likes=this.likes 
-                  user=../user
-                  postControls=../postControls
-            }}
+            {{#if this.post_type.status}}
+                {{> feed/post_types/_postStatus 
+                    author=this.author 
+                    post_content=this.post_content 
+                    date_posted=this.date_posted 
+                    post_id=this._id 
+                    reports=this.reports 
+                    comments=this.comments 
+                    likes=this.likes 
+                    user=../user 
+                    postControls=../postControls
+                }}
+            {{/if}}
+            {{#if this.post_type.photo}}
+                {{> feed/post_types/_postPhoto 
+                    author=this.author
+                    post_content=this.post_content 
+                    post_image=this.post_image 
+                    date_posted=this.date_posted 
+                    post_id=this._id 
+                    reports=this.reports 
+                    comments=this.comments 
+                    likes=this.likes 
+                    user=../user 
+                    postControls=../postControls
+                }}
+            {{/if}}
           {{/each}}
         {{else}}
           {{> feed/_noPosts avatar=avatar name=title}}
