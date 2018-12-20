@@ -14,6 +14,10 @@ const accountInviteSchema = new Schema({
     },
     request: {
         type: Boolean
+    },
+    date_created: {
+        type: Date,
+        default: Date.now
     }
 });
 

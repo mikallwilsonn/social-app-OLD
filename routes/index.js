@@ -288,9 +288,18 @@ router.get( '/admin/generate-invite',
     adminController.generateInviteForm
 );
 
+// Create a new Account Invite 
 router.post( '/admin/generate-invite', adminController.createNewInviteKey );
 
+// Get current invite requests awaiting action
+router.get( '/admin/invite-requests', adminController.getInviteRequests );
+router.get( '/admin/manage-invites', adminController.getAccountInvites );
 
+// Accept Invite Requests
+router.post( '/admin/accept-invite-request=:request_id', adminController.acceptInviteRequest );
+
+// Reject Invite Requests
+router.post( '/admin/reject-invite-request=:request_id', adminController.rejectInviteRequest );
 
 
 module.exports = router;

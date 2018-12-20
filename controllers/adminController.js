@@ -188,18 +188,27 @@ exports.unsuspendUser = async ( req, res ) => {
 // -> from the database. Then, the same _id property, delete all
 // -> Post documents with the author property that equals the _id
 exports.deleteUser = async ( req, res ) => {
-    const account = await User.findById( req.params.user_id );
 
-    if ( !account ) {
-        req.flash( 'error', 'Uh oh, something happened and the user could not be deleted.' );
+    if ( req.user._id === req.params.user_id ) {
+        req.flash( 'error', 'You can\'t delete your own account.' );
         res.redirect( 'back' );
+        return;
+    } else {
+        const account = await User.findById( req.params.user_id );
+
+        if ( !account ) {
+            req.flash( 'error', 'Uh oh, something happened and the user could not be deleted.' );
+            res.redirect( 'back' );
+        }
+    
+        await User.deleteOne({ _id: account._id });
+        await Post.deleteMany({ author: account._id });
+    
+        req.flash( 'success', `The user account for ${account.name} has been successfully deleted.` );
+        res.redirect( 'back' ); 
+        return;
     }
 
-    await User.deleteOne({ _id: account._id });
-    await Post.deleteMany({ author: account._id });
-
-    req.flash( 'success', `The user account for ${account.name} has been successfully deleted.` );
-    res.redirect( 'back' ); 
 }
 
 
@@ -209,9 +218,16 @@ exports.deleteUser = async ( req, res ) => {
 // User Invite Management
 // --------
 
+// ----
 // Get form to genereate a new invite
-exports.generateInviteForm = async ( req, res ) => {}
+exports.generateInviteForm = async ( req, res ) => {
+    res.render( 'admin/generate-invite', {
+        title: 'Generate a new Account Invite'
+    });
+}
 
+
+// ----
 // On form submission, create a new invite
 exports.createNewInviteKey = async ( req, res ) => {
     if ( req.user.role === 'admin' ) {
@@ -233,7 +249,7 @@ exports.createNewInviteKey = async ( req, res ) => {
                 await newAccountInvite.save();
 
                 req.flash( 'success', 'You successfully created a new invite key.' );
-                res.redirect( 'back' );
+                res.redirect( '/admin/manage-invites' );
                 return;
 
             } else {
@@ -251,4 +267,75 @@ exports.createNewInviteKey = async ( req, res ) => {
         res.redirect( '/' );
         return;
     }
+}
+
+
+// ----
+// Get current invite requests awaiting action
+exports.getInviteRequests = async ( req, res ) => {
+    const requests = await AccountInvite.find({ request: true });
+
+    res.render( 'admin/invites', {
+        title: 'Manage Invite Requests',
+        invites: requests,
+        invite_requests: true
+    });
+}
+
+
+// ----
+// Get all pending Invites waiting for account creation
+exports.getAccountInvites = async ( req, res ) => {
+    const invites = await AccountInvite.find({ request: false });
+    res.render( 'admin/invites', {
+        title: 'Manage Invites',
+        invites: invites,
+        manage_invites: true
+    });
+}
+
+
+// ----
+// Accept Invite Requests
+exports.acceptInviteRequest = async ( req, res ) => {
+    const invite_check = await AccountInvite.findOne({ _id: req.params.request_id });
+
+    if ( !invite_check ) {
+        req.flash( 'error', 'An error occured trying to locate the invite.' );
+        res.redirect( 'back' );
+        return;
+    } else {
+        const new_invite_key = await uuidv5( invite_check.email, uuidv5.URL );
+
+        const updates = {
+            key: new_invite_key,
+            email: invite_check.email,
+            request: false
+        }
+
+        const invite = await AccountInvite.findOneAndUpdate(
+            { _id: req.params.request_id },
+            { $set: updates },
+            {
+                new: true, 
+                runValidators: true, 
+                context: 'query'
+            }
+        );
+
+        req.flash( 'success', 'You successfully accepted the request and created a new invite key.' );
+        res.redirect( 'back' );
+        return;
+    }
+}
+
+
+// ----
+// Reject Invite Requests
+exports.rejectInviteRequest = async ( req, res ) => {
+    await AccountInvite.findOneAndDelete({ _id: req.params.request_id });
+
+    req.flash( 'success', 'You successfully rejected and deleted the invite request.' );
+    res.redirect( 'back' );
+    return;
 }

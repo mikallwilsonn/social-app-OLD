@@ -511,6 +511,10 @@ a.lightbox_trigger:hover { opacity:0.9; }
   padding:10px 25px;
 }
 
+.table-responsive {
+  min-height: 300px;
+}
+
 td.dropdown #admin-user-actions form button.dropdown-item {
   opacity:1 !important;
   transition:0.2s;
@@ -521,3 +525,5 @@ td.dropdown #admin-user-actions form button.dropdown-item:hover { opacity:1 !imp
 
 tr.user-row { transition:0.2s; }
 tr.user-row:hover { background-color:rgba(250,250,250,1); }
+
+
