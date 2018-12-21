@@ -338,6 +338,26 @@ hbs.registerHelper( 'privacy_control', function( public ){
     return new hbs.SafeString( html );
 });
 
+
+// ----
+// Privacy Text
+hbs.registerHelper( 'privacy_text', function( public ) {
+
+    let text = '';
+
+    if ( public == true ) {
+        text = 'Your profile is currently public.';
+    } else {
+        text = 'Your profile is currently private.'
+    }
+
+    return new hbs.SafeString( text );
+
+});
+
+
+// ----
+// Email Privacy Control
 hbs.registerHelper( 'email_privacy_control', function( public ) {
     let html = '';
 
@@ -360,23 +380,21 @@ hbs.registerHelper( 'email_privacy_control', function( public ) {
     return new hbs.SafeString( html );
 });
 
-
 // ----
-// Privacy Text
-hbs.registerHelper( 'privacy_text', function( public ) {
+// Email Privacy Text
+hbs.registerHelper( 'email_privacy_text', function( public ) {
 
     let text = '';
 
     if ( public == true ) {
-        text = 'Your profile is currently public.';
+        text = 'Your email is currently public.';
     } else {
-        text = 'Your profile is currently private.'
+        text = 'Your email is currently private.'
     }
 
     return new hbs.SafeString( text );
 
 });
-
 
 // ----
 // URL Privacy Filter
