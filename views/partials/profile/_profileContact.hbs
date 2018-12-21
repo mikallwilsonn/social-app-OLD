@@ -18,8 +18,8 @@
             </div>
 
             <div class="col-auto">
-                <a href="{{website}}" class="small" target="_blank">
-                {{trimString website 0 30}}
+                <a href="{{contact.website}}" class="small" target="_blank">
+                {{trimString contact.website 0 30}}
                 </a>
             </div>
         </div>
@@ -34,8 +34,9 @@
             </div>
 
             <div class="col-auto">
-                <a href="mailto:email@example.com" class="small">
-                    email@example.com
+                <a href="
+                    mailto:{{email}}" class="small">
+                    {{email}}
                 </a>
             </div>
         </div>
@@ -50,8 +51,8 @@
             </div>
 
             <div class="col-auto">
-                <a href="tel:1-555-555-5555" class="small">
-                    +1-555-555-5555
+                <a href="tel:{{contact.phone}}" class="small">
+                    {{contact.phone}}
                 </a>
             </div>
         </div>

@@ -98,6 +98,14 @@ exports.updateUser = async ( req, res ) => {
         public = false;
     }
 
+    let email_privacy;
+
+    if ( req.body.email_privacy ) {
+        email_privacy = true;
+    } else {
+        eemail_privacy = false;
+    }
+
     const updates = {
         name: req.body.name,
         email: req.body.email,
@@ -112,8 +120,12 @@ exports.updateUser = async ( req, res ) => {
             religion: req.body.religion,
             politics: req.body.politics
         },
+        contact: {
+            website: req.body.website,
+            email: email_privacy,
+            phone: req.body.phone
+        },
         username: req.body.username,
-        website: req.body.website,
         role: req.body.role,
         public: public
     }

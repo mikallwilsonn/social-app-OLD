@@ -84,9 +84,18 @@ const userSchema = new Schema({
             trim: true 
         }
     },
-    website: {
-        type: String,
-        trim: true
+    contact: {
+        website: {
+            type: String,
+            trim: true
+        },
+        email: {
+            type: Boolean,
+        },
+        phone: {
+            type: String,
+            trim: true
+        }
     },
     joined_at: {
         type: Date,
