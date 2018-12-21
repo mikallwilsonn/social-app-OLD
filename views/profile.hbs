@@ -115,18 +115,30 @@
         {{/if}}
 
       </div>
+
     <div class="col-12 col-xl-4">
 
-      <!-- Card -->
-      {{> profile/_contentCard title='About ' name=title content=profile}}
-      {{> profile/_profileMeta 
-            birthday=birthday 
-            joined_at=joined_at
-            location=location
-            website=website 
+      {{> profile/_contentCard 
+        title='About ' 
+        name=title 
+        content=profile.bio
+      }}
+
+      {{> profile/_profileMeta
+        title='Details about '
+        name=title 
+        profile=profile 
+        joined_at=joined_at
+        website=website 
+      }}
+      {{> profile/_profileContact
+        title='Connect with '
+        name=title 
+        website=website 
       }}
 
     </div>
+
   </div> <!-- / .row -->
 
 </div> <!-- / .container-fluid -->

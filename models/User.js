@@ -47,8 +47,42 @@ const userSchema = new Schema({
         trim: true
     },
     profile: {
-        type: String,
-        trim: true,
+        bio: {
+            type: String,
+            trim: true
+        },
+        birthday: {
+            type: Date,
+            default: Date.now
+        },
+        location: {
+            type: String,
+            trim: true
+        },
+        gender: {
+            type: String,
+            trim: true 
+        },
+        occupation: {
+            type: String,
+            trim: true 
+        },
+        relationship_status: {
+            type: String,
+            trim: true 
+        },
+        sexual_orientation: {
+            type: String,
+            trim: true 
+        },
+        religion: {
+            type: String,
+            trim: true 
+        },
+        politics: {
+            type: String,
+            trim: true 
+        }
     },
     website: {
         type: String,
@@ -57,14 +91,6 @@ const userSchema = new Schema({
     joined_at: {
         type: Date,
         default: Date.now
-    },
-    birthday: {
-        type: Date,
-        default: Date.now
-    },
-    country: {
-        type: String,
-        trim: true
     },
     public: {
         type: Boolean,

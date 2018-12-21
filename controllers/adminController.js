@@ -101,14 +101,19 @@ exports.updateUser = async ( req, res ) => {
     const updates = {
         name: req.body.name,
         email: req.body.email,
-        profile: req.body.profile,
+        profile: {
+            bio: req.body.bio,
+            birthday: birthday,
+            location: req.body.location,
+            gender: req.body.gender,
+            occupation: req.body.occupation,
+            relationship_status: req.body.relationship_status,
+            sexual_orientation: req.body.sexual_orientation,
+            religion: req.body.religion,
+            politics: req.body.politics
+        },
         username: req.body.username,
-        goal: req.body.goal,
-        why_started: req.body.why_started,
-        motivation: req.body.motivation,
         website: req.body.website,
-        location: req.body.location,
-        birthday: birthday,
         role: req.body.role,
         public: public
     }

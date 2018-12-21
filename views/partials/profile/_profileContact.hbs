@@ -1,0 +1,60 @@
+<div class="card">
+
+    <div class="card-header">
+
+    <h4 class="card-header-title">
+        {{title}} {{#if name}} {{name}} {{/if}}
+    </h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">
+                    <i class="fe fe-globe"></i> Website
+                </h5>
+            </div>
+
+            <div class="col-auto">
+                <a href="{{website}}" class="small" target="_blank">
+                {{trimString website 0 30}}
+                </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">
+                    <i class="fe fe-mail"></i> Email
+                </h5>
+            </div>
+
+            <div class="col-auto">
+                <a href="mailto:email@example.com" class="small">
+                    email@example.com
+                </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">
+                    <i class="fe fe-phone"></i> Phone
+                </h5>
+            </div>
+
+            <div class="col-auto">
+                <a href="tel:1-555-555-5555" class="small">
+                    +1-555-555-5555
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

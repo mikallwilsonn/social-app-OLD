@@ -417,7 +417,7 @@ exports.likePost = async ( req, res) => {
 
         const notifier = { seen_notifications: false }
         const userToNotify = await User.findOneAndUpdate(
-            { _id: ObjectId(post.author) },
+            { _id: ObjectId( post.author ) },
             { $set: notifier },
             {
                 new: true,
