@@ -158,7 +158,11 @@ exports.registerNewUser = async ( req, res ) => {
             religion: '',
             politics: ''
         },
-        website: '', 
+        contact: {
+            website: '',
+            email: '',
+            phone: ''
+        }, 
         avatar: '/images/defaultAvatar.jpg',
         avatar_id: '',
         profile_cover: '/images/defaultPofileCover.jpg',
@@ -277,14 +281,22 @@ exports.getProfileByUsername = async ( req, res ) => {
         const posts = await Post.find( { author: profile._id })
             .sort({ date_posted: 'descending' });
 
+        let email;
+
+        if ( profile.contact.email === true ) {
+            email = profile.email;
+        } else {
+            email = '';
+        }
+
         res.render( 'profile', {
             username: profile.username,
             profile_id: profile._id,
             avatar: profile.avatar,
             profile_cover: profile.profile_cover,
             title: profile.name,
-            email: profile.email,
-            website: profile.website,
+            email: email,
+            contact: profile.contact,
             joined_at: profile.joined_at,
             profile: profile.profile,
             posts: posts,
@@ -374,14 +386,22 @@ exports.viewFullPost = async ( req, res ) => {
         res.redirect( 'back' );
     }
 
+    let email;
+
+    if ( profile.contact.email === true ) {
+        email = profile.email;
+    } else {
+        email = '';
+    }
+
     res.render( 'profile-post', {
         username: profile.username,
         avatar: profile.avatar,
         profile_id: profile._id,
         profile_cover: profile.profile_cover,
         title: profile.name,
-        email: profile.email,
-        website: profile.website,
+        email: email,
+        contact: profile.contact,
         joined_at: profile.joined_at,
         profile: profile.profile,
         post: post,
@@ -440,6 +460,14 @@ exports.updateProfileInfo = async ( req, res ) => {
         public = false;
     }
 
+    let email_privacy;
+
+    if ( req.body.email_privacy ) {
+        email_privacy =  true;
+    } else {
+        email_privacy = false;
+    }
+
     const updates = {
         name: req.body.name,
         profile: {
@@ -453,8 +481,12 @@ exports.updateProfileInfo = async ( req, res ) => {
             religion: req.body.religion,
             politics: req.body.politics
         },
+        contact: {
+            website: req.body.website,
+            email: email_privacy,
+            phone: req.body.phone
+        },
         username: req.body.username,
-        website: req.body.website,
         public: public,
         changeEmailToken: req.changeEmailToken,
         changeEmailExpires: req.changeEmailExpires,

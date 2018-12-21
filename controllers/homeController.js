@@ -19,18 +19,23 @@ exports.myProfile = async ( req, res ) => {
         .find( { author: req.user._id })
         .sort({ date_posted: 'descending' });
 
+    let email;
+
+    if ( user.contact.email === true ) {
+        email = user.email;
+    } else {
+        email = '';
+    }
+
     res.render( 'profile', {
         username: user.username,
         avatar: user.avatar,
         profile_cover: user.profile_cover,
         title: user.name,
-        email: user.email,
-        gender: user.gender,
-        website: user.website,
-        birthday: user.birthday,
-        joined_at: user.joined_at,
+        email: email,
         profile: user.profile,
-        location: user.location,
+        contact: user.contact,
+        joined_at: user.joined_at,
         why_started: user.why_started,
         motivation: user.motivation,
         goal: user.goal,

@@ -338,6 +338,28 @@ hbs.registerHelper( 'privacy_control', function( public ){
     return new hbs.SafeString( html );
 });
 
+hbs.registerHelper( 'email_privacy_control', function( public ) {
+    let html = '';
+
+    if ( public == true ) {
+        html = `
+            <div class="custom-control custom-checkbox-toggle">
+                <input type="checkbox" class="custom-control-input" id="email_privacy" name="email_privacy" checked>
+                <label class="custom-control-label" for="email_privacy" id="email_privacy_label"></label>
+            </div>
+        `;
+    } else {
+        html = `
+            <div class="custom-control custom-checkbox-toggle">
+                <input type="checkbox" class="custom-control-input" id="email_privacy" name="email_privacy">
+                <label class="custom-control-label" for="email_privacy" id="email_privacy_label"></label>
+            </div>
+        `;
+    }
+
+    return new hbs.SafeString( html );
+});
+
 
 // ----
 // Privacy Text

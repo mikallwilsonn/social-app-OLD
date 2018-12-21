@@ -109,15 +109,6 @@
 
                 </div>
 
-                <div class="col-12 col-md-6">
-                    
-                    <div class="form-group">
-                        <label>Website</label>
-                        <input type="text" name="website" id="website" class="form-control" value="{{user.website}}">
-                    </div>
-
-                </div>
-
                 <div class="col-12">
                     <br />
                     <hr>
@@ -217,12 +208,33 @@
                     <br />
                 </div>
 
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="text" name="website" id="website" class="form-control" value="{{user.contact.website}}">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" id="phone" class="form-control" value="{{user.contact.phone}}">
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <br />
+                    <hr>
+                    <br />
+                </div>
+
                 <div class="col-12">
 
                     <div class="form-group">
                         <!-- Label -->
                         <label class="mb-1">
-                            Privacy
+                            Profile Privacy
                         </label>
 
                         <!-- Form text -->
@@ -247,7 +259,43 @@
                     </div>
 
                 </div>
+
+                <div class="col-12">
+                    <br />
+                    <hr>
+                    <br />
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <!-- Label -->
+                        <label class="mb-1">
+                            Email Privacy
+                        </label>
+
+                        <!-- Form text -->
+                        <small class="form-text text-muted">
+                            Making your email public means that it will be displayed on your profile as a means of connecting with you.
+                        </small>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <!-- Toggle -->
+                                {{email_privacy_control user.contact.email}}
+                            </div>
+
+                            <div class="col ml--2">
+                                <!-- Help text -->
+                                <small class="text-muted">
+                                    {{privacy_text user.contact.email}}
+                                </small>
+                            </div>
+
+                        </div> <!-- / .row -->
+                    </div>
+                </div>
             </div> <!-- / .row -->
+
 
 
             <br />
