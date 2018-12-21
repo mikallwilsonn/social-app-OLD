@@ -118,11 +118,10 @@
     <div class="col-12 col-xl-4">
 
       <!-- Card -->
-      {{> profile/_contentCard title='About ' name=title content=profile}}
+      {{> profile/_contentCard title='About ' name=title content=profile.bio}}
       {{> profile/_profileMeta 
-            birthday=birthday 
+            profile=profile 
             joined_at=joined_at
-            location=location
             website=website 
       }}
 
