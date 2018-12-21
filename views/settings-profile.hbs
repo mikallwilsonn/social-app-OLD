@@ -131,6 +131,86 @@
                     </div>
                 </div>
 
+                <div class="col-12 col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" class="form-control form-control-lg">
+                            <option id="country_default" selected="{{user.profile.gender}}" value="{{user.profile.gender}}">{{user.profile.gender}}</option>
+                            <option id="country_default-divider" disabled="disabled">-------------------</option>
+                            <option value="">(Prefer Not To Disclose)</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="occupation">Occupation</label>
+                        <input type="text" name="occupation" id="occupation" class="form-control" value="{{user.profile.occupation}}">
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="relationship_status">Relationship Status</label>
+                        <select name="relationship_status" id="relationship_status" class="form-control form-control-lg">
+                            <option id="country_default" selected="{{user.profile.relationship_status}}" value="{{user.profile.relationship_status}}">{{user.profile.relationship_status}}</option>
+                            <option id="country_default-divider" disabled="disabled">-------------------</option>
+                            <option value="">(Prefer Not To Disclose)</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="In A Relationship">In A Relationship</option>
+                            <option value="Long-Term Relationship">Long-Term Relationship</option>
+                            <option value="Open Relationship">Open Relationship</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="sexual_orientation">Sexual Orientation</label>
+                        <select name="sexual_orientation" id="sexual_orientation" class="form-control form-control-lg">
+                            <option id="country_default" selected="{{user.profile.sexual_orientation}}" value="{{user.profile.sexual_orientation}}">{{user.profile.sexual_orientation}}</option>
+                            <option id="country_default-divider" disabled="disabled">-------------------</option>
+                            <option value="">(Prefer Not To Disclose)</option>
+                            <option value="Heterosexual">Heterosexual</option>
+                            <option value="Homosexual">Homosexual</option>
+                            <option value="Bisexual">Bisexual</option>
+                            <option value="Asexual">Asexual</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="religion">Religion</label>
+                        <input type="text" name="religion" id="religion" class="form-control" value="{{user.profile.religion}}">
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    
+                    <div class="form-group">
+                        <label for="politics">Politics</label>
+                        <input type="text" name="politics" id="politics" class="form-control" value="{{user.profile.politics}}">
+                    </div>
+
+                </div>
+
+
                 <div class="col-12">
                     <br />
                     <hr>

@@ -52,9 +52,10 @@ hbs.registerHelper( 'breaklines', function( text ) {
 // ----
 // Creates an excerpt of a string 
 hbs.registerHelper( 'trimString', function( passedString, start, end) {
+    let passedStringLength = passedString.length;
     passedString = passedString.toString();
     let theString = passedString.substring( start, end );
-    if ( passedString >= end ) {
+    if ( passedStringLength >= end ) {
         theString = theString + '...';
     }
     return new hbs.SafeString( theString );

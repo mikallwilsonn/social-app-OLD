@@ -1,4 +1,13 @@
 <div class="card">
+
+    <div class="card-header">
+
+    <h4 class="card-header-title">
+        {{title}} {{#if name}} {{name}} {{/if}}
+    </h4>
+
+    </div>
+
     <div class="card-body">
 
         <div class="row align-items-center">
@@ -41,6 +50,78 @@
             </div>
         </div>
 
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Gender</h5>
+            </div>
+
+            <div class="col-auto">
+                <small class="text-muted">{{profile.gender}}</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Occupation</h5>
+            </div>
+
+            <div class="col-auto">
+                <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{profile.occupation}}">{{trimString profile.occupation 0 30}}</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Relationship Status</h5>
+            </div>
+
+            <div class="col-auto">
+                <small class="text-muted">{{profile.relationship_status}}</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Sexual Orientation</h5>
+            </div>
+
+            <div class="col-auto">
+                <small class="text-muted">{{profile.sexual_orientation}}</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Religion</h5>
+            </div>
+
+            <div class="col-auto">
+                <small class="text-muted">{{profile.religion}}</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Politics</h5>
+            </div>
+
+            <div class="col-auto">
+                <small class="text-muted">{{profile.politics}}</small>
+            </div>
+        </div>
 
         <hr>
 
