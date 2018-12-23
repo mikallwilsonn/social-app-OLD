@@ -8,7 +8,7 @@
       </div>
       <div class="col-auto col-4">
 
-        <form method="POST" action="/users">
+        <form method="POST" action="/community/find-people">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search by name or @username..." aria-label="SSearch by name or username..." aria-describedby="basic-addon2" name="search">
             <div class="input-group-append">
@@ -20,13 +20,17 @@
         </form>
 
       </div>
+
     </div>
+
+    {{> community/_navCommunity}}
+  
   </div>
 </div>
 
 {{#if query}}
   <div class="col-6 row">
-    <p class="row">Results for: {{query}} |  <a href="/users">View All</a></p>
+    <p class="row">Results for: {{query}} |  <a href="/community/find-people">View All</a></p>
   </div>
 {{/if}}
 
