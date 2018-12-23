@@ -169,18 +169,6 @@ router.get( '/settings/manage-password',
 router.post( '/settings/manage-password', catchErrors( userController.updatePassword ));
 
 
-// GET all users
-router.get( '/users', 
-    authController.isLoggedIn,
-    userController.getUsers 
-);
-
-// Search for users by term
-router.post( '/users', 
-    authController.isLoggedIn,
-    userController.searchUsers 
-);
-
 // GET specified page of users
 router.get( '/users/page/:page',     
     authController.isLoggedIn,
@@ -239,6 +227,41 @@ router.post( '/like_post=:post_id', postController.likePost );
 
 // If liked, UNLIKE a specific post
 router.post( '/unlike_post=:post_id', postController.unlikePost );
+
+
+
+//
+// ----------------
+// Community Routes
+// --------
+
+// ----
+// Find People
+router.get( '/community', ( req, res ) => {
+    res.redirect( '/community/find-people' );
+} 
+);
+
+// GET all users
+router.get( '/community/find-people', 
+    authController.isLoggedIn,
+    userController.getUsers 
+);
+
+// Search for users by term
+router.post( '/community/find-people', 
+    authController.isLoggedIn,
+    userController.searchUsers 
+);
+
+
+// ----
+// Groups
+
+
+
+// ----
+// Events
 
 
 
