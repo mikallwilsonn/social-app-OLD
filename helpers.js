@@ -421,3 +421,12 @@ hbs.registerHelper( 'active_path', function( currentPath, path ) {
         return new hbs.SafeString( 'active' );
     } 
 });
+
+
+// ----
+// Count length of an array
+hbs.registerHelper( 'array_count', function( array ) {
+    let length = array.length;
+
+    return new hbs.SafeString( length );
+});

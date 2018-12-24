@@ -19,7 +19,7 @@ const groupSchema = new Schema({
         type: String
     },
     author: {
-        type: mongoose.Schema.ObjectId,
+        type: Schema.Types.ObjectId,
         Ref: 'User',
         required: 'Groups need to have an author'
     },
@@ -28,16 +28,20 @@ const groupSchema = new Schema({
         trim: true
     },
     members: [{
-        type: mongoose.Schema.ObjectId,
-        Ref: 'User',   
+        type: Schema.Types.ObjectId,
+        Ref: 'User'   
     }],
     private: {
         type: Boolean,
         default: false
+    },
+    date_created: {
+        type: Date,
+        default: Date.now
     }
 });
 
-groupSchema.pre('save', async function( next ) {
+groupSchema.pre( 'save', async function( next ) {
     if (!this.isModified( 'name' )) {
         next(); // Skip it
         return; // Stop this function from running
@@ -45,7 +49,7 @@ groupSchema.pre('save', async function( next ) {
     this.slug = slug( this.name );
     // find other stores of same name
     const slugRegEx = new RegExp( `^(${this.slug})((-[0-9]*$)?)$`, 'i' );
-    const groupsWithSlug = await this.constructor.find( {slug: slugRegEx} );
+    const groupsWithSlug = await this.constructor.find({ slug: slugRegEx });
     if( groupsWithSlug.length ) {
         this.slug = `${this.slug}-${groupsWithSlug.length + 1}`;
     }
@@ -54,11 +58,17 @@ groupSchema.pre('save', async function( next ) {
 
 function findAutopopulate( next ) {
     this.populate( 'author' );
+    next();
+}
+
+function findOneAutopopulate( next ) {
+    this.populate( 'author' );
     this.populate( 'members' );
     next();
 }
 
 groupSchema.pre( 'find', findAutopopulate );
+groupSchema.pre( 'findOne', findOneAutopopulate );
 
 
 groupSchema.plugin( mongodbErrorHandler );

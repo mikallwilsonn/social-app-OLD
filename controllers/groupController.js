@@ -1,4 +1,3 @@
-
 // Controller Dependencies
 const mongoose = require( 'mongoose' );
 const ObjectId = require('mongodb').ObjectId;
@@ -7,6 +6,7 @@ const multer = require( 'multer' );
 const jimp = require( 'jimp' );
 
 // Models
+const User = mongoose.model( 'User' );
 const Group = mongoose.model( 'Group' );
 
 // Multer options for uploading a single image
@@ -109,13 +109,13 @@ exports.createNewGroup = async ( req, res, next ) => {
         group_privacy = false;
     }
 
-
     const group  = {
         name: req.body.name,
         group_image: req.body.group_image.secure_url,
         group_image_id: req.body.group_image.public_id,
-        author: req.user._id,
+        author: ObjectId(req.user._id),
         description: req.body.description,
+        members: [ObjectId(req.user._id)],
         private: group_privacy
     };
 
@@ -130,7 +130,7 @@ exports.createNewGroup = async ( req, res, next ) => {
         } else {
             console.log( result );
             req.flash( 'success', `Your group, ${newGroup.name}, has been sucessfully created.` );
-            res.redirect( `/community/group/${newGroup.slug}` );
+            res.redirect( `/community/groups/${newGroup.slug}` );
         }
     });
 }

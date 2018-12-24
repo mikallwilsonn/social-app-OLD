@@ -109,6 +109,10 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId, 
         ref: 'Post'
     },
+    groups: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'Group'
+    },
     resetPasswordToken: {
         type: String,
         default: ''
