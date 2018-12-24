@@ -1,0 +1,63 @@
+<div class="header">
+  <div class="header-body">
+    <div class="row align-items-end">
+      <div class="col">
+
+        <h1 class="header-title">{{title}}</h1>
+        <a href="/community/groups/new" class="btn btn-primary">Create New Group</a>
+
+      </div>
+      <div class="col-auto col-4">
+
+        <form method="POST" action="/community/find-people">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search by name or @username..." aria-label="SSearch by name or username..." aria-describedby="basic-addon2" name="search">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                <i class="fe fe-search "></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+    {{> community/_navCommunity}}
+  
+  </div>
+</div>
+
+{{#if query}}
+  <div class="col-6 row">
+    <p class="row">Results for: {{query}} |  <a href="/community/find-people">View All</a></p>
+  </div>
+{{/if}}
+
+<div class="row wrap space-between">
+  {{#each groups}}
+      {{> groups/_groupCard group=this}}
+  {{/each}}
+</div>
+
+<div class="row space-around">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {{#if prevPage}}
+        <li class="page-item"><a class="page-link" href="/users/page/{{prevPage}}">Previous</a></li>
+      {{else}}
+        <li class="page-item disabled"><a class="page-link" href="">Previous</a></li>
+      {{/if}}
+      
+      <li class="page-item"><span class="page-link">Currently Viewing Page <strong>{{page}}</strong> of {{pages}}</span></li>
+
+      {{#if nextPage}}
+        <li class="page-item"><a class="page-link" href="/users/page/{{nextPage}}">Next</a></li>
+      {{else}}
+        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+      {{/if}}
+    </ul>
+  </nav>
+</div>
+

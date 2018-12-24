@@ -1,0 +1,117 @@
+<div class="container-fluid settings-container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+        
+        <div class="header">
+            <div class="header-body">
+                <div class="row align-items-end">
+                <div class="col">
+
+                    <h6 class="header-pretitle">
+                    Groups
+                    </h6>
+
+                    <h1 class="header-title">
+                    {{title}}
+                    </h1>
+                    
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form class="mb-4" method="POST" action="/community/groups/new" enctype="multipart/form-data">
+            <div class="row">
+                
+                <div class="col-12 col-md-6">
+                    
+                    <!-- First name -->
+                    <div class="form-group">
+                        <label for="name">Group Name</label>
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <!-- First name -->
+                    <div class="form-group">
+
+                        <label for="photo">Group Photo</label><br />
+                        <input type="file" name="photo" id="photo" class="form-control" accept="image/png, image/jpg, image/jpeg">
+
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="description">Group Description</label>
+                        <textarea class="form-control" name="description" id="description"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <br />
+                    <hr>
+                    <br />
+                </div>
+
+                <div class="col-12">
+
+                    <div class="form-group">
+                        <!-- Label -->
+                        <label class="mb-1">
+                            Group Privacy
+                        </label>
+
+                        <!-- Form text -->
+                        <small class="form-text text-muted">
+                            Making your profile private means that only those you invite can see and have access to this group.
+                        </small>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <!-- Toggle -->
+                                <div class="custom-control custom-checkbox-toggle">
+                                    <input type="checkbox" class="custom-control-input" id="private" name="private">
+                                    <label class="custom-control-label" for="private" id="email_privacy_label"></label>
+                                </div>
+                            </div>
+
+                            <div class="col ml--2">
+                                <!-- Help text -->
+                                <small class="text-muted">
+                                    Groups are Open by default.
+                                </small>
+                            </div>
+
+                        </div> <!-- / .row -->
+                    </div>
+
+                </div>
+
+                <div class="col-12">
+                    <br />
+                    <hr>
+                    <br />
+                </div>
+
+            </div> <!-- / .row -->
+
+
+
+            <br />
+            <hr class="mt-4 mb-5">
+            <br />
+
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">
+                Create New Group
+            </button>
+        </form>
+
+        </div>
+    </div> <!-- / .row -->
+</div>

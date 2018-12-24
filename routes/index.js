@@ -10,6 +10,7 @@ const authController = require( '../controllers/authController' );
 const userController = require( '../controllers/userController' );
 const postController = require( '../controllers/postController' );
 const adminController = require( '../controllers/adminController' );
+const groupController = require( '../controllers/groupController' );
 
 // Use devController.postDump on any POST request to test what data is being passed to the database before actually doing so
 const devController = require( '../controllers/devController' );
@@ -258,7 +259,31 @@ router.post( '/community/find-people',
 // ----
 // Groups
 
+// Get Groups
+router.get( '/community/groups', 
+    authController.isLoggedIn,
+    groupController.getGroups
+);
 
+// New Group Form
+router.get( '/community/groups/new', 
+    authController.isLoggedIn,
+    groupController.newGroup
+);
+
+// Create and Save New Group
+router.post( '/community/groups/new', 
+    groupController.getGroupImageFile,
+    groupController.resizeGroupImage,
+    groupController.uploadGroupImage,
+    catchErrors( groupController.createNewGroup ) 
+);
+
+// Get Group By Slug
+router.get( '/community/groups/:slug', 
+    authController.isLoggedIn,
+    groupController.getGroupBySlug
+);
 
 // ----
 // Events
@@ -323,6 +348,22 @@ router.post( '/admin/accept-invite-request=:request_id', adminController.acceptI
 
 // Reject Invite Requests
 router.post( '/admin/reject-invite-request=:request_id', adminController.rejectInviteRequest );
+
+// ----
+// Manage Groups
+//
+
+// Get Groups
+router.get( '/admin/manage-groups',
+    adminController.isAdminCheck,
+    adminController.getGroups
+);
+
+// Delete Group
+router.post( '/admin/delete-group=:group_id', 
+    adminController.isAdminCheck,
+    adminController.deleteGroup
+);
 
 
 module.exports = router;

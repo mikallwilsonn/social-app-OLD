@@ -2,11 +2,13 @@
 const mongoose = require( 'mongoose' );
 const moment = require( 'moment' );
 const uuidv5 = require( 'uuid/v5' );
+const cloudinary = require( 'cloudinary' );
 
 // Models
 const Post = mongoose.model( 'Post' );
 const User = mongoose.model( 'User' ); 
 const AccountInvite = mongoose.model( 'AccountInvite' );
+const Group = mongoose.model( 'Group' );
 
 
 // --------
@@ -229,8 +231,6 @@ exports.deleteUser = async ( req, res ) => {
 }
 
 
-
-
 // --------
 // User Invite Management
 // --------
@@ -355,4 +355,52 @@ exports.rejectInviteRequest = async ( req, res ) => {
     req.flash( 'success', 'You successfully rejected and deleted the invite request.' );
     res.redirect( 'back' );
     return;
+}
+
+
+
+// --------
+// Group Management
+// --------
+
+// ----
+// Get Groups
+exports.getGroups = async ( req, res ) => {
+    const groups = await Group.find();
+
+    res.render( 'admin/groups', {
+        title: 'Manage Groups',
+        groups: groups
+    });
+}
+
+
+// ----
+// Delete Group
+exports.deleteGroup = async ( req, res ) => {
+
+    const group = await Group.findOne({ _id: req.params.group_id });
+
+    if ( !group ) {
+
+        req.flash( 'error', 'There was an error trying to delete the group. Please try again.' );
+        res.redirect( 'back' );
+
+    } else {
+        await Group.deleteOne({ _id: group._id });
+
+        await cloudinary.v2.api.delete_resources(group.group_image_id,
+            function( error, result ) {
+                if ( error ) {
+                    req.flash( 'caution', 'Could not delete the group image. Manual deletion is required.' );
+                } else {
+                    console.log( result );
+                }
+                
+            }
+        );
+    
+        res.redirect( 'back' );
+        return;
+    }
 }

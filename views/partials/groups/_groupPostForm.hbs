@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-body">
+    
+        <form id="postToProfile__form" method="POST" action="/create-new-group-post">
+            <div class="input-group input-group-lg input-group-flush input-group-merge">
+                <textarea name="post_content" id="post_content" class="form-control form-control-appended" placeholder="Post to {{groupName}}"></textarea>
+
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span id="file-trigger" class="fe fe-camera" data-toggle="tooltip" data-placement="top" title="Add a photo to your post!"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="uploadPreview__container">
+                <p class="row space-between">
+                    <small class="text-muted">Preview:</small>
+                    <i id="remove_post_image" class="fe fe-x"></i>
+                </p>
+                <img src="" id="uploadPreview" class="account__avatar--preview">
+            </div>
+            
+            <input name="post_image" type="file" id="upload" accept="image/gif, image/png, image/jpg, image/jpeg">
+            <button type="submit" id="submitUpload" class="btn btn-primary d-none" data-toggle="modal" data-target="#modalLoading">Post To {{groupName}}</button>
+        </form>
+
+    </div>
+</div>

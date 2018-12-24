@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 ">
+        
+            {{> admin/_adminHeader}}
+
+            <div class="table-responsive bg-white" data-toggle="lists" data-lists-values='["tables-row", "tables-first", "tables-last", "tables-handle"]'>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                ID
+                            </th>
+                            <th scope="col">
+                                <a href="#" class="text-muted sort" data-sort="tables-name">
+                                    Group Name
+                                </a>
+                            </th>
+                            <th scope="col">
+                                <a href="#" class="text-muted sort" data-sort="tables-members">
+                                    Members
+                                </a>
+                            </th>
+                            <th scope="col">
+                                <a href="#" class="text-muted sort" data-sort="tables-author">
+                                    Group Creator
+                                </a>
+                            </th>
+                            <th scope="col">
+                                <a href="#" class="text-muted sort" data-sort="tables-private">
+                                    Private?
+                                </a>
+                            </th>
+                            <th scope="col">
+                                <a href="#" class="text-muted sort" data-sort="tables-date-created">
+                                    Date Created
+                                </a>
+                            </th>
+
+                            <th scope="col" class="text-muted">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each groups}}
+                            <tr class="user-row">
+                                <th scope="row" data-toggle="tooltip" data-placement="top" title="{{this._id}}">
+                                    {{trimString this._id 0 8}}...
+                                </th>
+                                <td class="tables-name">
+                                    {{this.name}}
+                                </td>
+                                <td class="tables-members">
+                                    {{array_count this.members}}
+                                </td>
+                                <td class="tables-author">
+                                    {{this.author.name}}
+                                </td>
+                                <td class="tables-private">
+                                    {{this.private}}
+                                </td>
+                                <td class="tables-date_created" data-toggle="tooltip" data-placement="top" title="{{moment_ago this.date_created}}">
+                                    {{moment this.date_created}}
+                                </td>
+                                <td class="dropdown">
+                                    <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fe fe-menu"></i>
+                                    </a>
+                                    <div id="admin-user-actions" class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item text-info" href="/community/groups/{{this.slug}}" style="text-align: center; margin-left: -6px;">
+                                            <i class="fe fe-layout"></i> View Group
+                                        </a>
+                                        <form method="POST" action="/admin/delete-group={{this._id}}" class="dropdown-item" data-toggle="tooltip" data-placement="left" title="Delete Group" data-alert="true" data-alert-text="You are about to delete the group {{this.name}}" data-alert-icon="warning">
+                                            <button class="dropdown-item text-danger">
+                                                <i class="fe fe-trash"></i> Delete Group
+                                            </button>
+                                        </form>
+                                    
+                                    </div>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            {{dump groups}}
+
+    </div> <!-- / .row -->
+</div>
