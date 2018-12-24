@@ -1,0 +1,23 @@
+<div class="col-md-6 col-xl-4">
+  <div class="card col-12 user-card">
+
+
+    <a class="user-card__image-link" href="/community/groups/{{group.slug}}" style="background:url({{group.group_image}}) no-repeat; background-size:cover; background-position:center center;"></a>
+
+    <div class="card-body text-center">
+
+        <h2 class="card-title">
+            <a href="/community/groups/{{group.slug}}">
+            {{group.name}}
+            </a>
+        </h2>
+
+        <p>
+            {{trimString group.description 0 150}}
+        </p>
+
+
+    </div>
+
+  </div>
+</div>
