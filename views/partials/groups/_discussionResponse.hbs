@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                
+                <a href="/users/@{{response._author.username}}" class="avatar avatar-lg">
+                    <img src="{{response._author.avatar}}" alt="{{response._author.name}}'s avatar'" class="avatar-img rounded">
+                </a>
+
+            </div>
+            <div class="col ml--2">
+                <p class="card-text small text-muted">
+                    Posted by <a href="/users/@{{response._author.username}}">{{response._author.name}}</a> <i class="fe fe-clock"></i> {{moment_ago response.date_created}} 
+                </p>
+
+                <hr />
+
+                <p class="card-text small text-muted mb-1">
+                {{breaklines response.content}}
+                </p>
+
+            </div>
+
+            <div class="col-auto">
+                {{#if isAdmin}}
+                    <div class="dropdown">
+                        <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#!" class="dropdown-item">
+                            Action
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                            Another action
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                            Something else here
+                            </a>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

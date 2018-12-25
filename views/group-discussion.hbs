@@ -1,0 +1,31 @@
+{{> groups/_groupHeader group=group}}
+<!-- CONTENT -->
+<div class="">
+    <div class="row">
+        <div class="col-12 col-xl-8">
+            {{> groups/_discussionOP discussion=discussion}}
+            
+            {{#if discussion.responses}}
+                {{#each discussion.responses}}
+                    {{> groups/_discussionResponse response=this}}
+                {{/each}}
+                {{> groups/_discussionResponseForm}}
+            {{else}}
+                {{> groups/_discussionResponseForm}}
+            {{/if}}
+
+        </div>
+
+        <div class="col-12 col-xl-4">
+            {{> profile/_contentCard 
+                title='About '  
+                name=group.name
+                content=group.description
+            }}
+            {{> groups/_creatorCard}}
+            {{> groups/_membersCard group.members}}
+
+        </div>
+    </div> <!-- / .row -->
+
+</div> <!-- / .container-fluid -->

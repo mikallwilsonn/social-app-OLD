@@ -285,6 +285,42 @@ router.get( '/community/groups/:slug',
     groupController.getGroupBySlug
 );
 
+// Join Group
+router.post( '/community/groups/:slug/join', 
+    groupController.joinGroup
+);
+
+// Leave Group
+router.post( '/community/groups/:slug/leave', 
+    groupController.leaveGroup
+);
+
+router.get( '/community/groups/:slug/discussion', ( req, res ) => {
+    res.redirect( `/community/groups/${req.params.slug}` );
+});
+
+// New Group Discussion Form
+router.get( '/community/groups/:slug/new',
+    authController.isLoggedIn,
+    groupController.newDiscussion
+);
+
+
+// Create New Discussion
+router.post( '/community/groups/:slug/new', 
+    groupController.createNewDiscussion
+);
+
+// View Discussion Thread by slug
+router.get( '/community/groups/:group_slug/:discussion_slug', 
+    groupController.viewDiscussion
+);
+
+// Post Response to Discussion
+router.post( '/community/groups/:group_slug/:discussion_slug',
+    groupController.postResponse
+);
+
 // ----
 // Events
 
