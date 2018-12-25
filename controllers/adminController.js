@@ -9,6 +9,7 @@ const Post = mongoose.model( 'Post' );
 const User = mongoose.model( 'User' ); 
 const AccountInvite = mongoose.model( 'AccountInvite' );
 const Group = mongoose.model( 'Group' );
+const Discussion = mongoose.model( 'Discussion' );
 
 
 // --------
@@ -388,6 +389,7 @@ exports.deleteGroup = async ( req, res ) => {
 
     } else {
         await Group.deleteOne({ _id: group._id });
+        await Discussion.deleteMany({ _group: group._id });
 
         await cloudinary.v2.api.delete_resources(group.group_image_id,
             function( error, result ) {

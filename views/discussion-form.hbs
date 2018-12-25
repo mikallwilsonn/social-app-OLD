@@ -1,0 +1,55 @@
+{{> groups/_groupHeader group=group}}
+
+<!-- CONTENT -->
+<div class="">
+    <div class="row">
+        <div class="col-12 col-xl-8">
+
+            <form class="mb-4" method="POST" action="/community/groups/{{group.slug}}/new">
+                <div class="row">
+                    
+                    <div class="col-12 col-md-6">
+                        
+                        <!-- First name -->
+                        <div class="form-group">
+                            <label for="topic">Topic for Discussion</label>
+                            <input type="text" name="topic" id="topic" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="content">Start the discussion...</label>
+                            <textarea class="form-control" name="content" id="content"></textarea>
+                        </div>
+                    </div>
+
+                </div> <!-- / .row -->
+
+
+
+                <br />
+                <hr class="mt-4 mb-5">
+                <br />
+
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">
+                    Create New Discussion Topic
+                </button>
+            </form>
+
+
+        </div>
+
+        <div class="col-12 col-xl-4">
+            {{> profile/_contentCard 
+                title='About '  
+                name=group.name
+                content=group.description
+            }}
+            {{> groups/_creatorCard}}
+            {{> groups/_membersCard group.members}}
+
+        </div>
+    </div> <!-- / .row -->
+
+</div> <!-- / .container-fluid -->

@@ -1,0 +1,64 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                
+                <a href="/users/@{{discussion._author.username}}" class="avatar avatar-lg">
+                    <img src="{{discussion._author.avatar}}" alt="{{discussion._author.name}}'s avatar'" class="avatar-img rounded">
+                </a>
+
+            </div>
+            <div class="col ml--2">
+
+                <h3 class="card-title mb-1 name">
+                    <a href="/community/groups/{{group.slug}}">{{discussion.topic}}</a>
+                </h3>
+
+                <p class="card-text small text-muted">
+                    {{moment discussion.date_created}} | <i class="fe fe-clock"></i> Date Last Updated
+                </p>
+
+                <hr />
+                <br />
+
+                <p class="card-text small text-muted mb-1">
+                {{trimString discussion.content 0 100}}
+                </p>
+                
+            </div>
+            <div class="col-auto">
+                
+                <div class="avatar-group d-none d-md-inline-flex">
+                    {{#if discussion.responses}}
+                        {{#each discussion.responses}}
+                            <a href="/users/@{{this._author.username}}" class="avatar avatar-xs">
+                                <img src="{{this.author.avatar}}" class="avatar-img rounded-circle border border-white" alt="{{this._author.name}}'s avatar'">
+                            </a>
+                        {{/each}}
+                    {{/if}}
+                </div>
+
+            </div>
+            <div class="col-auto">
+                {{#if isAdmin}}
+                    <div class="dropdown">
+                        <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#!" class="dropdown-item">
+                            Action
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                            Another action
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                            Something else here
+                            </a>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

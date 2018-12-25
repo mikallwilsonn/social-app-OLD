@@ -505,6 +505,14 @@ a.lightbox_trigger:hover { opacity:0.9; }
 
 /* ------------------ */
 /* -- Admin Styles -- */
+.discussionOP {
+  border-bottom: 2px solid rgba(44,123,229,1);
+}
+
+
+
+/* ------------------ */
+/* -- Admin Styles -- */
 #admin-user-actions a {
   display:block;
   transition:0.2s;

@@ -19,7 +19,7 @@ const groupSchema = new Schema({
         type: String
     },
     author: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         Ref: 'User',
         required: 'Groups need to have an author'
     },
@@ -28,7 +28,7 @@ const groupSchema = new Schema({
         trim: true
     },
     members: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         Ref: 'User'   
     }],
     private: {
@@ -47,7 +47,6 @@ groupSchema.pre( 'save', async function( next ) {
         return; // Stop this function from running
     }
     this.slug = slug( this.name );
-    // find other stores of same name
     const slugRegEx = new RegExp( `^(${this.slug})((-[0-9]*$)?)$`, 'i' );
     const groupsWithSlug = await this.constructor.find({ slug: slugRegEx });
     if( groupsWithSlug.length ) {

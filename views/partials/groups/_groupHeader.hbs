@@ -1,0 +1,58 @@
+<div class="header">
+
+    <!-- Image -->
+    <div style="background:url({{group.group_image}}) no-repeat; background-position:center; background-size:cover; padding:200px 0;position: relative;" class="header-img-top"></div>
+
+    <div class="container-fluid">
+
+        <!-- Body -->
+        <div class="header-body mt--5 mt-md--6">
+            <div class="row align-items-end">
+                <div class="col-auto">
+                    <!-- Avatar -->
+                    <div class="avatar avatar-xxl header-avatar-top">
+                        <img src="/images/groups.jpg" alt="Groups" class="avatar-img rounded border border-body">
+                    </div>
+                </div>
+
+                <div class="col mb-3 ml--3 ml-md--2">
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                        Groups
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                        {{group.name}}
+                    </h1>
+                </div>
+
+                <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">     
+                    <form method="POST" action="/community/groups/{{group.slug}}/join">
+                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalLoading">Join</button>
+                    </form>
+                </div>
+
+            </div> <!-- / .row -->
+
+            <div class="row align-items-center">
+                <div class="col">
+                    <!-- Nav -->
+                    <ul class="nav nav-tabs nav-overflow header-tabs">
+                        <li class="nav-item">
+                            <a href="/community/groups/{{group.slug}}/discussion" class="nav-link active">
+                                Discussion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/community/groups/{{group.slug}}" class="nav-link">
+                                Members
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div> <!-- / .header-body -->
+    </div> <!-- / .container-fluid -->
+</div>

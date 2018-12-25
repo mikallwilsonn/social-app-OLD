@@ -20,6 +20,8 @@ require( './models/Reply' );
 require( './models/Notification' );
 require( './models/AccountInvite' );
 require( './models/Group' );
+require( './models/Discussion' );
+require( './models/Response' );
 
 
 // ----
