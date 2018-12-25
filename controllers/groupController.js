@@ -99,7 +99,7 @@ exports.uploadGroupImage = async ( req, res, next ) => {
     
 }
 // Save New Group
-exports.createNewGroup = async ( req, res, next ) => {
+exports.createNewGroup = async ( req, res ) => {
 
     let group_privacy;
 

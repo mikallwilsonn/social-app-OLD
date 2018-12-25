@@ -19,7 +19,7 @@ const groupSchema = new Schema({
         type: String
     },
     author: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         Ref: 'User',
         required: 'Groups need to have an author'
     },
@@ -28,7 +28,7 @@ const groupSchema = new Schema({
         trim: true
     },
     members: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         Ref: 'User'   
     }],
     private: {
