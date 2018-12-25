@@ -274,7 +274,7 @@ exports.postResponse = async ( req, res ) => {
 
     const response = {
         _author: ObjectId( req.user._id ),
-        content: req.body.content
+        content: req.body.response
     }
 
     const newResponse = new Response( response );
@@ -284,4 +284,8 @@ exports.postResponse = async ( req, res ) => {
         { $push: { "responses": newResponse }}, 
         { safe: true, new : true }
     );
+
+    req.flash( 'success', 'You succesfully posted a responsed.' );
+    res.redirect( 'back' );
+    return;
 }

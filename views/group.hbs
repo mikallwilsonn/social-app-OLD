@@ -9,7 +9,7 @@
         <div class="col-12 col-xl-8">
             {{#if discussions}}
                 {{#each discussions}}
-                    {{> groups/_discussionCard discussion=this}}
+                    {{> groups/_discussionCard group=../group discussion=this}}
                 {{/each}}
             {{/if}}
 
