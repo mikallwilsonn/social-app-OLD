@@ -1,0 +1,22 @@
+{{> profile/_profileHeader
+    profile_cover=profile_cover 
+    avatar=avatar 
+    title=title 
+    username=username
+    user=user
+    isCurrentUser=isCurrentUser
+    profileFollowers=profileFollowers
+    profileFollowing=profileFollowing
+}}
+
+<!-- CONTENT -->
+<div class="">
+
+    <div class="row wrap space-between">
+        {{#each users}}
+            {{> users/_userCard id=this.id username=this.username avatar=this.avatar profile_cover=this.profile_cover name=this.name about=this.profile}}
+        {{/each}}
+    </div>
+
+
+</div> <!-- / .container-fluid -->
