@@ -31,7 +31,6 @@
         <link rel='stylesheet' href='/stylesheets/style.css' />
     </head>
 
-
     <body>
         {{> modals/_loading}}
 
@@ -49,6 +48,8 @@
             {{> flashes/_flashHandler}}
             {{{body}}}
         {{/if}}
+
+        {{currentPath}}
 
         <script src="/libs/jquery/dist/jquery.min.js"></script>
 
