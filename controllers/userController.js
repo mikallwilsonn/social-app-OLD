@@ -302,7 +302,7 @@ exports.getProfileByUsername = async ( req, res ) => {
             posts: posts,
             postControls: false,
             followers: profile.followers,
-            role: profile.role
+            role: profile.role,
         });
     }
 }
@@ -321,14 +321,16 @@ exports.getProfileFollowing = async ( req, res ) => {
         public: true
     });
 
-    res.render( 'profile-following', {
+    res.render( 'profile-follows', {
         username: profile.username,
         profile_id: profile._id,
         avatar: profile.avatar,
         profile_cover: profile.profile_cover,
         title: profile.name,
         users,
-        followers: profile.followers
+        followers: profile.followers,
+        profileFollowers: false,
+        profileFollowing: true
     });
 }
 
@@ -351,14 +353,16 @@ exports.getProfileFollowers = async ( req, res ) => {
         public: true
     });
 
-    res.render( 'profile-followers', {
+    res.render( 'profile-follows', {
         username: profile.username,
         profile_id: profile._id,
         avatar: profile.avatar,
         profile_cover: profile.profile_cover,
         title: profile.name,
         users,
-        followers: profile.followers
+        followers: profile.followers,
+        profileFollowers: true,
+        profileFollowing: false
     });
 }
 

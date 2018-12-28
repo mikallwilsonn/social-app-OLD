@@ -1,46 +1,14 @@
-<!-- HEADER -->
-<div class="header">
-
-  <!-- Image -->
-  <div style="background:url({{profile_cover}}) no-repeat; background-position:center; background-size:cover; padding:200px 0;position: relative;" class="header-img-top">
-
-  </div>
-
-  <div class="container-fluid container-profile-header">
-
-    <!-- Body -->
-    <div class="header-body mt--5 mt-md--6">
-      <div class="row align-items-end">
-        <div class="col-auto">
-
-          <!-- Avatar -->
-          <div class="avatar avatar-xxl header-avatar-top">
-            <img src="{{avatar}}" alt="..." class="avatar-img rounded-circle border border-body">
-          </div>
-
-        </div>
-
-        <div class="col mb-3 ml--3 ml-md--2">
-          <!-- Pretitle -->
-          <h6 class="header-pretitle">@{{username}}</h6>
-          <!-- Title -->
-          <h1 class="header-title">{{title}}</h1>
-        </div>
-
-        <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
-          <!-- Button -->
-          {{#if isCurrentUser}}
-          <a href="/settings/profile" class="btn btn-secondary d-block d-md-inline-block">Edit Your Profile</a>
-          {{else}}
-            <a href="#!" class="btn btn-primary d-block d-md-inline-block">Follow</a>
-          {{/if}}
-        </div>
-  
-      </div> <!-- / .row -->
-    </div> <!-- / .header-body -->
-
-  </div>
-</div>
+{{> profile/_profileHeader
+  profile_cover=profile_cover 
+  avatar=avatar 
+  title=title 
+  username=username
+  user=user
+  isCurrentUser=isCurrentUser 
+  currentPath=currentPath 
+  activePath=activePath
+  profile-feed=true
+}}
 
 <!-- CONTENT -->
 <div class="">

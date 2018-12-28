@@ -1,76 +1,12 @@
-<!-- HEADER -->
-<div class="header">
-
-  <!-- Image -->
-  <div style="background:url({{profile_cover}}) no-repeat; background-position:center; background-size:cover; padding:200px 0;position: relative;" class="header-img-top">
-
-
-  </div>
-
-  <div class="container-fluid container-profile-header">
-
-    <!-- Body -->
-    <div class="header-body mt--5 mt-md--6">
-      <div class="row align-items-end">
-        <div class="col-auto">
-
-          <!-- Avatar -->
-          <div class="avatar avatar-xxl header-avatar-top">
-              <a class="lightbox_trigger" href="#" data-target="#modalLightbox" data-toggle="modal" data-lightbox-source="{{avatar}}" class="text-center mb-3">
-                <img src="{{avatar}}" alt="Photo of {{title}}" class="avatar-img rounded-circle border border-body">
-              </a>
-          </div>
-
-        </div>
-
-        <div class="col mb-3 ml--3 ml-md--2">
-          <!-- Pretitle -->
-          <h6 class="header-pretitle">
-            @{{username}}
-            {{role_badge role}}  
-          </h6>
-          <!-- Title -->
-          <h1 class="header-title">{{title}}</h1>
-        </div>
-
-        <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
-          <!-- Button -->
-          {{#if isCurrentUser}}
-            <a href="/settings/profile" class="btn btn-secondary d-block d-md-inline-block">Edit Your Profile</a>
-          {{else}}
-            {{follow_unfollow user._id profile_id followers}}
-          {{/if}}
-        </div>
-  
-      </div> <!-- / .row -->
-
-      <div class="row">
-        <div class="col-12">
-
-          <ul class="nav nav-tabs header-tabs">
-            <li class="nav-item">
-              <a href="/users/@{{username}}" class="nav-link text-center active">
-                Profile &amp; Feed
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/users/@{{username}}/following" class="nav-link text-center">
-                Following
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/users/@{{username}}/followers" class="nav-link text-center">
-                Followers
-              </a>
-            </li>
-          </ul>
-        
-        </div>
-      </div>
-
-    </div> <!-- / .header-body -->
-  </div>
-</div>
+{{> profile/_profileHeader
+  profile_cover=profile_cover 
+  avatar=avatar 
+  title=title 
+  username=username
+  user=user
+  isCurrentUser=isCurrentUser
+  profile-feed=true
+}}
 
 <!-- CONTENT -->
 <div class="">
