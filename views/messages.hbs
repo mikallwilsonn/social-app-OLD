@@ -1,0 +1,38 @@
+{{> messages/_messagesHeader
+        title=title
+        pretitle=pretitle
+}}
+
+<!-- CONTENT -->
+<div class="">
+    <div class="row">
+
+        <!-- Message List -->
+        <div class="col-12 col-xl-3">
+            {{#if users}}
+                <div class="chat__list--wrapper">
+                    {{#each users}}
+                        {{> messages/_messageListCard user=this}} 
+                    {{/each}}
+                </div>
+            {{/if}}
+        </div><!-- / Message List -->
+
+        <!-- Current Chat -->
+        <div class="col-12 col-xl-9">
+            <div class="chat__messages">
+
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Begin typing your message here..." aria-label="Begin typing your message here..." aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info" type="button" id="button-addon2">Send</button>
+                </div>
+            </div>
+        </div> <!-- / Current Chat -->
+
+    </div> <!-- / .row -->
+
+</div> <!-- / .container-fluid -->
+
+

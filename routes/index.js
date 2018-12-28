@@ -11,6 +11,7 @@ const userController = require( '../controllers/userController' );
 const postController = require( '../controllers/postController' );
 const adminController = require( '../controllers/adminController' );
 const groupController = require( '../controllers/groupController' );
+const messageController = require( '../controllers/messageController' );
 
 // Use devController.postDump on any POST request to test what data is being passed to the database before actually doing so
 const devController = require( '../controllers/devController' );
@@ -305,7 +306,6 @@ router.get( '/community/groups/:slug/new',
     groupController.newDiscussion
 );
 
-
 // Create New Discussion
 router.post( '/community/groups/:slug/new', 
     groupController.createNewDiscussion
@@ -321,8 +321,21 @@ router.post( '/community/groups/:group_slug/:discussion_slug',
     groupController.postResponse
 );
 
+
 // ----
 // Events
+
+
+
+//
+// ----------------
+// Community Routes
+// --------
+router.get( '/messages', 
+    authController.isLoggedIn,
+    messageController.getMessages
+);
+
 
 
 
