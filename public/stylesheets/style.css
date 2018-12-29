@@ -531,6 +531,11 @@ a.lightbox_trigger:hover { opacity:0.9; }
   color:#FFF;
 }
 
+.message-recipient .message__avatar--container { order:1 !important; }
+.message-recipient .message__comment--container { order:2 !important; }
+.message-owner .message__avatar--container { order:2 !important; }
+.message-owner .message__comment--container { order:1 !important; }
+
 /* ------------------- */
 /* -- Media Queries -- */
 

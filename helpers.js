@@ -439,6 +439,8 @@ hbs.registerHelper( 'align_message', function( currentUser, messageAuthor ) {
     let message = messageAuthor.toString();
     if ( current === message ) {
         return new hbs.SafeString( 'message-owner' );
+    } else {
+        return new hbs.SafeString( 'message-recipient' );
     }
 });
 
