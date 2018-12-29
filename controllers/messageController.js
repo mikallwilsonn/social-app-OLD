@@ -85,10 +85,15 @@ exports.openChat = async ( req, res ) => {
          'participants._user': req.user._id
     });
 
+    let currentUser = req.user._id.toString();
+    let index = chat.participants.findIndex( item => item._user._id != currentUser );
+    let chatWith = chat.participants[index]._user;
+
     const messages = await Chat.find({ 'participants._user': req.user._id, open: true });
 
     res.render( 'messages', {
-        title: 'My Messages',
+        title: `Chat with ${chatWith.name}`,
+        pretitle: 'Messages',
         chat: chat,
         messages: messages
     });
