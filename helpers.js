@@ -453,7 +453,7 @@ hbs.registerHelper( 'chatlist_avatar', function( currentUser, array, message_id 
 
     let html = `
         <div class="col-auto">
-            <a href="/messages/${message_id}" class="avatar avatar-sm">
+            <a href="/messages/${message_id}" class="avatar avatar-lg">
                 <img src="${user.avatar}" alt="${user.name}'s Avatar'" class="avatar-img rounded-circle">
             </a>
         </div>
