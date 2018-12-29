@@ -506,9 +506,9 @@ a.lightbox_trigger:hover { opacity:0.9; }
 }
 
 .chat__messages {
-  padding:10px;
+  padding:25px;
   width:100%;
-  height:400px;
+  height:500px;
   background-color:#FFF;
   overflow-y: scroll !important;
   overflow-x: hidden !important;
@@ -535,6 +535,12 @@ a.lightbox_trigger:hover { opacity:0.9; }
 .message-recipient .message__comment--container { order:2 !important; }
 .message-owner .message__avatar--container { order:2 !important; }
 .message-owner .message__comment--container { order:1 !important; }
+
+.message-owner div div .comment-time { color:rgba( 255, 255, 255, 0.75 ) !important; }
+
+p.comment-text.message-text { 
+  font-size: 1.02rem !important; 
+}
 
 /* ------------------- */
 /* -- Media Queries -- */

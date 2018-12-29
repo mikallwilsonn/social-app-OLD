@@ -18,24 +18,25 @@
 
                         <!-- Title -->
                         <h5 class="comment-title">
-                        {{message._author.name}}
+                            <strong>{{message._author.name}}</strong class='text-muted'><small> says:</small>
                         </h5>
-                    </div>
-        <div class="col-auto">
 
-            <!-- Time -->
-            <time class="comment-time">{{moment_ago message.date_posted}}</time>
+                    </div>
+                    <div class="col-auto">
+
+                        <!-- Time -->
+                        <time class="comment-time">{{moment_ago message.date_posted}}</time>
+
+                    </div>
+                </div> <!-- / .row -->
+
+                <!-- Text -->
+                <p class="comment-text message-text">
+                {{message.message}}
+                </p>
+
+            </div>
 
         </div>
-        </div> <!-- / .row -->
-
-        <!-- Text -->
-        <p class="comment-text">
-        {{message.message}}
-        </p>
-
-    </div>
-
-    </div>
     </div> <!-- / .row -->
 </div>
