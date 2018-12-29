@@ -430,3 +430,14 @@ hbs.registerHelper( 'array_count', function( array ) {
 
     return new hbs.SafeString( length );
 });
+
+
+// ----
+// Float Chat Messages
+hbs.registerHelper( 'align_message', function( currentUser, messageAuthor ) {
+    let current = currentUser.toString();
+    let message = messageAuthor.toString();
+    if ( current === message ) {
+        return new hbs.SafeString( 'message-owner' );
+    }
+});

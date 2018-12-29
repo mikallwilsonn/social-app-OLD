@@ -9,10 +9,21 @@
 
         <!-- Message List -->
         <div class="col-12 col-xl-3">
-            {{#if users}}
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto align-items-center">
+                    <p>Currently Open Chats</p>
+                </div>
+
+                <div class="col-auto align-items-center">
+                    <a href="/messages/new" class="btn btn-sm btn-outline-primary">
+                        <i class="fe fe-plus"></i>
+                    </a>
+                </div>
+            </div>
+            {{#if messages}}
                 <div class="chat__list--wrapper">
-                    {{#each users}}
-                        {{> messages/_messageListCard user=this}} 
+                    {{#each messages}}
+                        {{> messages/_messageListCard message=this}} 
                     {{/each}}
                 </div>
             {{/if}}
@@ -20,15 +31,25 @@
 
         <!-- Current Chat -->
         <div class="col-12 col-xl-9">
-            <div class="chat__messages">
-
-            </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Begin typing your message here..." aria-label="Begin typing your message here..." aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-info" type="button" id="button-addon2">Send</button>
+            {{#if chat}}
+                <div class="chat__messages">
+                        {{#each chat.messages}}
+                            <div class="col-auto message-container">
+                                {{> messages/_message message=this currentUser=../user._id}}
+                            </div>
+                            
+                        {{/each}}
                 </div>
-            </div>
+
+                <div class="col-12">
+                    <form method="POST" action="/messsages/{{chat._id}}/new_message" class="row align-items-center justify-content-between">
+                        <textarea class="form-control col-xl-9" placeholder="Begin typing your message here..." aria-label="Begin typing your message here..." aria-describedby="button-addon2" id="message" name="message"></textarea>
+                        <div class="input-group-append col-xl-3">
+                            <button class="btn btn-outline-info col-12" type="submit" id="button-addon2">Send</button>
+                        </div>
+                    </form>
+                </div>
+            {{/if}}
         </div> <!-- / Current Chat -->
 
     </div> <!-- / .row -->

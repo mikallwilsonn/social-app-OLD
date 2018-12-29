@@ -1,0 +1,63 @@
+{{> messages/_messagesHeader
+        title=title
+        pretitle=pretitle
+}}
+
+<!-- CONTENT -->
+<div class="">
+    <div class="row">
+
+        <!-- Message List -->
+        <div class="col-12 row justify-content-between">
+            {{#if users}}
+                {{#each users}}
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card col-12 user-card">
+
+                            <img src="{{this.profile_cover}}" alt="{{this.name}}'s profile cover image" class="card-img-top">
+
+                            <div class="card-body text-center">
+
+                                <a href="/users/@{{this.username}}" class="avatar avatar-xl card-avatar card-avatar-top">
+                                    <img src="{{this.avatar}}" class="avatar-img rounded-circle border border-white" alt="{{this.name}}'s avatar'">
+                                </a>
+
+                                <h2 class="card-title">
+                                    <br />
+                                {{this.name}}
+                                </h2>
+
+                                <p class="card-text text-muted">
+                                    <br />
+                                </p>
+                                                    
+                                <hr>
+
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-auto">
+                                        <small>
+                                            <span class="text-success">●</span> Online
+                                        </small>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        
+                                        <form method="POST" action='/messages/new_chat={{this._id}}'>
+                                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                                <i class="fe fe-message-square"></i> Chat Now
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div> 
+                {{/each}}
+            {{/if}}
+        </div><!-- / Message List -->
+
+    </div> <!-- / .row -->
+
+</div> <!-- / .container-fluid -->
+
+

@@ -22,6 +22,7 @@ require( './models/AccountInvite' );
 require( './models/Group' );
 require( './models/Discussion' );
 require( './models/Response' );
+require( './models/Chat' );
 
 
 // ----

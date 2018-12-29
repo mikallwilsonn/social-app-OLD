@@ -1,0 +1,41 @@
+<div class="comment mb-3 {{align_message currentUser message._author._id }}">
+    <div class="row">
+        <div class="col-auto">
+
+            <!-- Avatar -->
+            <a class="avatar" href="/users/@{{message._author.username}}">
+                <img src="{{message._author.avatar}}" alt="{{message._author.name}}" class="avatar-img rounded-circle">
+            </a>
+        </div>
+
+        <div class="col ml--2">
+
+            <!-- Body -->
+            <div class="comment-body">
+
+                <div class="row">
+                    <div class="col">
+
+                        <!-- Title -->
+                        <h5 class="comment-title">
+                        {{message._author.name}}
+                        </h5>
+                    </div>
+        <div class="col-auto">
+
+            <!-- Time -->
+            <time class="comment-time">{{moment_ago message.date_posted}}</time>
+
+        </div>
+        </div> <!-- / .row -->
+
+        <!-- Text -->
+        <p class="comment-text">
+        {{message.message}}
+        </p>
+
+    </div>
+
+    </div>
+    </div> <!-- / .row -->
+</div>
