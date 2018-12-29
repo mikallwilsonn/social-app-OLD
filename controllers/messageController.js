@@ -89,7 +89,9 @@ exports.openChat = async ( req, res ) => {
     let index = chat.participants.findIndex( item => item._user._id != currentUser );
     let chatWith = chat.participants[index]._user;
 
-    const messages = await Chat.find({ 'participants._user': req.user._id, open: true });
+    const messages = await Chat
+        .find({ 'participants._user': req.user._id, open: true })
+        .sort({ 'messages.date_posted': 'desc' });
 
     res.render( 'messages', {
         title: `Chat with ${chatWith.name}`,
