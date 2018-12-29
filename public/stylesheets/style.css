@@ -539,7 +539,18 @@ a.lightbox_trigger:hover { opacity:0.9; }
 .message-owner div div .comment-time { color:rgba( 255, 255, 255, 0.75 ) !important; }
 
 p.comment-text.message-text { 
-  font-size: 1.02rem !important; 
+  font-size: 0.8rem !important; 
+}
+
+.chat-box { 
+  background-color:var( --primary );
+  border:2px solid var( --primary ); 
+  border-radius: 0px 0px 5px 5px;
+}
+.chat-box textarea { 
+  border-radius: 0px !important; 
+  resize: none !important;
+  border:0px solid rgba( 0, 0, 0, 0 ) !important;
 }
 
 /* ------------------- */
