@@ -336,7 +336,28 @@ router.get( '/messages',
     messageController.getMessages
 );
 
+// New Chat
+router.get( '/messages/new', 
+    authController.isLoggedIn,
+    messageController.newChat
+);
 
+// Create New Chat
+router.post( '/messages/new_chat=:user_id', 
+    authController.isLoggedIn,
+    messageController.createNewChat
+);
+
+// Open Chat
+router.get( '/messages/:chat_id', 
+    authController.isLoggedIn,
+    messageController.openChat
+);
+
+// New Message
+router.post( '/messsages/:chat_id/new_message', 
+    messageController.newMessage
+);
 
 
 //
