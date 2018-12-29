@@ -35,11 +35,13 @@
         <div class="col-12 col-xl-9">
             {{#if chat}}
                 <div class="chat__messages">
+                        <div class="col-auto message-container text-center">
+                            <p class="text-muted">Beginning of Chat ({{moment chat.date_created}})</p>
+                        </div>
                         {{#each chat.messages}}
                             <div class="col-auto message-container">
                                 {{> messages/_message message=this currentUser=../user._id}}
                             </div>
-                            
                         {{/each}}
                 </div>
 
