@@ -359,6 +359,16 @@ router.post( '/messsages/:chat_id/new_message',
     messageController.newMessage
 );
 
+// Close Chat
+router.post( '/messages/close_chat=:chat_id', 
+    messageController.closeChat
+);
+
+// Reopen Chat
+router.post( '/messages/reopen_chat=:chat_id', 
+    messageController.reopenChat
+);
+
 
 //
 // ----------------
