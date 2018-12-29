@@ -67,7 +67,7 @@ exports.createNewChat = async ( req, res ) => {
 // Get All Messages
 exports.getMessages = async ( req, res ) => {
 
-    const messages = await Chat.find({ 'participants._user': req.user._id });
+    const messages = await Chat.find({ 'participants._user': req.user._id, open: true });
 
     res.render( 'messages', {
         title: 'My Messages',
@@ -85,7 +85,7 @@ exports.openChat = async ( req, res ) => {
          'participants._user': req.user._id
     });
 
-    const messages = await Chat.find({ 'participants._user': req.user._id });
+    const messages = await Chat.find({ 'participants._user': req.user._id, open: true });
 
     res.render( 'messages', {
         title: 'My Messages',
@@ -93,6 +93,7 @@ exports.openChat = async ( req, res ) => {
         messages: messages
     });
 }
+
 
 // ----
 // New Message
@@ -110,5 +111,43 @@ exports.newMessage = async ( req, res ) => {
         { safe: true, new : true }
     );
 
+    res.redirect( 'back' );
+}
+
+
+// ----
+// Close Chat
+exports.closeChat = async ( req, res ) => {
+    await Chat.findByIdAndUpdate(
+        req.params.chat_id, 
+        { $set: { open: false }},
+        { 
+            new: true,
+            runValidators: true,
+            context: 'query' 
+        }
+        
+    );
+
+    req.flash( 'success', 'You successfully closed the chat.' );
+    res.redirect( 'back' );
+}
+
+
+// ----
+// Reopen Chat
+exports.reopenChat = async ( req, res ) => {
+    await Chat.findByIdAndUpdate(
+        req.params.chat_id, 
+        { $set: { open: true }},
+        { 
+            new: true,
+            runValidators: true,
+            context: 'query' 
+        }
+        
+    );
+
+    req.flash( 'success', 'You successfully reopened the chat.' );
     res.redirect( 'back' );
 }

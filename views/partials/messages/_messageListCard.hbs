@@ -18,6 +18,21 @@
                 </p>
             </div>
 
+            <div class="col-auto">
+                <div class="dropdown">
+                    <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <form method="POST" action="/messages/close_chat={{message._id}}" class="dropdown-item" data-alert="true" data-alert-text="You are about to CLOSE this chat. It will be inactive until reopened again." data-alert-icon="warning">
+                            <button class="dropdown-item text-dark">
+                                <i class="fe fe-x"></i> Close Chat
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

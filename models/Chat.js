@@ -27,7 +27,11 @@ const chatSchema = new Schema({
         date_posted: {
             type: Date
         }
-    }]
+    }],
+    open: {
+        type: Boolean,
+        default: true
+    }
 });
 
 function chatPrepopulate( next ) {
