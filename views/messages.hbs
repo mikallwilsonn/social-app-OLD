@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col-auto align-items-center">
-                    <a href="/messages/new" class="btn btn-sm btn-outline-primary">
+                    <a href="/messages/new" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Start a new chat!">
                         <i class="fe fe-plus"></i>
                     </a>
                 </div>
@@ -23,7 +23,7 @@
             {{#if messages}}
                 <div class="chat__list--wrapper">
                     {{#each messages}}
-                        {{> messages/_messageListCard message=this}} 
+                        {{> messages/_messageListCard currentUser=../user._id message=this}} 
                     {{/each}}
                 </div>
             {{/if}}
