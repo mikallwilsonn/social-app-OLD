@@ -22,10 +22,10 @@ exports.newChat = async ( req, res ) => {
         _id: {
             $in: users_to_get
         }
-    });
+    }).sort({ name: 'asc' });
 
     res.render( 'messages-newChat', {
-        title: 'Pick a user to start a new chat with',
+        title: 'Who would you like to chat with today?',
         pretitle: 'Messages',
         users: users
     });
