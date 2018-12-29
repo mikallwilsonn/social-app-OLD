@@ -441,3 +441,33 @@ hbs.registerHelper( 'align_message', function( currentUser, messageAuthor ) {
         return new hbs.SafeString( 'message-owner' );
     }
 });
+
+// ----
+// Chatlist Avatar
+hbs.registerHelper( 'chatlist_avatar', function( currentUser, array, message_id ) {
+    currentUser = currentUser.toString();
+    let index = array.findIndex( item => item._user._id != currentUser );
+    let user = array[index]._user;
+
+    let html = `
+        <div class="col-auto">
+            <a href="/messages/${message_id}" class="avatar avatar-sm">
+                <img src="${user.avatar}" alt="${user.name}'s Avatar'" class="avatar-img rounded-circle">
+            </a>
+        </div>
+
+        <div class="col ml--2">
+            <h4 class="card-title mb-1">
+                <a href="/messages/${message_id}">${user.name}</a>
+            </h4>
+
+            <p class="card-text small">
+                <span class="text-success">●</span> Online
+            </p>
+        </div>
+    `;
+
+    return new hbs.SafeString( html );
+
+
+});

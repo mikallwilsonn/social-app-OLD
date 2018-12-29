@@ -296,56 +296,6 @@ if ( socialNav ) {
 
 
 // ----
-// Deadsea Update Form scripts
-const deadSeaForm = document.querySelector( '.deadsea-form' );
-
-if ( deadSeaForm ) {
-
-    const fileInput = document.querySelector( 'input.deadseaUpdateImage' );
-    // Change enctype for form if an image is added
-    fileInput.addEventListener( 'change', () => {
-        let enctype = deadSeaForm.getAttribute( 'enctype' );
-        
-        if ( enctype ) {
-            deadSeaForm.removeAttribute( 'enctype' );
-            deadSeaForm.setAttribute( 'action', '/new_deadsea_update' );
-        } else {
-            deadSeaForm.setAttribute( 'enctype', 'multipart/form-data');
-            deadSeaForm.setAttribute( 'action', '/new_deadsea_update_with_image' );
-        }
-        
-    });
-
-    // Get current location for update
-    const getLocationTrigger = document.querySelector( 'button#get_location' );
-    const lng = document.querySelector( 'input#lng' );
-    const lat = document.querySelector( 'input#lat' );
-
-    getLocationTrigger.addEventListener( 'click', ( e ) => {
-        e.preventDefault();
-
-        function success( position ) {
-            let latitude = position.coords.latitude;
-            let longitude = position.coords.longitude;
-
-            lat.value = latitude;
-            lng.value = longitude;
-
-            $('#modalLoading').modal('hide');
-        }
-
-        function error() {
-            alert( 'Sorry! Your location could not be found. Please check your browser settings and/or connection.' );
-            $('#modalLoading').modal('hide');
-        }
-
-        navigator.geolocation.getCurrentPosition( success, error );
-
-    });
-}
-
-
-// ----
 // Post Image Lightbox
 const lightboxTrigger = document.querySelectorAll( '.lightbox_trigger' );
 if ( lightboxTrigger ) {
@@ -361,27 +311,6 @@ if ( lightboxTrigger ) {
 
 
 // ----
-// Course / Module Form entype update
-const courseForm = document.querySelector( '.course-form' );
-
-if ( courseForm ) {
-
-    const courseImageInput = document.querySelector( '.course-form input[type=file]' );
-
-    courseImageInput.addEventListener( 'change', () => {
-        let enctype = courseForm.getAttribute( 'enctype' );
-        
-        if ( enctype ) {
-            courseForm.removeAttribute( 'enctype' );
-        } else {
-            courseForm.setAttribute( 'enctype', 'multipart/form-data');
-        }
-        
-    });
-}
-
-
-// ----
 // Settings : Privacy Control
 const privacy_label = document.querySelector( '#privacy_label' );
 const privacy_toggle = document.querySelector( '#privacy' );
@@ -390,4 +319,12 @@ if ( privacy_label && privacy_toggle ) {
     privacy_label.addEventListener( 'click', function() {
         privacy_toggle.toggleAttribute( 'checked' );
     });
+}
+
+
+// ----
+// Scroll Chat box to last message
+const messages = document.querySelector( '.chat__messages' );
+if ( messages ) {
+    messages.scrollTop = messages.offsetHeight;
 }
