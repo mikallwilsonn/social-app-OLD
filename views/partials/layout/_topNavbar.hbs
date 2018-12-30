@@ -124,7 +124,7 @@
           <div class="dropdown">
         
             <!-- Toggle -->
-            <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="avatar avatar-sm {{online_status user.online}} dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="{{user.avatar}}" alt="Your avatar" class="avatar-img rounded-circle">
             </a>
 
@@ -132,6 +132,19 @@
             <div class="dropdown-menu dropdown-menu-right">
               <a href="/my-profile" class="dropdown-item">Profile</a>
               <a href="/settings" class="dropdown-item">Settings</a>
+              <hr class="dropdown-divider">
+              <form method="POST" action='/online_status' class="dropdown-item">
+                {{#if user.online}}
+                  <button class="dropdown-item text-secondary">
+                    <i class="fe fe-eye-off"></i> Appear Offline
+                  </button>
+                {{else}}
+                  <button class="dropdown-item text-success">
+                    <i class="fe fe-eye"></i> Appear Offline
+                  </button>
+                {{/if}}
+              </form>
+
               {{#if isAdmin}}
                 <hr class="dropdown-divider">
                 <a href="/admin" class="dropdown-item text-danger">Admin</a>

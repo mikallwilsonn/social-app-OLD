@@ -230,6 +230,10 @@ router.post( '/like_post=:post_id', postController.likePost );
 // If liked, UNLIKE a specific post
 router.post( '/unlike_post=:post_id', postController.unlikePost );
 
+// Change Online Status
+router.post( '/online_status', 
+    userController.onlineStatus
+);
 
 
 //
