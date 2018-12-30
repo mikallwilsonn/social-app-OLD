@@ -482,35 +482,47 @@ a.lightbox_trigger:hover { opacity:0.9; }
 
 .password-check::before {
   content: '✅';
-  margin-right:5px;
-  opacity:1;
+  margin-right: 5px;
+  opacity: 1;
 }
 
 
 /* --------------------- */
 /* -- Messages STyles -- */
-.chat__list--wrapper {
-  width:100%;
-  height:500px;
-  overflow-y: scroll !important;
-  padding:10px;
 
+/*
+.messages__main .row div:first-child { padding-right: 0px !important; }
+.messages__main .row div:nth-child(2) { padding: 0px !important; }*/
+
+.chat__list--wrapper {
+  width: 100%;
+  height: auto;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  box-sizing:border-box;
 }
 
 .chat__list--item {
-  background-color:rgba( 255, 255, 255, 1 );
-  display:inline-block;
+  background-color: rgba( 255, 255, 255, 1 );
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+  box-sizing:border-box !important;
+}
+
+.chat__list--item .card-body {
+  padding: 1.5rem 0.5rem;
 }
 
 .chat__list--item:hover {
-  cursor:pointer;
+  background-color: rgba( 255, 255, 255, 0.75 );
 }
 
 .chat__messages {
-  padding:10px 10px 50px 10px;
-  width:100%;
-  height:500px;
-  background-color:#FFF;
+  padding: 10px 10px 50px 10px;
+  width: 100%;
+  height: 500px;
+  background-color: #FFF;
   overflow-y: scroll !important;
   overflow-x: hidden !important;
 }
@@ -528,7 +540,7 @@ a.lightbox_trigger:hover { opacity:0.9; }
 }
 
 .message-owner .comment-body {
-  background-color:var(--primary);
+  background-color: var( --primary );
   color:#FFF;
 }
 
@@ -549,13 +561,14 @@ p.comment-text.message-text {
 }
 
 .chat-box { 
-  background-color:var( --primary );
+  background-color: var( --primary );
   border:2px solid var( --primary ); 
   border-radius: 0px 0px 5px 5px;
-  -webkit-box-shadow: 0px -15px 75px 0px rgba(255,255,255,1);
-  -moz-box-shadow: 0px -15px 75px 0px rgba(255,255,255,1);
-  box-shadow: 0px -15px 75px 0px rgba(255,255,255,1);
+  -webkit-box-shadow: 0px -15px 75px 0px rgba( 255, 255, 255, 1 );
+  -moz-box-shadow: 0px -15px 75px 0px rgba( 255, 255, 255, 1 );
+  box-shadow: 0px -15px 75px 0px rgba( 255, 255, 255, 1 );
 }
+
 .chat-box textarea { 
   border-radius: 0px !important; 
   resize: none !important;
@@ -581,7 +594,7 @@ p.comment-text.message-text {
 /* ------------------ */
 /* -- Admin Styles -- */
 .discussionOP {
-  border-bottom: 2px solid rgba(44,123,229,1);
+  border-bottom: 2px solid rgba( 44, 123, 229, 1 );
 }
 
 
@@ -607,6 +620,6 @@ td.dropdown #admin-user-actions form button.dropdown-item:hover { opacity:1 !imp
 
 
 tr.user-row { transition:0.2s; }
-tr.user-row:hover { background-color:rgba(250,250,250,1); }
+tr.user-row:hover { background-color:rgba( 250, 250, 250, 1 ); }
 
 

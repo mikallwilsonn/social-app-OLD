@@ -1,10 +1,5 @@
-{{> messages/_messagesHeader
-        title=title
-        pretitle=pretitle
-}}
-
 <!-- CONTENT -->
-<div class="">
+<div class="messages__main">
     <div class="row">
 
         <!-- Message List -->
@@ -15,8 +10,8 @@
                 </div>
 
                 <div class="col-auto align-items-center">
-                    <a href="/messages/new" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Start a new chat!">
-                        <i class="fe fe-plus"></i>
+                    <a href="/messages/new" class="btn btn-sm btn-outline-primary">
+                        <i class="fe fe-plus"></i> New Chat
                     </a>
                 </div>
             </div>
@@ -33,6 +28,10 @@
 
         <!-- Current Chat -->
         <div class="col-12 col-xl-9" style="overflow:hidden !important;">
+            {{> messages/_messagesHeader
+                title=title
+                pretitle=pretitle
+            }}
             {{#if chat}}
                 <div class="chat__messages">
                         <div class="col-auto message-container text-center">
