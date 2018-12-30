@@ -43,6 +43,22 @@ exports.loginForm = ( req, res ) => {
 
 
 // ----
+// Login Success Online Status Change
+exports.loginSuccessOnlineStatus = async ( req, res ) => {
+    await User.findByIdAndUpdate(
+        req.user._id,
+        { $set: { online: true }},
+        {
+            new: true,
+            runValidators: true,
+            context: 'query'
+        }
+    );
+    res.redirect( '/' );
+}
+
+
+// ----
 // Show Register Form
 exports.registerForm = ( req, res ) => {
     res.render( 'register', { title: 'Create Your Account' });
@@ -857,3 +873,34 @@ exports.unfollowUser = async ( req, res ) => {
         res.redirect( 'back' );
     }
 }
+
+
+// ----
+// Change Current Users's Online Status
+exports.onlineStatus = async ( req, res ) => {
+    let status;
+    let state;
+
+    if ( req.user.online === true ) {
+        status = false;
+        state = 'offline';
+
+    } else {
+        status = true;
+        state = 'online';
+    }
+
+    await User.findByIdAndUpdate(
+        req.user._id,
+        { $set: { online: status }},
+        {
+            new: true,
+            runValidators: true,
+            context: 'query'
+        }
+    );
+
+    req.flash( 'success', `You are now appearing ${state}.` );
+    res.redirect( 'back' );
+}
+

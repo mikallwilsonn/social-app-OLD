@@ -444,6 +444,7 @@ hbs.registerHelper( 'align_message', function( currentUser, messageAuthor ) {
     }
 });
 
+
 // ----
 // Chatlist Avatar
 hbs.registerHelper( 'chatlist_avatar', function( currentUser, array, message_id, messages ) {
@@ -453,9 +454,17 @@ hbs.registerHelper( 'chatlist_avatar', function( currentUser, array, message_id,
 
     let latest = messages[messages.length - 1];
 
+    let onlineStatus;
+
+    if ( user.online === true ) {
+        onlineStatus = 'avatar-online'
+    } else {
+        onlineStatus = 'avatar-offline';
+    }
+
     let html = `
         <div class="col-auto">
-            <a href="/messages/${message_id}" class="avatar avatar-md avatar-online">
+            <a href="/messages/${message_id}" class="avatar avatar-md ${onlineStatus}">
                 <img src="${user.avatar}" alt="${user.name}'s Avatar'" class="avatar-img rounded-circle">
             </a>
         </div>
@@ -476,6 +485,15 @@ hbs.registerHelper( 'chatlist_avatar', function( currentUser, array, message_id,
     `;
 
     return new hbs.SafeString( html );
+});
 
 
+// ----
+// Online / Offline Status
+hbs.registerHelper( 'online_status', function( status ) {
+    if ( status === true ) {
+        return new hbs.SafeString( 'avatar-online' );
+    } else {
+        return new hbs.SafeString( 'avatar-offline' );
+    }
 });

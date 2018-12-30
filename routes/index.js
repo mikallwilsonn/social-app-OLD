@@ -84,6 +84,10 @@ router.post( '/login',
     authController.login 
 );
 
+router.get( '/login-success-online-status-change',
+    userController.loginSuccessOnlineStatus
+);
+
 // GET Password recovery form
 router.get( '/forgot', userController.forgotPasswordForm );
 
@@ -230,6 +234,10 @@ router.post( '/like_post=:post_id', postController.likePost );
 // If liked, UNLIKE a specific post
 router.post( '/unlike_post=:post_id', postController.unlikePost );
 
+// Change Online Status
+router.post( '/online_status', 
+    userController.onlineStatus
+);
 
 
 //

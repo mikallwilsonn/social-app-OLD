@@ -33,7 +33,7 @@ exports.checkForSuspension = async ( req, res, next ) => {
 exports.login = passport.authenticate( 'local', {
     failureRedirect: '/login',
     failureFlash: 'Failed Login!',
-    successRedirect: '/',
+    successRedirect: '/login-success-online-status-change',
     successFlash: 'You are now logged in!'
 });
 
@@ -42,7 +42,23 @@ exports.login = passport.authenticate( 'local', {
 // Logout Current User Session
 // -> Takes the currently active user session and 
 // -> logs that user out, returning them to the /login form
-exports.logout = ( req, res ) => {
+exports.logout = async ( req, res ) => {
+
+    let user = req.user;
+
+    if ( user.online === true ) {
+        status = false;
+        await User.findByIdAndUpdate(
+            user._id,
+            { $set: { online: status }},
+            {
+                new: true,
+                runValidators: true,
+                context: 'query'
+            }
+        );
+    } 
+
     req.logout();
     req.flash( 'success', 'You are now logged out!');
     res.redirect( '/login' );

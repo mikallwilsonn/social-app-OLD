@@ -149,6 +149,10 @@ const userSchema = new Schema({
         type: String,
         lowercase: true,
         trim: true
+    },
+    online: {
+        type: Boolean,
+        default: false
     }
 });
 
