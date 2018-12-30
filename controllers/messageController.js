@@ -68,13 +68,25 @@ exports.createNewChat = async ( req, res ) => {
 exports.getMessages = async ( req, res ) => {
 
     const messages = await Chat
-        .find({ 'participants._user': req.user._id, open: true })
-        .sort({ 'messages.date_posted': 'desc' });
+        .find({ 'participants._user': req.user._id, open: true }, function( error, result ) {
+            if ( error ) {
+                res.redirect( '/messages/new' );
+                return;
+            }
+        })
+        .sort({ 'messages.date_posted': 'desc' })
+        .catch(function( error, result ) {
+            if ( error || !result ) {
+                res.redirect( '/messages/new' );
+                return;
+            }
+        });
 
-    if ( !messages ) {
+
+    if ( !messages || messages.length < 1 ) {
         res.redirect( '/messages/new' );
         return;
-    }
+    } 
 
     const chat = messages[0];
 
