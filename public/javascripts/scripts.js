@@ -326,5 +326,5 @@ if ( privacy_label && privacy_toggle ) {
 // Scroll Chat box to last message
 const messages = document.querySelector( '.chat__messages' );
 if ( messages ) {
-    messages.scrollTop = messages.offsetHeight;
+    messages.scrollTop = (messages.offsetHeight + 99999 );
 }

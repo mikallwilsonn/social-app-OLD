@@ -31,6 +31,10 @@ const chatSchema = new Schema({
     open: {
         type: Boolean,
         default: true
+    },
+    date_created: {
+        type: Date,
+        default: Date.now
     }
 });
 
