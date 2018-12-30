@@ -84,6 +84,10 @@ router.post( '/login',
     authController.login 
 );
 
+router.get( '/login-success-online-status-change',
+    userController.loginSuccessOnlineStatus
+);
+
 // GET Password recovery form
 router.get( '/forgot', userController.forgotPasswordForm );
 

@@ -43,6 +43,22 @@ exports.loginForm = ( req, res ) => {
 
 
 // ----
+// Login Success Online Status Change
+exports.loginSuccessOnlineStatus = async ( req, res ) => {
+    await User.findByIdAndUpdate(
+        req.user._id,
+        { $set: { online: true }},
+        {
+            new: true,
+            runValidators: true,
+            context: 'query'
+        }
+    );
+    res.redirect( '/' );
+}
+
+
+// ----
 // Show Register Form
 exports.registerForm = ( req, res ) => {
     res.render( 'register', { title: 'Create Your Account' });
