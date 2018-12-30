@@ -67,11 +67,25 @@ exports.createNewChat = async ( req, res ) => {
 // Get All Messages
 exports.getMessages = async ( req, res ) => {
 
-    const messages = await Chat.find({ 'participants._user': req.user._id, open: true });
+    const messages = await Chat
+        .find({ 'participants._user': req.user._id, open: true })
+        .sort({ 'messages.date_posted': 'desc' });
+
+    if ( !messages ) {
+        res.redirect( '/messages/new' );
+        return;
+    }
+
+    const chat = messages[0];
+
+    let currentUser = req.user._id.toString();
+    let index = chat.participants.findIndex( item => item._user._id != currentUser );
+    let chatWith = chat.participants[index]._user;
 
     res.render( 'messages', {
-        title: 'My Messages',
+        title: `Chat with ${chatWith.name}`,
         pretitle: 'Messages',
+        chat: chat,
         messages: messages
     });
 }
