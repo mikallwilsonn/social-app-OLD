@@ -2,8 +2,7 @@
     <div class="card-body">
         <div class="row align-items-center col-auto">
 
-            {{chatlist_avatar currentUser message.participants message._id}}
-
+            {{chatlist_avatar currentUser message.participants message._id message.messages}}
             <div class="col-auto">
                 <div class="dropdown">
                     <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false">

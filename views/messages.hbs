@@ -3,12 +3,8 @@
     <div class="row">
 
         <!-- Message List -->
-        <div class="col-12 col-xl-3">
+        <div class="col-12 col-xl-4">
             <div class="row align-items-center justify-content-between">
-                <div class="col-auto align-items-center">
-                    <p>Currently Open Chats</p>
-                </div>
-
                 <div class="col-auto align-items-center">
                     <a href="/messages/new" class="btn btn-sm btn-outline-primary">
                         <i class="fe fe-plus"></i> New Chat
@@ -27,7 +23,7 @@
         </div><!-- / Message List -->
 
         <!-- Current Chat -->
-        <div class="col-12 col-xl-9" style="overflow:hidden !important;">
+        <div class="col-12 col-xl-8" style="overflow:hidden !important;">
             {{> messages/_messagesHeader
                 title=title
                 pretitle=pretitle
